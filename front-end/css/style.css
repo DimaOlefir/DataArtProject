@@ -1,0 +1,141 @@
+@font-face {
+    font-family: FedraSansPro-DemiItalic;
+    src: url(../fonts/FedraSansPro-DemiItalic.otf); }
+
+.container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+body {
+    font-family: FedraSansPro-DemiItalic, Helvetica, sans-serif;
+    position: relative;
+    background-color: honeydew;
+
+}
+.container h1,h2,h3,h4,h5 {
+    text-align: center; }
+
+/*menu*/
+.affix {
+    top:0;
+    width: 100%;
+    z-index: 9999 !important; }
+
+.affix ~ .container-fluid {
+    position: relative;
+    top: 50px;  }
+
+.navbar {
+    background-color:  #4267b2;
+    margin-bottom: 0;
+    border-radius:0;
+    border:none;
+    font-size: 16px;
+    box-shadow: 0 1px 15px #000000;
+    /*text-shadow: 2.5px 2px 2px rgba(0,0,0,0.9); */
+}
+
+.fa-map, .glyphicon-log-out{
+    margin:0 10px 0 20px;  }
+
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand {
+    color:white; }
+
+.navbar-collapse ul li:hover {
+    background-color: cornflowerblue; }
+
+/*menu*/
+#menu{
+    width: 15%;
+    height: 385px;
+    text-align: center;
+    border: 1px solid #4267b2;
+    list-style: none;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #4267b2;
+    border: 1px solid #ddd;
+}
+#menu .list-group-item:hover{
+    background-color: cornflowerblue;
+    color:#fff;
+}
+
+.menu-avatar span{
+    margin: 20% 0 5% 0;
+    color: red;
+    font-size:50px;
+    border-radius: 1%;
+}
+
+a.list-group-item, button.list-group-item {
+ color: #FFFFFF;}
+
+.menu-list a i{
+    margin-right: 4%;
+
+}
+
+
+
+/*.container-fluid iframe{*/
+    /*margin-left: -15px;*/
+/*}*/
+
+
+
+
+/*-------------------------------------------------------------------------------------------------------------------  */
+
+/*меню выплывающеее с лева*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: cornflowerblue;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #f1f1f1;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #818181;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
