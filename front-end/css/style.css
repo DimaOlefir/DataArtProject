@@ -19,24 +19,14 @@ body {
     text-align: center; }
 
 /*menu*/
-.affix {
-    top:0;
-    width: 100%;
-    z-index: 9999 !important; }
-
-.affix ~ .container-fluid {
-    position: relative;
-    top: 50px;  }
-
 .navbar {
+    z-index: 1;
     background-color:  #4267b2;
     margin-bottom: 0;
     border-radius:0;
     border:none;
     font-size: 16px;
-    box-shadow: 0 1px 15px #000000;
-    /*text-shadow: 2.5px 2px 2px rgba(0,0,0,0.9); */
-}
+    box-shadow: 0 1px 15px #000000; }
 
 .fa-map, .glyphicon-log-out{
     margin:0 10px 0 20px;  }
@@ -50,11 +40,11 @@ body {
 /*menu*/
 #menu{
     width: 15%;
-    height: 385px;
+    height: 100%;
     text-align: center;
-    border: 1px solid #4267b2;
+    /*border: 1px solid #4267b2;*/
     list-style: none;
-}
+    margin: 1% 0 1% 1%; }
 
 .list-group-item {
     position: relative;
@@ -62,80 +52,111 @@ body {
     padding: 10px 15px;
     margin-bottom: -1px;
     background-color: #4267b2;
-    border: 1px solid #ddd;
-}
+    border: 1px solid #ddd;  }
+
 #menu .list-group-item:hover{
     background-color: cornflowerblue;
-    color:#fff;
-}
+    color:#fff; }
+
+#menu .list-group-item:focus{
+    background-color: cornflowerblue;
+    color:#fff; }
+
+.menu-avatar{
+    background-color: lightgrey;
+    opacity: 0.7;
+    padding-bottom: 2%;
+    border-radius: 4px; }
 
 .menu-avatar span{
     margin: 20% 0 5% 0;
+    padding:5%;
     color: red;
     font-size:50px;
-    border-radius: 1%;
-}
+    border-radius: 50%;
+    background-color: #ffffff; }
 
 a.list-group-item, button.list-group-item {
  color: #FFFFFF;}
 
 .menu-list a i{
-    margin-right: 4%;
+    margin-right: 4%; }
 
-}
+.footer_logo{
+    color: grey; }
 
+/*map*/
+#map {
+    height:86%; }
 
-
-/*.container-fluid iframe{*/
-    /*margin-left: -15px;*/
-/*}*/
-
-
-
-
-/*-------------------------------------------------------------------------------------------------------------------  */
-
-/*меню выплывающеее с лева*/
-.sidenav {
+/* Optional: Makes the sample page fill the window. */
+html, body {
     height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
+    margin: 0;
+    padding: 0; }
+
+/*--------index page-------------------------------------------------------------------------------------------------*/
+footer h5{
+    margin: 0 0 -15px 0;
+    padding: 1% 0 1% 0;
+    background-color: #4267b2;
+    color:#ffffff;
+    box-shadow: 0 -1px 15px #000000;
+}
+.modal-header, h4, button, .close {
+    background-color: #4267b2;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+}
+
+.btn-success{
+    background-color: #4267b2;
+}
+.btn-success:hover {
+    color: #fff;
     background-color: cornflowerblue;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
+    border-color: #4267b2;
 }
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #f1f1f1;
-    display: block;
-    transition: 0.3s;
-}
+ /*--------page My-page------------------------------------------------------------------------------------------------*/
+#maps {
+    height:90%;
+    width: 82%;
+    margin:1%;
+    border-radius: 3px; }
 
-.sidenav a:hover {
-    color: #818181;
-}
+/*modal window on page my_page */
+#myModal{
+    margin-top: 2%;
+    border-radius: 3px; }
 
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
+.input-group{
+    margin:3% 0;
+    width:100%;
+    border: 1px solid #4267b2; }
 
-#main {
-    transition: margin-left .5s;
-    padding: 16px;
-}
+.modal-save button{
+    background-color: #4267b2;
+    color:#000;
+    margin:-15px 0 -15px 0; }
 
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}
+.modal-save button:hover{
+    background-color: cornflowerblue;
+    color:#ffffff; }
+
+/*--------- page friends ----------------------------------------------------------------------------*/
+.friend_list{
+    width: 82%;
+    height: 100%;
+    border: 1px solid #4267b2;
+    margin: 1%;
+    background-color: #FFFFFF;
+    border-radius: 3px; }
+
+.form-control{
+    border: none;
+    width: 80%; }
+
+.btn-default{
+    background-color: #4267b2; }
