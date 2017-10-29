@@ -10,12 +10,19 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <java.version>1.8</java.version>
     <org.hibernate.version>5.2.11.Final</org.hibernate.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <org.springframework.version>5.0.0.RELEASE</org.springframework.version>
+    <org.springframework.version>4.3.8.RELEASE</org.springframework.version>
     <springsecurity.version>4.2.3.RELEASE</springsecurity.version>
     <project.version>1.0-SNAPSHOT</project.version>
     <log4j.version>1.2.17</log4j.version>
+    <javax-servlet-api.version>3.1.0</javax-servlet-api.version>
+    <servlet-api.version>2.5</servlet-api.version>
+    <commons-dbcp.version>1.4</commons-dbcp.version>
+    <mysql-connector.version>6.0.5</mysql-connector.version>
+    <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+    <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
   </properties>
 
   <dependencies>
@@ -37,6 +44,11 @@
       <artifactId>hibernate-entitymanager</artifactId>
       <version>${org.hibernate.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate-validator.version}</version>
+    </dependency>
 
     <!-- spring -->
     <dependency>
@@ -46,13 +58,38 @@
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
+      <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
       <version>${org.springframework.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
       <version>${org.springframework.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>${spring-data-jpa.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -77,6 +114,32 @@
           <version>${springsecurity.version}</version>
       </dependency>
 
+    <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${javax-servlet-api.version}</version>
+
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>${servlet-api.version}</version>
+
+    </dependency>
+
+  <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>${commons-dbcp.version}</version>
+  </dependency>
+  <!-- MySQL -->
+  <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql-connector.version}</version>
+  </dependency>
     <!-- loggin -->
     <dependency>
       <groupId>log4j</groupId>
@@ -87,6 +150,24 @@
   </dependencies>
 
   <build>
-    <finalName>Maper</finalName>
+      <finalName>Mapper</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.6.1</version>
+              <configuration>
+                  <source>${java.version}</source>
+                  <target>${java.version}</target>
+              </configuration>
+          </plugin>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-war-plugin</artifactId>
+              <configuration>
+                  <outputDirectory>${basedir}/war/</outputDirectory>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
 </project>
