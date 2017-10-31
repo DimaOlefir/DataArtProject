@@ -84,6 +84,9 @@ a.list-group-item, button.list-group-item {
 
 .footer_logo{
     color: grey; }
+hr{
+    border-top: 1px solid #4267b2;
+}
 
 /*map*/
 #map {
@@ -101,23 +104,20 @@ footer h5{
     padding: 1% 0 1% 0;
     background-color: #4267b2;
     color:#ffffff;
-    box-shadow: 0 -1px 15px #000000;
-}
+    box-shadow: 0 -1px 15px #000000; }
+
 .modal-header, h4, button, .close {
     background-color: #4267b2;
     color:white !important;
     text-align: center;
-    font-size: 30px;
-}
+    font-size: 30px; }
 
 .btn-success{
-    background-color: #4267b2;
-}
+    background-color: #4267b2; }
 .btn-success:hover {
     color: #fff;
     background-color: cornflowerblue;
-    border-color: #4267b2;
-}
+    border-color: #4267b2; }
 
  /*--------page My-page------------------------------------------------------------------------------------------------*/
 #maps {
@@ -135,7 +135,6 @@ footer h5{
     margin:3% 0;
     width:100%;
     border: 1px solid #4267b2; }
-
 .modal-save button{
     background-color: #4267b2;
     color:#000;
@@ -145,8 +144,25 @@ footer h5{
     background-color: cornflowerblue;
     color:#ffffff; }
 
+.open>.dropdown-toggle.btn-primary:focus{
+    background-color: cornflowerblue;
+    color:#fff;
+    border-color: #ffffff;}
+
+.dropdown form{
+  margin-left: 25%; }
+
+.dropdown-menu  {
+ min-width:0;  }
+
+
+/*---------------page message-------------------------------------------------------------------------------*/
+
+
+
+
 /*--------- page friends ----------------------------------------------------------------------------*/
-.friend_list{
+.friends,.setting, .photo{
     width: 82%;
     height: 100%;
     border: 1px solid #4267b2;
@@ -154,9 +170,34 @@ footer h5{
     background-color: #FFFFFF;
     border-radius: 3px; }
 
-.form-control{
-    border: none;
-    width: 80%; }
+.navbar-form{
+    border-radius: 5%;
+    width: 70%; }
 
 .btn-default{
-    background-color: #4267b2; }
+    background-color: #4267b2;
+    width:100%;}
+.friend_list, .photo_list{
+    padding: 5%; }
+
+
+
+
+/*--------------page photo----------------------------------------------------------------------------------*/
+
+
+
+
+
+/*-------------page setting----------------------------------------------------------------------------------*/
+
+.setting_list {
+    padding: 0 5% 0 5%;
+    margin-right: 0; }
+
+.setting .input-group span{
+    width:9%; }
+
+.set-save{
+    padding-right:8%;
+    margin: 1%; }

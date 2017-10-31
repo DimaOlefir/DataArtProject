@@ -50,16 +50,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">StepsMap</a>
+            <a class="navbar-brand" href="index.html"><i class="fa fa-map" aria-hidden="true"></i>StepsMap</a>
         </div>
-        <div class="col-lg-3  col-lg-offset-7 col-md-3  col-md-offset-6 col-sm-8">
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">LogIn</a></li>
-                    <li><a href="#">Registration</a></li>
-                    <!--<li><a href="#">LogOut</a></li>-->
-                </ul>
-            </div>
+
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -67,13 +64,62 @@
 
 <main>
     <div class="container-fluid">
-        <div class="friend_list navbar-right">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus facilis laborum nisi nobis perferendis
-            qui recusandae? Aspernatur excepturi facilis id, illum saepe sunt voluptatibus! A maxime nostrum sequi
-            temporibus voluptates!
+        <div class="photo navbar-right">
+            <h3>Your photo on the marks</h3>
+            <!-- list with photo -->
+            <div class="photo_list">
+                <div class="media list-inline">
+                    <a href="#" title="Hide comments" class="pull-right" data-toggle="popover" data-placement="bottom" data>
+                        <span class="glyphicon glyphicon-option-horizontal"></span>
+                    </a>
+                    <div class="media-left">
+                        <img src="img-gallery/4_b.jpg" class="media-object" style="width:100px">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading text-left">Eiffel Tower in Paris on the street Radicul 16</h5>
+                        <form>
+                            <div class="input-group">
+                        <textarea type="email" class="form-control"  placeholder="add comment"
+                                  name="email"></textarea>
+                            </div>
+                        </form>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-primary">Add comment</button>
+                            <button type="button" class="btn btn-primary">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+
+            <div class="photo_list">
+                <div class="media list-inline">
+                    <a href="#" title="Hide comments" class="pull-right" data-toggle="popover" data-placement="bottom" data>
+                        <span class="glyphicon glyphicon-option-horizontal"></span>
+                    </a>
+                    <div class="media-left">
+                        <img src="img-gallery/5_b.jpg" class="media-object" style="width:100px">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading text-left">House with my dream on the Rococo street </h5>
+                        <form>
+                            <div class="input-group">
+                        <textarea type="email" class="form-control"  placeholder="add comment"
+                                  name="email"></textarea>
+                            </div>
+                        </form>
+                        <div class="btn-group pull-right">
+                            <button type="button" class="btn btn-primary">Add comment</button>
+                            <button type="button" class="btn btn-primary">Delete</button>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
         </div>
 
 
+        <!--main menu left -->
         <div id="menu">
             <div class="list-group">
                 <div class="menu-avatar" >
@@ -84,7 +130,6 @@
                     <a class="list-group-item" href="my-page.html"><i class="fa fa-home fa-1x fa-fw" aria-hidden="true"></i>My page</a>
                     <a class="list-group-item" href="message.html"><i class="fa fa-comments fa-1x fa-fw" aria-hidden="true"></i>Messages</a>
                     <a class="list-group-item" href="friends.html"><i class="fa fa fa-users fa-1x fa-fw " aria-hidden="true"></i>&nbsp; Friends</a>
-                    <a class="list-group-item" href="marks.html"><i class="fa fa-picture-o fa-1x fa-fw" aria-hidden="true"></i>My marks</a>
                     <a class="list-group-item" href="photos.html"><i class="fa fa-picture-o fa-1x fa-fw" aria-hidden="true"></i>Photos</a>
                     <a class="list-group-item" href="settings.html"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Settings</a>
                 </div>
@@ -93,6 +138,15 @@
         <h5 class="footer_logo">SiteMap@2017</h5>
     </div>
 </main>
+
+
+
+<!--popover for button hide comment-->
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
 
 </body>
 </html>
