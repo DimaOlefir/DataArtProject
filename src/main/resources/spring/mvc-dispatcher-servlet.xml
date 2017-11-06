@@ -12,12 +12,12 @@
     <mvc:annotation-driven />
 
     <!-- Edit InternalResourceViewResolver for html pages. And add config about location this html files. -->
-    <!--<bean
+    <!--<model
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         &lt;!&ndash;<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> &ndash;&gt;
         <property name="prefix" value="/WEB-INF/pages/" />
         <property name="suffix" value=".jsp" />
-    </bean>-->
+    </model>-->
 
     <bean id="messageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
