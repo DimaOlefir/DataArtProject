@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Роман on 29.10.2017.
- */
+ */;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
@@ -32,7 +32,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         User user = userDao.findByLogin(login)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User with login=%s was not found", login)));
-        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), AuthorityUtils.createAuthorityList(user.getRole().toString()));
+        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(),
+                AuthorityUtils.createAuthorityList(user.getRole().toString()));
        // return new CurrentUser(user);
     }
 }
