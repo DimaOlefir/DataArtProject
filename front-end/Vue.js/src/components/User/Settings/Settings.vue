@@ -1,6 +1,6 @@
 <template>
 	<div class="container-fluid">
-		<HeaderNav />
+		<HeaderComponent />
 		<div class="user-settings">
 			<User />
 			<div class="settings">
@@ -69,15 +69,17 @@
 
 			</div>
 		</div>
+		<!-- <FooterComponent /> -->
 	</div>
 </template>
 
 <script>
 import User from '../User';
-import HeaderNav from '../../Header/Header';
+import HeaderComponent from '../../Header/Header';
+import FooterComponent from '../../Footer/Footer';
 	export default {
 		components: {
-		    User, HeaderNav
+		    User, HeaderComponent, FooterComponent
 		}
 	}
 </script>

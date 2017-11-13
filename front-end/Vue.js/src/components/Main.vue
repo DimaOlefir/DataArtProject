@@ -1,14 +1,17 @@
 <template>
   <div>
-    <HeaderNav />
+    <HeaderComponent />
     
-    <Map />
+    <MapComponent />
+
+    <FooterComponent />
   </div>
 </template>
 
 <script>
-import HeaderNav from './Header/Header';
-import Map from './Map/Map';
+import HeaderComponent from './Header/Header';
+import MapComponent from './Map/Map';
+import FooterComponent from './Footer/Footer';
 
 
 export default {
@@ -18,7 +21,7 @@ export default {
     }
   },
   components: {
-    HeaderNav, Map
+    HeaderComponent, MapComponent, FooterComponent
   }
 }
 </script>
