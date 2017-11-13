@@ -78,7 +78,7 @@
                 <a class="list-group-item" href="my-page.html"><i class="fa fa-home fa-1x fa-fw" aria-hidden="true"></i>My page</a>
                 <a class="list-group-item" href="message.html"><i class="fa fa-comments fa-1x fa-fw" aria-hidden="true"></i>Messages</a>
                 <a class="list-group-item" href="friends.html"><i class="fa fa fa-users fa-1x fa-fw " aria-hidden="true"></i>&nbsp; Friends</a>
-                <a class="list-group-item" href="photos.html"><i class="fa fa-picture-o fa-1x fa-fw" aria-hidden="true"></i>Photos</a>
+                <a class="list-group-item" href="my-notes.html"><i class="fa fa-picture-o fa-1x fa-fw" aria-hidden="true"></i>My notes</a>
                 <a class="list-group-item" href="settings.html"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Settings</a>
             </div>
         </div>
@@ -109,7 +109,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <form>
+                <form action="#" method="post" enctype="multipart/form-data">
                     <h4>Add description</h4>
                     <div class="input-group">
                         <input id="address" type="text"  class="form-control" name="adress" placeholder="address" required>
@@ -121,6 +121,11 @@
                         <a href="#" class="btn btn-primary">Privat</a>
                         <a href="#" class="btn btn-primary">All friends</a>
                         <a href="#" class="btn btn-primary">Public</a>
+                    </div>
+                    <!--форма для загрузки картинок-->
+                    <div class="input-group btn-group btn-group-justified">
+                        <input type="file" name="filename" value="Download"  placeholder="address" class="btn btn-default" style="width: 100%"><br>
+                        <input type="submit" value="Download photo" class="btn btn-default down-photo" style="width:80%; margin-top: -20%;"><br>
                     </div>
 
                     <div class="input-group">
@@ -141,7 +146,7 @@
 
 <!--map for my_page-->
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWj-z64aWKl1qrLdM_IGMn3zWviLmWy6M&libraries=drawing&callback=initMap">
+        src="https://www.google.com.hk/maps/api/js?key=AIzaSyCWj-z64aWKl1qrLdM_IGMn3zWviLmWy6M&language=en&callback=initMap">
 </script>
 
 </body>

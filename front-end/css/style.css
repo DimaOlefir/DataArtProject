@@ -18,7 +18,7 @@ body {
 .container h1,h2,h3,h4,h5 {
     text-align: center; }
 
-/*menu*/
+/*header menu*/
 .navbar {
     z-index: 1;
     background-color:  #4267b2;
@@ -37,7 +37,7 @@ body {
 .navbar-collapse ul li:hover {
     background-color: cornflowerblue; }
 
-/*menu*/
+/* left menu*/
 #menu{
     width: 15%;
     height: 100%;
@@ -113,11 +113,21 @@ footer h5{
     font-size: 30px; }
 
 .btn-success{
-    background-color: #4267b2; }
+    background-color: #4267b2;
+    border-color: #4267b2;}
+
 .btn-success:hover {
-    color: #fff;
-    background-color: cornflowerblue;
-    border-color: #4267b2; }
+    background-color: cornflowerblue; }
+
+.password-error,.email-error,#password-error,#surname-error,#name-error{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    color:red;
+}
+.error-color {
+    background-color: silver;
+    opacity: 0.7;
+}
 
  /*--------page My-page------------------------------------------------------------------------------------------------*/
 #maps {
