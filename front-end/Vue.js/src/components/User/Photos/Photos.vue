@@ -1,6 +1,6 @@
 <template>
 	<div class="container-fluid">
-		<HeaderNav />
+		<HeaderComponent />
 		<div class="user-photos">
 			<User />
 			<div class="photos">
@@ -15,12 +15,14 @@
 				</div>
 			</div>
 		</div>
+		<!-- <FooterComponent /> -->
 	</div>
 </template>
 
 <script>
 import User from '../User';
-import HeaderNav from '../../Header/Header';
+import HeaderComponent from '../../Header/Header';
+import FooterComponent from '../../Footer/Footer';
 	export default {
 		data() {
 			return {
@@ -36,7 +38,7 @@ import HeaderNav from '../../Header/Header';
 			}
 		},
 		components: {
-		    User, HeaderNav
+		    User, HeaderComponent, FooterComponent
 		}
 	}
 </script>

@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="navbar navbar-inverse" >
+    <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -114,14 +114,29 @@ export default {
 <style scoped>
   .navbar {
     margin-bottom: 0;
+    background-color: #4267b2;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 1px 15px #000000;
+  }
+  .navbar-brand {
+    color: #fff;
+  }
+  .navbar-brand:hover {
+    color: #fff;
+  }
+  .navbar-nav>li:hover {
+    background-color: cornflowerblue;
   }
   .signUp,
   .login {
     color: #fff;
     background-color: transparent;
-    margin-top: 8px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
-  .login {
-    margin-left: 10px;
+  .signUp:hover,
+  .login:hover {
+    background-color: transparent;
   }
 </style>

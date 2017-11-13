@@ -1,6 +1,6 @@
 <template>
 	<div class="container-fluid">
-		<HeaderNav />
+		<HeaderComponent />
 		<div class="user-friends">
 			<User />
 			<div class="friends">
@@ -79,18 +79,20 @@
 				</div>
 			</div>
 		</div>
+		<!-- <FooterComponent /> -->
 	</div>
 </template>
 
 <script>
 	import User from '../User';
-	import HeaderNav from '../../Header/Header';
+	import HeaderComponent from '../../Header/Header';
+	import FooterComponent from '../../Footer/Footer';
 	$(document).ready(function(){
 	    $('[data-toggle="popover"]').popover();
 	});
 	export default {
 		components: {
-			User, HeaderNav
+			User, HeaderComponent, FooterComponent
 		}
 	}
 </script>

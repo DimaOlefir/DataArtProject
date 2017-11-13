@@ -4,6 +4,8 @@ import Main from '@/components/Main'
 
 import User from '@/components/User/User'
 
+import MyPage from '@/components/User/MyPage/MyPage';
+
 import Messages from '@/components/User/Messages/Messages';
 
 import Friends from '@/components/User/Friends/Friends';
@@ -47,6 +49,11 @@ export default new Router({
       path: '/settings',
       name: 'Settings',
       component: Settings
+    },
+    {
+      path: '/mypage',
+      name: 'MyPage',
+      component: MyPage
     }
   ]
 })

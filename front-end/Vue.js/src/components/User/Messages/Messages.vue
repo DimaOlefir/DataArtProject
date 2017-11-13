@@ -1,6 +1,6 @@
 <template>
 	<div class="container-fluid">
-		<HeaderNav />
+		<HeaderComponent />
 		<div class="user-messages">
 	  		<User />	
 	  		<div class="messages">
@@ -29,6 +29,7 @@
 	  		  </section>
 	  		</div>
 	  	</div>
+	  	<!-- <FooterComponent /> -->
 	</div>
 
 </template>
@@ -36,12 +37,13 @@
 
 <script>
 	import User from '../User';
-	import HeaderNav from '../../Header/Header';
+	import HeaderComponent from '../../Header/Header';
+	import FooterComponent from '../../Footer/Footer'
 	let nextMessageId = 1;
 	
 	export default {
 		components: {
-			User, HeaderNav
+			User, HeaderComponent, FooterComponent
 		},
 	  	data() {
 	    	return {
