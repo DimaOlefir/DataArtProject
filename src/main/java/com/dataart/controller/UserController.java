@@ -65,10 +65,11 @@ public class UserController {
     }
 
     @PostMapping(value = "/register", produces = "application/json")
-    public ResponseEntity <User> registration(User user) {
+    public ResponseEntity <User> registration(@RequestBody User user) {
 
+        userService.saveUser(user);
 
-        return new ResponseEntity<User>(user,HttpStatus.CREATED);
+        return new ResponseEntity<User>(HttpStatus.CREATED);
 
     }
 
