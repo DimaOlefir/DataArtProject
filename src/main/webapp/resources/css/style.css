@@ -1,0 +1,18 @@
+h1, h2, h3, h4 {
+	color: gray;
+}
+
+a {
+	font-size: 20px;
+}
+
+#main-body {
+	width: 350px;
+	margin: auto;
+	padding: 200px 10px 10px 10px;
+}
+
+#loginForm {
+	width: 350px;
+	margin: auto;
+}

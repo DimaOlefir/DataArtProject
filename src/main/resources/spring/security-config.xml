@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+    <global-method-security authentication-manager-ref="authenticationManager" pre-post-annotations="enabled"/>
+    <http>
+        <intercept-url pattern="/resources/partials/protected/*" access="hasAnyRole('USER', 'ADMIN')"/>
+
+        <!-- login-processing-url="/j_spring_security_check" -->
+        <!--<form-login login-page="/login"
+                    default-target-url="/welcome"
+                    authentication-failure-url="/login?error"
+                    username-parameter="username" password-parameter="password"/>-->
+
+        <http-basic entry-point-ref="http403ForbiddenEntryPoint"/>
+        <csrf token-repository-ref="customCsrfTokenRepository"/>
+        <custom-filter after="CSRF_FILTER" ref="customCsrfHeaderFilter"/>
+        <remember-me key="DEVELNOTES_REMEMBER_TOKEN" services-ref="rememberMeServices" />
+        <!-- I don't know why IDEA underlined the CSRF_FILTER, but app works anyway-->
+
+        <!-- <logout logout-success-url="/login?logout"/>-->
+     </http>
+
+     <authentication-manager alias="authenticationManager">
+         <authentication-provider user-service-ref="userDetailsServiceImpl">
+             <password-encoder ref="encoder"/>
+         </authentication-provider>
+     </authentication-manager>
+
+     <beans:bean id="userDetailsServiceImpl"
+                 class="com.dataart.service.security.UserDetailsServiceImpl"/>
+
+     <beans:bean id="encoder"
+                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+         <beans:constructor-arg name="strength" value="11"/>
+     </beans:bean>
+ </beans:beans>
