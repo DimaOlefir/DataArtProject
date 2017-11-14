@@ -5,6 +5,8 @@ import com.dataart.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
@@ -59,6 +61,14 @@ public class UserController {
         }
 
         return null;
+
+    }
+
+    @PostMapping(value = "/register", produces = "application/json")
+    public ResponseEntity <User> registration(User user) {
+
+
+        return new ResponseEntity<User>(user,HttpStatus.CREATED);
 
     }
 
