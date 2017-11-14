@@ -9,7 +9,7 @@
 
     <global-method-security authentication-manager-ref="authenticationManager" pre-post-annotations="enabled"/>
     <http>
-        <intercept-url pattern="/welcome" access="hasAnyRole('USER', 'ADMIN')"/>
+        <intercept-url pattern="/resources/partials/protected/*" access="hasAnyRole('USER', 'ADMIN')"/>
 
         <!-- login-processing-url="/j_spring_security_check" -->
         <!--<form-login login-page="/login"
@@ -20,6 +20,7 @@
         <http-basic entry-point-ref="http403ForbiddenEntryPoint"/>
         <csrf token-repository-ref="customCsrfTokenRepository"/>
         <custom-filter after="CSRF_FILTER" ref="customCsrfHeaderFilter"/>
+        <remember-me key="DEVELNOTES_REMEMBER_TOKEN" services-ref="rememberMeServices" />
         <!-- I don't know why IDEA underlined the CSRF_FILTER, but app works anyway-->
 
         <!-- <logout logout-success-url="/login?logout"/>-->
