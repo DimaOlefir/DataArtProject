@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderComponent />
-    
+
     <MapComponent />
 
     <FooterComponent />
@@ -17,7 +17,7 @@ import FooterComponent from './Footer/Footer';
 export default {
   data () {
     return {
-      
+
     }
   },
   components: {
@@ -27,7 +27,12 @@ export default {
 </script>
 
 <style scoped>
+  @font-face {
+    font-family: FedraSansPro-DemiItalic;
+    src: url('../assets/fonts/FedraSansPro-DemiItalic.otf'); }
+
   .navbar {
+    font-family: FedraSansPro-DemiItalic;
     margin: 0;
   }
 </style>

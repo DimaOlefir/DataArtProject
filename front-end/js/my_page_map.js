@@ -19,7 +19,7 @@ function initMap() {
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('You herecd!');
+            infoWindow.setContent('You here!');
             map.setCenter(pos);
         }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
