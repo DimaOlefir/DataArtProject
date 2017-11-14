@@ -30,7 +30,7 @@ public class UserController {
 
     @GetMapping("/welcome")
     public String welcome(){
-        logger.debug("...start welcome method (testing)");
+        logger.info("...start welcome method (testing)");
         return "Welcome, user (testing)";
     }
 
@@ -64,16 +64,19 @@ public class UserController {
 
     }
 
-    @PostMapping(value = "/register", produces = "application/json")
+    @PostMapping(value = "/registration")//, produces = "application/json")
     public ResponseEntity <User> registration(@RequestBody User user) {
+        logger.info("Calling the metod for User registration" );
+        if(!userService.isUserExist(user)){
 
-        userService.saveUser(user);
+            userService.saveUser(user);
 
-        return new ResponseEntity<User>(HttpStatus.CREATED);
-
+            return new ResponseEntity<User>(HttpStatus.CREATED);
+        }
+        return new ResponseEntity<User>(HttpStatus.NO_CONTENT);
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    @PostMapping(value = "/logout")
     public void logout(HttpServletRequest rq, HttpServletResponse rs) {
 
         SecurityContextLogoutHandler securityContextLogoutHandler =
