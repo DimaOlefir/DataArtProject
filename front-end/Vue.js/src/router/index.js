@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/components/Main'
 
-import User from '@/components/User/User'
+import Users from '@/components/User/Users'
 
 import MyPage from '@/components/User/MyPage/MyPage';
 
@@ -26,9 +26,9 @@ export default new Router({
       component: Main
     },
     {
-    	path: '/user',
-    	name: 'User',
-    	component: User
+    	path: '/users',
+    	name: 'Users',
+    	component: Users
     },
     {
       path: '/messages',
