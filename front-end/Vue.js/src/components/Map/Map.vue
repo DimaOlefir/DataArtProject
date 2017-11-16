@@ -1,46 +1,14 @@
-<!-- <template>
-  <div>
-    <label>
-      AutoComplete
-      <GmapAutocomplete @place_changed="setPlace">
-      </GmapAutocomplete>
-      <button @click="usePlace">Add</button>
-    </label>
-
-    <gmap-map
-      :center="center"
-      @center_changed="updateCenter"
-      :zoom="14"
-      style="width: 100vw; height: 90vh"
-    >
-      <gmap-marker
-        :key="index"
-        v-for="(m, index) in markers"
-        :position="m.position"
-        :clickable="true"
-        :draggable="true"
-        @click="center=m.position"
-      ></gmap-marker>
-    </gmap-map>
-  </div>
-</template> -->
-
-
 <template>
-  <div>
-    <label>
-      Add Place
-      <GmapAutocomplete @place_changed="setPlace">
-      </GmapAutocomplete>
-      <button @click="usePlace">Add</button>
-    </label>
-    <br/>
+  <div >
+    <!--map for index page-->
 
-    <GmapMap style="width: 100%; height: 85vh" :zoom="14" :center="{lat: 46.480271, lng: 30.756080}">
+    <GmapMap style="width: 100%; height: 100vh" :zoom="3" :center="{lat:currentLocation.lat, lng:currentLocation.lng}">
+    <!--<GmapMap :center="{lat:currentLocation.lat, lng:currentLocation.lng}" :zoom="3" :options="{disableDefaultUI:true}">-->
       <GmapMarker v-for="(marker, index) in markers"
         :key="index"
         :position="marker.position"
-        />
+                  :label="marker.label"
+      />
       <GmapMarker
         v-if="this.place"
         label="★"
@@ -51,8 +19,11 @@
         />
     </GmapMap>
   </div>
+
 </template>
 
+
+<!--map for index page-->
 
 <script>
   import * as VueGoogleMaps from 'vue2-google-maps'
@@ -65,7 +36,7 @@
       // OR: libraries: 'places,drawing,visualization'
       // (as you require)
     }
-  })
+  });
   // export default {
   //   data () {
   //     return {
@@ -73,16 +44,16 @@
   //       markers: [
   //         {
   //           position: {lat: 46.480271, lng: 30.756080}
-  //         }, 
+  //         },
   //         // {
   //         //   position: {lat: 11.0, lng: 11.0}
   //         // }
   //       ]
   //     }
   //   },
-    
+
   //   components: {
-      
+
   //   }
   // }
 
@@ -90,8 +61,12 @@
     data() {
       return {
         markers: [],
-        place: null
+        place: null,
+        currentLocation : {lat: 46.480271, lng: 30.756080},
       }
+    },
+    mounted : function() {
+      this.geolocation();
     },
     methods: {
       setPlace(place) {
@@ -104,15 +79,30 @@
               lat: this.place.geometry.location.lat(),
               lng: this.place.geometry.location.lng()
             }
-          })
+          });
           this.place = null;
         }
+      },
+      geolocation: function() {
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.currentLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          this.markers.push({
+            position: {
+              lat: this.currentLocation.lat,
+              lng: this.currentLocation.lng
+            },
+//            label: 'Hey! You are here!'
+          });
+        });
       }
     }
   }
   </script>
 
-</script>
+
 
 <style scoped>
 
