@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * Created by Роман on 15.11.2017.
  */
-@Component
+//@Component
 public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     public JwtAuthenticationFilter() {

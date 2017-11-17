@@ -7,8 +7,8 @@
                     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
                     http://www.springframework.org/schema/security
                     http://www.springframework.org/schema/security/spring-security.xsd">
-
-    <global-method-security authentication-manager-ref="authenticationManager" pre-post-annotations="enabled"/>
+    <!--<global-method-security authentication-manager-ref="authenticationManager" pre-post-annotations="enabled"/>-->
+    <global-method-security pre-post-annotations="enabled"/>
     <!--<http>
         <intercept-url pattern="/resources/partials/protected/*" access="hasAnyRole('USER', 'ADMIN')"/>-->
 
@@ -29,6 +29,7 @@
 
     <http pattern="/api/login" security="none"/>
     <http pattern="/api/register" security="none"/>
+    <http pattern="/api/test" security="none"/>
 
     <http pattern="api/**" entry-point-ref="restAuthenticationEntryPoint" create-session="stateless">
         <csrf disabled="true"/>
@@ -41,13 +42,13 @@
     </beans:bean>
 
     <authentication-manager alias="authenticationManager">
-        <authentication-provider ref="jwtAuthenticationProvider">
-            <password-encoder ref="encoder"/>
-        </authentication-provider>
+        <authentication-provider ref="jwtAuthenticationProvider"/>
+            <!--<password-encoder ref="encoder"/>-->
+        <!--</authentication-provider>-->
     </authentication-manager>
 
-    <!--<beans:bean id="userDetailsServiceImpl"
-                class="com.dataart.service.security.UserDetailsServiceImpl"/>-->
+<!--<beans:bean id="userDetailsServiceImpl"
+        class="com.dataart.service.security.UserDetailsServiceImpl"/>-->
 
     <beans:bean id="encoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
