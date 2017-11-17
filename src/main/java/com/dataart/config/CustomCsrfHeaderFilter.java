@@ -15,10 +15,12 @@ import java.io.IOException;
 /**
  * Created by Роман on 13.11.2017.
  */
-@Component
-public class CustomCsrfHeaderFilter extends OncePerRequestFilter {
 
-    @Override
+//the defend from csrf attacks have been realised in jwt concept, so this class in this time don't require.
+//@Component
+public class CustomCsrfHeaderFilter {//extends OncePerRequestFilter {
+
+/*    @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
@@ -33,7 +35,7 @@ public class CustomCsrfHeaderFilter extends OncePerRequestFilter {
             }
         }
         filterChain.doFilter(request, response);
-    }
+    }*/
 }
 
 

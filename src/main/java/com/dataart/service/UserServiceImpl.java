@@ -64,7 +64,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public boolean isUserExist(User user) {
-        return findByLogin(user.getLogin())!=null;
+    public boolean isUserExistByLogin(String login) {
+        User user = findByLogin(login);
+        return user!=null;
     }
 }

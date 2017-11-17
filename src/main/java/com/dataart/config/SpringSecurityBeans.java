@@ -13,9 +13,9 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 /**
  * Created by Роман on 13.11.2017.
  */
-@Configuration
+//@Configuration
 public class SpringSecurityBeans {
-    @Autowired
+    /*@Autowired
     UserDetailsService userDetailsService;
 
     @Bean
@@ -43,6 +43,6 @@ public class SpringSecurityBeans {
     @Bean
     public Http403ForbiddenEntryPoint http403ForbiddenEntryPoint() {
         return new Http403ForbiddenEntryPoint();
-    }
+    }*/
 
 }
