@@ -22,8 +22,8 @@ CREATE TABLE `User` (
   `password` VARCHAR(100) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `role` ENUM("USER", "ADMIN") NOT NULL ,
-  `dateOfBirth` DATE NOT NULL,
-  `sex` ENUM("MAN", "WOMAN") NOT NULL,
+  `dateOfBirth` DATE DEFAULT NULL,
+  `sex` ENUM("MAN", "WOMAN") DEFAULT NULL,
   `about` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
 );

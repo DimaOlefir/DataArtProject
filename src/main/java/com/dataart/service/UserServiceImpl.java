@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public User findByLogin(String login) {
-        return userDao.findByLogin(login).get();
+        return userDao.findByLogin(login);//.get();
     }
 
     @Override

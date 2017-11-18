@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by Роман on 26.10.2017.
  */
 @Entity
-@Table(name = "users")
+@Table(name = "User")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,7 +45,7 @@ public class User implements Serializable {
     //@NotEmpty(message = "*Please provide your email")
     private String email;
 
-    @Column(name = "dateOfBitrh")
+    @Column(name = "dateOfBirth")
     //@NotEmpty(message = "*Please provide your date of birth")
     @Temporal(TemporalType.DATE)
     private Date birthDate;

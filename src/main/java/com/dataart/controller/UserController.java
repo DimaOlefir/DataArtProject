@@ -94,7 +94,7 @@ public class UserController {
     private UserAuthentication userAuthentication;
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)//UriComponentsBuilder builder
     public ResponseEntity<Void> registerUser(@RequestBody User user) {
         logger.debug("...start registration");
         if (userService.isUserExistByLogin(user.getLogin())) {//, user.getEmail()
@@ -106,6 +106,7 @@ public class UserController {
         userService.saveUser(new User(user.getFirstName(),user.getLastName(),user.getLogin(), user.getPassword(), user.getEmail()));
         logger.debug("...save user in db");
         HttpHeaders headers = new HttpHeaders();
+        //headers.setLocation(builder.path("/article?id={id}").buildAndExpand(article.getArticleId()).toUri());
         return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 

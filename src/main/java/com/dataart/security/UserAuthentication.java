@@ -15,6 +15,7 @@ public class UserAuthentication {
 
     @Autowired
     private UserService userService;
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private JwtUtil jwtUtil;
@@ -28,9 +29,9 @@ public class UserAuthentication {
         User checkedUser = userService.findByLogin(login);
         String token = null;
         if (checkedUser != null &&
-                checkedUser.getPassword().equals(bCryptPasswordEncoder.encode(password))) {
+                bCryptPasswordEncoder.matches(password,checkedUser.getPassword())) {
             token = jwtUtil.generateToken(checkedUser);
-        }
+            }
         return token;
     }
 
