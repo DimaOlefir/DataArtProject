@@ -1,8 +1,8 @@
 <template>
 	<div class="container-fluid">
-		<HeaderComponent />
+    <UserHeader></UserHeader>
 		<div class="user-messages">
-	  		<User />	
+	  		<User></User>
 	  		<div class="messages">
 	  		  <form class="form-inline search">
 	  		    <div class="form-group">
@@ -37,13 +37,12 @@
 
 <script>
 	import User from '../User';
-	import HeaderComponent from '../../Header/Header';
-	import FooterComponent from '../../Footer/Footer'
+  import UserHeader from '../../Header/UserHeader.vue';
 	let nextMessageId = 1;
-	
+
 	export default {
 		components: {
-			User, HeaderComponent, FooterComponent
+			User, UserHeader
 		},
 	  	data() {
 	    	return {
@@ -56,24 +55,19 @@
 	      		]
 	    	}
 		},
-
-	  	methods: {
-
-		    addMessage: function () {
-		      	var task = this.newMessage.trim();
+    methods: {
+        addMessage: function () {
+		      	let task = this.newMessage.trim();
 		      	if (task) {
 			        this.tasks.push({id: nextMessageId++,text: task});
 			        this.newMessage = "";
 		      	}
 		    },
-
-		    removeTask: function (task) {
-		      	var index = this.tasks.indexOf(task);
+      removeTask: function (task) {
+		      	let index = this.tasks.indexOf(task);
 		      	this.tasks.splice(index, 1);
 		    },
-
-
-		    clearList: function () {
+      clearList: function () {
 		      	this.tasks = [];
 		    }
 	  	}
@@ -101,30 +95,19 @@ ul, li {
 }
 
 /* Global Styles */
-
-body {
-	line-height: 1;
-	font-family: "Lato", sans-serif;
-	background-color: #EFF1F2;
-}
-
 .messages {
-	width: 70%;
-	/*margin: 1em auto 3em;*/
-	border: 1px solid #efefef;
+	width: 80%;
+  border: 1px solid #4267b2;
 	border-radius: 5px;
 	padding: 0 100px;
 	background-color: #fff;
 }
-
 .search {
 	margin: 30px 0 50px 0;
 }
-
 .btn.btn-primary {
 	height: 35px;
 }
-
 .panel, li {
 	display: flex;
 	align-items: center;
@@ -134,7 +117,6 @@ body {
 	border-bottom: 1px solid #efefef;
 	background-color: #E7E8EB;
 }
-
 .text-input {
 	border: 1px solid #dedede;
 	padding-left: 10px;
@@ -142,8 +124,6 @@ body {
 	height: 35px;
 	color: #555;
 }
-
-
 button {
 	color: #555;
 	background-color: #FFFFFF;
@@ -156,7 +136,6 @@ button {
 }
 
 /* Task  area */
-
 .list li {
 	background-color: #3465A4;
 }
@@ -252,5 +231,5 @@ button {
 </script>
 
 <style scoped>
-	
+
 </style> -->

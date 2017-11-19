@@ -1,19 +1,23 @@
 <template>
 	<div class="container-fluid">
-		<HeaderComponent />
+    <UserHeader></UserHeader>
 		<div class="user-page">
-			<User />
+      <LeftMenu></LeftMenu>
 			<div class="my-page">
-				<MapComponent />
+        <UserMap></UserMap>
+        <PhotosBlock></PhotosBlock>
+        <Comments></Comments>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-	import HeaderComponent from '../../Header/Header';
-	import User from '../User';
-	import MapComponent from '../../Map/Map';
+  import UserHeader from '../../Header/UserHeader.vue';
+  import LeftMenu from './LeftMenu.vue';
+  import UserMap from './UserMap.vue';
+	import PhotosBlock from './PhotosBlock.vue';
+	import Comments from './Comments.vue';
 	export default {
 	 	data() {
 	 		return {
@@ -21,13 +25,17 @@
 	 		}
 	 	},
 	 	components: {
-	 		HeaderComponent, User, MapComponent
+      UserHeader, LeftMenu, UserMap, PhotosBlock, Comments
 	 	}
 	}
 </script>
 
 <style scoped>
-	.container-fluid {
+  @font-face {
+    font-family: FedraSansPro-DemiItalic;
+    src: url('../../../assets/fonts/FedraSansPro-DemiItalic.otf'); }
+
+  .container-fluid {
 		padding: 0;
 	}
 	.user-page {
@@ -41,6 +49,6 @@
 		padding-top: 20px;
 	}
 	.my-page {
-		width: 70vw;
+		width: 80%;
 	}
 </style>

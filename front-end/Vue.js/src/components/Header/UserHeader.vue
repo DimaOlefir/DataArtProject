@@ -8,43 +8,33 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html"><i class="fa fa-map" aria-hidden="true"></i>StepsMap</a>
+          <a class="navbar-brand" href="#"><i class="fa fa-map" aria-hidden="true"></i>StepsMap</a>
         </div>
 
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li data-toggle="modal"  id="mySignUp"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li data-toggle="modal"  id="myLogin"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li>
+              <router-link  to="/">
+             <span class="glyphicon glyphicon-log-out"></span>Logout
+              </router-link>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
-
-    <SignUpComponent />
-    <LoginComponent />
-
-
   </header>
 </template>
 
 <script>
-  import LoginComponent from './Login.vue';
-  import SignUpComponent from './SignUp.vue';
 
-export default {
-  components: {
-    LoginComponent, SignUpComponent
+  export default {
+
   }
-}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-  @font-face {
-    font-family: FedraSansPro-DemiItalic;
-    src: url('../../assets/fonts/FedraSansPro-DemiItalic.otf'); }
 
-  /*modal window on page my_page */
+<style scoped>
+
   /*header menu*/
   .navbar {
     font-family: FedraSansPro-DemiItalic, Helvetica, sans-serif;
@@ -60,12 +50,14 @@ export default {
     margin:0 10px 0 20px;  }
 
   .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand {
-    color:white;
-  }
+    padding-right: 30px;
+    color:white; }
+
   .navbar-collapse ul li{
-    padding: 0;
+    padding:0;
     background-color:  #4267b2;
-    border-bottom: 0;
+    border-bottom: none;
+
   }
 
   .navbar-collapse ul li:hover {

@@ -1,8 +1,8 @@
 <template>
 	<div class="container-fluid">
-		<HeaderComponent />
+    <UserHeader></UserHeader>
 		<div class="user-photos">
-			<User />
+      <User></User>
 			<div class="photos">
 				<h2>{{title}}</h2>
 				<div class="photo-list" v-for="item in photoItem">
@@ -20,10 +20,9 @@
 </template>
 
 <script>
-import User from '../User';
-import HeaderComponent from '../../Header/Header';
-import FooterComponent from '../../Footer/Footer';
-	export default {
+  import User from '../User';
+  import UserHeader from '../../Header/UserHeader.vue';
+  export default {
 		data() {
 			return {
 				title: 'Your photo on the marks',
@@ -38,7 +37,7 @@ import FooterComponent from '../../Footer/Footer';
 			}
 		},
 		components: {
-		    User, HeaderComponent, FooterComponent
+		    User, UserHeader
 		}
 	}
 </script>
@@ -58,7 +57,7 @@ import FooterComponent from '../../Footer/Footer';
 		padding-top: 20px;
 	}
 	.photos {
-		width: 70vw;
+		width: 80%;
 		border: 1px solid #4267b2;
 		border-radius: 5px;
 		padding: 0 100px;

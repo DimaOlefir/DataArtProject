@@ -11,14 +11,14 @@
             <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
-            <form role="form" method="post">
+            <form role="form" method="post" class="text-left">
               <div class="form-group has-feedback">
-                <label for="email"><span class="glyphicon glyphicon-user"></span> Email</label>
-                <input type="email" class="email form-control" v-model="email"  name="email" placeholder="Enter email">
+                <label for="email"><span class="glyphicon glyphicon-user"></span> Email *</label>
+                <input type="email" class="email form-control" v-model="email" id="email" name="email" placeholder="Enter email">
                 <div class="email-error"></div>
               </div>
               <div class="form-group has-feedback">
-                <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password *</label>
                 <input type="text" id="password" class="form-control" v-model="password"  placeholder="Enter password" required name="password" pattern="[A-Za-z, 0-9]{6,}">
                 <div id="password-error"></div>
               </div>

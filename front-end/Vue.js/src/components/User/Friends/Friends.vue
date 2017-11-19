@@ -1,8 +1,8 @@
 <template>
 	<div class="container-fluid">
-		<HeaderComponent />
+    <UserHeader></UserHeader>
 		<div class="user-friends">
-			<User />
+			<User></User>
 			<div class="friends">
 				<form class="form-inline search">
 				  <div class="form-group">
@@ -85,14 +85,13 @@
 
 <script>
 	import User from '../User';
-	import HeaderComponent from '../../Header/Header';
-	import FooterComponent from '../../Footer/Footer';
+  import UserHeader from '../../Header/UserHeader.vue';
 	$(document).ready(function(){
 	    $('[data-toggle="popover"]').popover();
 	});
 	export default {
 		components: {
-			User, HeaderComponent, FooterComponent
+			User, UserHeader
 		}
 	}
 </script>
@@ -115,7 +114,7 @@
 		padding-top: 20px;
 	}
 	.friends {
-		width: 70vw;
+		width: 80%;
 		border: 1px solid #4267b2;
 		border-radius: 5px;
 		padding: 0 100px;
