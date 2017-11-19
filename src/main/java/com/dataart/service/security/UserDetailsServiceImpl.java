@@ -12,9 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by Роман on 29.10.2017.
  */;
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl{// implements UserDetailsService {
 
-    @Autowired
+    /*@Autowired
     private UserDao userDao;
 
     //We will find the required user by his login
@@ -35,5 +35,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(),
                 AuthorityUtils.createAuthorityList(user.getRole().toString()));
        // return new CurrentUser(user);
-    }
+    }*/
 }

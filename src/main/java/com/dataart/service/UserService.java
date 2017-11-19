@@ -21,6 +21,8 @@ public interface UserService {
 
     List<User> findAllUsers();
 
-    public boolean isUserExist(User user);
+    public boolean isUserExistByLogin(String login);
+
+    void changePassword(User user);
 
 }

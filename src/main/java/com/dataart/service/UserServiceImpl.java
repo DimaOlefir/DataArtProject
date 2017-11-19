@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public User findByLogin(String login) {
-        return userDao.findByLogin(login).get();
+        return userDao.findByLogin(login);//.get();
     }
 
     @Override
@@ -47,6 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void updateUser(User user) {
+        //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userDao.saveAndFlush(user);
     }
 
@@ -64,7 +65,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public boolean isUserExist(User user) {
-        return findByLogin(user.getLogin())!=null;
+    public boolean isUserExistByLogin(String login) {
+        User user = findByLogin(login);
+        return user!=null;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void changePassword(User user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userDao.saveAndFlush(user);
     }
 }
