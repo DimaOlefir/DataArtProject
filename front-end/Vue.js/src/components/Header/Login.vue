@@ -19,7 +19,7 @@
               </div>
               <div class="form-group has-feedback">
                 <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                <input type="text" id="password" class="form-control" v-model="password"  placeholder="Enter password" required name="password" pattern="[A-Za-z, 0-9]{6,}">
+                <input type="password" id="password" class="form-control" v-model="password"  placeholder="Enter password" required name="password" pattern="[A-Za-z, 0-9]{6,}">
                 <div id="password-error"></div>
               </div>
               <div class="checkbox">
