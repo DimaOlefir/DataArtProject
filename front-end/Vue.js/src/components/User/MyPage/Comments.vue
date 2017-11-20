@@ -64,7 +64,7 @@
     font-family: FedraSansPro-DemiItalic, Helvetica, sans-serif;
     width: 100%;
     border: 1px solid #efefef;
-    padding:2% 5% 0 5% ;
+    padding:0 5% 0 5% ;
     background-color: #EBE9E9;
   }
   .jumbotron {
@@ -83,7 +83,8 @@
     background-color:#ffffff;
   }
   .btn.btn-primary {
-    height: 35px;
+    height: 34px;
+    margin-bottom: 1%;
   }
   .panel, li {
     display: flex;
@@ -100,7 +101,7 @@
     width: 80%;
     height: 35px;
     color: #555;
-    margin: 4% 4% 4% 9%;
+    margin: 2% 4% 3% 9%;
   }
   /* Task  area */
   .list li {
