@@ -8,35 +8,35 @@
     <div class="row">
       <div class="column">
         <div class="content">
-          <img src="../../../assets/img/img-gallery/1_f.png" alt="Mountains">
+          <img src="../../../assets/img/1_f.png" alt="Mountains">
           <h4> place name </h4>
           <p>Brief description of the place, brief description of the place, brief description of the place </p>
         </div>
       </div>
       <div class="column">
         <div class="content">
-          <img src="../../../assets/img/img-gallery/1_b.jpg" alt="Lights">
+          <img src="../../../assets/img/1_b.jpg" alt="Lights">
           <h4> place name </h4>
           <p>Brief description of the place, brief description of the place, brief description of the place </p>
         </div>
       </div>
       <div class="column">
         <div class="content">
-          <img src="../../../assets/img/img-gallery/1_s.jpg" alt="Nature">
+          <img src="../../../assets/img/1_s.jpg" alt="Nature">
           <h4>place name </h4>
           <p>Brief description of the place, brief description of the place, brief description of the place </p>
         </div>
       </div>
       <div class="column">
         <div class="content">
-          <img src="../../../assets/img/img-gallery/2_f.jpg" alt="Mountains">
+          <img src="../../../assets/img/2_f.jpg" alt="Mountains">
           <h4> place name </h4>
           <p>Brief description of the place, brief description of the place, brief description of the place </p>
         </div>
       </div>
       <div class="column">
         <div class="content">
-          <img src="../../../assets/img/img-gallery/2_b.jpg" alt="Nature">
+          <img src="../../../assets/img/2_b.jpg" alt="Nature">
           <h4> place name </h4>
           <p>Brief description of the place, brief description of the place, brief description of the place </p>
         </div>
