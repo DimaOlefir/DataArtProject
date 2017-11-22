@@ -1,14 +1,20 @@
 <template>
 
   <div>
+    <label class="map-search">
+           <!--Add place on the map <br>-->
+            <GmapAutocomplete @place_changed="setPlace"></GmapAutocomplete>
+            <button @click="usePlace">Search place</button>
+          </label>
+       <br/>
+
     <div class="add-marker">
       <button v-on:click="activateAddMarker">
         <i class="fa fa-map-marker" aria-hidden="true"></i>Add new marker
       </button>
     </div>
     <!--map for index page-->
-    <GmapMap style="width: 100%; height: 100vh; border-radius:5%;" :zoom="3" :center="{lat:currentLocation.lat, lng:currentLocation.lng}"
-             v-on:click="openModal">
+    <GmapMap style="width: 100%; height: 100vh; margin-top: -1.5%" :zoom="3" :center="{lat:currentLocation.lat, lng:currentLocation.lng}" v-on:click="openModal">
              <!--v-on:click="openModal" data-toggle="modal"  data-target="#myModal">-->
       <!--<GmapMap :center="{lat:currentLocation.lat, lng:currentLocation.lng}" :zoom="3" :options="{disableDefaultUI:true}">-->
       <GmapMarker v-for="(marker, index) in markers"
@@ -162,15 +168,33 @@
 
 <style scoped>
   /*modal window on page my_page */
+  .map-search{
+    position: absolute;
+    margin:1% 0 0 -30%;
+    opacity: 0.8;
+    z-index: 9;
+  }
+  .map-search button{
+    font-size: 14px;
+    width:100px;
+    height: 30px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    opacity: 0.8;
+  }
+  .map-search button:hover{
+    background-color: cornflowerblue;
+    opacity: 1;
+  }
   .add-marker{
     position: absolute;
-    z-index: 9;
-    margin:0.7% 0 0 65%;
+    margin:0 0 0 65%;
     opacity: 0.7;
+    z-index: 9;
   }
   .add-marker button{
     font-size: 14px;
-    width:100%;
+    width:140px;
     height: 30px;
     border: 1px solid #ffffff;
     border-radius: 5px;
@@ -187,27 +211,29 @@
   }
   #myModal{
     margin-top: 2%;
-    border-radius: 3px; }
-
+    border-radius: 3px;
+  }
   .input-group{
     margin:3% 0;
     width:100%;
-    border: 1px solid #4267b2; }
+    border: 1px solid #4267b2;
+  }
   .modal-save button{
     background-color: #4267b2;
     color:#ffffff;
     font-size: 14px;
-    margin:-15px 0 -15px 0; }
-
+    margin:-15px 0 -15px 0;
+  }
   .modal-save button:hover{
     background-color: cornflowerblue;
-    color:#ffffff; }
-
+    color:#ffffff;
+  }
   .modal-header, h4, button, .close {
     background-color: #4267b2;
     color:white;
     text-align: center;
-    font-size: 30px; }
+    font-size: 30px;
+  }
   .download-photo input{
     color:#ffffff;
     background-color: #4267b2; ;

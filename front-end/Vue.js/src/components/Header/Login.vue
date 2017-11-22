@@ -13,13 +13,13 @@
           <div class="modal-body" style="padding:40px 50px;">
             <form role="form" method="post" class="text-left">
               <div class="form-group has-feedback">
-                <label for="email"><span class="glyphicon glyphicon-user"></span> Email *</label>
-                <input type="email" class="email form-control" v-model="email" id="email" name="email" placeholder="Enter email">
-                <div class="email-error"></div>
+                <label for="user_login"><span class="glyphicon glyphicon-user"></span> Login *</label>
+                <input type="text" class="form-control" v-model="user_login" id="user_login" placeholder="Please enter your login" name="login">
+                <div id="userlogin-error"></div>
               </div>
               <div class="form-group has-feedback">
                 <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password *</label>
-                <input type="text" id="password" class="form-control" v-model="password"  placeholder="Enter password" required name="password" pattern="[A-Za-z, 0-9]{6,}">
+                <input type="text" id="password" class="form-control" v-model="password"  placeholder="Please enter your password"  name="password">
                 <div id="password-error"></div>
               </div>
               <div class="checkbox">
@@ -40,14 +40,15 @@
     data () {
       return {
         email: "",
-        password: ""
+        password: "",
+        user_login: ""
       }
     },
     methods: {
       login: function (event) {
-        event.preventDefault();
+        event.preventDefault(); //чтобы после нажатия на sumbit, форма с ошибками автоматически не отправлялась
         let reason = "";
-        reason += this.validateEmail();
+        reason += this. validateLogin();
         reason += this.validatePassword();
 
         if (reason.length > 0) {
@@ -57,26 +58,25 @@
           return false;
         }
       },
-      validateEmail: function () {
+      validateLogin: function () {
         let error = "";
-        let temail = this.email.replace(/^\s+|\s+$/, '');
-        let emailFilter = /^[^@]+@[^@.]+\.[^@]*\w\w$/;
-        let illegalChars = /[\(\)\<\>\,\;\:\\\"\}\?\{\%\[\]]/;
+        let tlogin = this.user_login.replace(/^\s+|\s+$/, '');
+        let loginFilter = /^([a-zA-Z, 0-9]+|\d+)$/i;
 
-        if (this.email === "") {
-          this.addError(".email", '.email-error', "Please enter an email address.");
+        if (this.user_login === "") {
+          this.addError("#user_login","#userlogin-error", "Please enter your login.");
+          error = "1";
+        } else if (!loginFilter.test(tlogin)) { //test password for illegal characters
+          this.addError("#user_login","#userlogin-error", "Please enter only latin letters and numbers.");
           error = "2";
-        } else if (!emailFilter.test(temail)) { //test email for illegal characters
-          this.addError(".email", '.email-error', "Please enter a valid email address.");
+        } else if (tlogin.length < 4) { //test password for illegal characters
+          this.addError("#user_login","#userlogin-error", "Please enter more then 4 symbols.");
           error = "3";
-        } else if (this.email.match(illegalChars)) {
-          this.addError(".email", '.email-error', "Email contains invalid characters.");
-          error = "4";
         } else {
-          $(".email").removeClass('error-color');
-          $('.email-error').html("");
+
+          $("#user_login").removeClass('error-color');
+          $("#userlogin-error").html("");
         }
-        return error;
       },
       validatePassword: function () {
         let error = "";
@@ -98,10 +98,10 @@
         }
       },
       addError: function (el, errorEl, message) {
+        console.log($(el));
         $(el).addClass('error-color');
         $(errorEl).html(message);
       }
-
     }
   }
 
@@ -153,7 +153,7 @@
   .btn-success:hover {
     background-color: cornflowerblue; }
 
-  .password-error,.email-error,#password-error,#surname-error,#name-error{
+  .password-error,.email-error,#password-error,#userlogin-error,#surname-error,#name-error{
     font-family: Helvetica, Arial, sans-serif;
     font-size: 10px;
     color:red;

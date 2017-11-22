@@ -6,30 +6,36 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-          <div class="modal-header" style="padding:35px 50px;">
+          <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
-            <form role="form" method="post" class="text-left">
+            <!--<form role="form" action="https://rocky-retreat-50096.herokuapp.com/api/test" method="get" class="text-left">-->
+            <form role="form" action="" method="get" class="text-left">
               <div class="form-group ">
                 <label for="username"><span class="glyphicon glyphicon-user"></span> Name *</label>
-                <input type="text" v-model="name" class="form-control" id="username" placeholder="Your name" required="required" name="name">
+                <input type="text" v-model="name" class="form-control" id="username" placeholder="Your name" name="name">
                 <div  id="name-error"></div>
               </div>
               <div class="form-group">
                 <label for="username"><span class="glyphicon glyphicon-user"></span> Surname *</label>
-                <input type="text" v-model="surname" class="form-control" id="surname" placeholder="Your surname" required="required" name="surname">
+                <input type="text" v-model="surname" class="form-control" id="surname" placeholder="Your surname" name="surname">
                 <div id="surname-error"></div>
               </div>
               <div class="form-group">
+                <label for="login"><span class="glyphicon glyphicon-user"></span> Login *</label>
+                <input type="text" class="login form-control" v-model="login" id="login" placeholder="Your login" name="login">
+                <div id="login-error"></div>
+              </div>
+              <div class="form-group">
                 <label for="email"><span  class="glyphicon glyphicon-envelope"></span> Email *</label>
-                <input class="email form-control" type="text" v-model="email" id="email"  placeholder="Enter email">
+                <input class="email form-control" type="text" v-model="email" id="email"  placeholder="Enter email" name="email">
                 <div  class="email-error"></div>
               </div>
               <div class="form-group">
                 <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password *</label>
-                <input type="text" v-model="password" id="psw" class="form-control"  placeholder="Enter password" required="required" name="password">
+                <input type="text" v-model="password" id="psw" class="form-control"  placeholder="Enter password" name="password">
                 <div class="password-error"></div>
               </div>
               <div class="checkbox">
@@ -51,7 +57,8 @@
         name: "",
         surname: "",
         email: "",
-        password: ""
+        password: "",
+        login: ""
       }
     },
     methods: {
@@ -62,6 +69,7 @@
         reason += this.validatePassword();
         reason += this.validateName();
         reason += this.validateSurame();
+        reason += this.validateLogin();
 
         if (reason.length > 0) {
           return false;
@@ -90,6 +98,25 @@
           $('.email-error').html("");
         }
         return error;
+      },
+      validateLogin: function () {
+        let error = "";
+        let tlogin = this.login.replace(/^\s+|\s+$/, '');
+        let loginFilter = /^([a-zA-Z, 0-9]+|\d+)$/i;
+
+        if (this.login === "") {
+          this.addError("#login","#login-error", "Please enter your login.");
+          error = "1";
+        } else if (!loginFilter.test(tlogin)) { //test password for illegal characters
+          this.addError("#login","#login-error", "Please enter only latin letters and numbers.");
+          error = "2";
+        } else if (tlogin.length < 4) { //test password for illegal characters
+          this.addError("#login","#login-error", "Please enter more then 4 symbols.");
+          error = "3";
+        } else {
+          $("#login").removeClass('error-color');
+          $("#login-error").html("");
+        }
       },
       validatePassword: function () {
         let error = "";
@@ -169,7 +196,9 @@
     src: url('../../assets/fonts/FedraSansPro-DemiItalic.otf'); }
 
   /*modal window on page my_page */
-
+  .modal-header{
+    padding:10px;
+  }
   .modal-save button{
     background-color: #4267b2;
     color:#000;
@@ -197,7 +226,7 @@
   .btn-success:hover {
     background-color: cornflowerblue; }
 
-  .password-error,.email-error,#password-error,#surname-error,#name-error{
+  .password-error,.email-error,#login-error,#surname-error,#name-error{
     font-family: Helvetica, Arial, sans-serif;
     font-size: 10px;
     color:red;

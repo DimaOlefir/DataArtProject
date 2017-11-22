@@ -4,7 +4,7 @@
 
         <section class="panel">
           <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add comments" class="text-input">
-          <button class="btn btn-primary" @click="clearList">Clear comments</button>
+          <button class="btn btn-primary btn-clear" @click="clearList">Clear comments</button>
         </section>
 
         <section class="list">
@@ -82,9 +82,14 @@
     border-radius: 50%;
     background-color:#ffffff;
   }
-  .btn.btn-primary {
+  .btn-clear {
+    width: 120px;
     height: 34px;
+    border: 1px solid #3465A4 ;
     margin-bottom: 1%;
+  }
+  .btn-clear:hover {
+    background-color: cornflowerblue;
   }
   .panel, li {
     display: flex;
