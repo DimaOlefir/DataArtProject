@@ -1,9 +1,21 @@
 <template>
 
-  <div >
+  <div>
+    <label class="map-search">
+           <!--Add place on the map <br>-->
+            <GmapAutocomplete class="place" @place_changed="setPlace"></GmapAutocomplete>
+            <button @click="usePlace">Search place</button>
+          </label>
+       <br/>
+
+    <div class="add-marker">
+      <button v-on:click="activateAddMarker">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>Add new marker
+      </button>
+    </div>
     <!--map for index page-->
-    <GmapMap style="width: 100%; height: 100vh; border-radius:3%" :zoom="3" :center="{lat:currentLocation.lat, lng:currentLocation.lng}"
-    v-on:click="saveCoordinates" data-toggle="modal"  data-target="#myModal">
+    <GmapMap style="width: 100%; height: 100vh; margin-top: -1.5%" :zoom="3" :center="{lat:currentLocation.lat, lng:currentLocation.lng}" v-on:click="openModal">
+             <!--v-on:click="openModal" data-toggle="modal"  data-target="#myModal">-->
       <!--<GmapMap :center="{lat:currentLocation.lat, lng:currentLocation.lng}" :zoom="3" :options="{disableDefaultUI:true}">-->
       <GmapMarker v-for="(marker, index) in markers"
                   :key="index"
@@ -20,12 +32,15 @@
       />
     </GmapMap>
 
+
     <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="myModal" role="dialog"
+         v-bind:class="{'in': modal_active}" v-bind:style="{display: modal_display}">
+    <!--<div class="modal fade" id="myModal" role="dialog">-->
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal" v-on:click="closeModal">&times;</button>
             <form action="#" method="post" enctype="multipart/form-data">
               <h4>Add description</h4>
               <div class="input-group">
@@ -40,9 +55,9 @@
                 <a href="#" class="btn btn-primary">Public</a>
               </div>
               <!--форма для загрузки картинок-->
-              <div class="input-group btn-group btn-group-justified">
-                <input type="file" name="filename" value="Download"  placeholder="address" class="btn btn-default" style="width: 100%"><br>
-                <input type="submit" value="Download photo" class="btn btn-default down-photo" style="width:80%; margin-top: -20%;"><br>
+              <div class="input-group download-photo">
+                <input type="file" name="filename" value="Download"  placeholder="place name" class="btn btn-default" style="width: 100%"><br>
+                <input type="submit" value="Download photo" class="btn btn-default down-photo" style="width:80%; margin-top:-20%;"><br>
               </div>
 
               <div class="input-group">
@@ -53,7 +68,7 @@
               </div>
             </form>
             <div class="modal-save modal-footer">
-              <button v-on:click="saveMarker" type="button" class="btn btn-default">Save</button>
+              <button v-on:click="saveMarker" type="button" class="btn btn-default btn-modalSave">Save</button>
             </div>
           </div>
         </div>
@@ -81,7 +96,9 @@
         currentLocation : {lat: 46.480271, lng: 30.756080},
         newMarkerLat: null,
         newMarkerLng: null,
-        addMarkerState: false
+        addMarkerState: false,
+        modal_active: false,
+        modal_display: 'none'
       }
     },
     mounted : function() {
@@ -117,14 +134,22 @@
           });
         });
       },
+//      Add marker
       activateAddMarker: function () {
         this.addMarkerState = true;
       },
-      saveCoordinates: function (event) {
-//        if(this.addMarkerState) {
+      closeModal: function () {
+        this.modal_active = false;
+        this.modal_display = 'none';
+        this.addMarkerState = false;
+      },
+      openModal: function (event) {
+        if(this.addMarkerState) {
+          this.modal_active = true;
+          this.modal_display = 'block';
           this.newMarkerLat = event.latLng.lat();
           this.newMarkerLng = event.latLng.lng();
-//        }
+        }
       },
       saveMarker: function (){
         this.markers.push({
@@ -133,7 +158,7 @@
             lng: this.newMarkerLng
           },
         });
-        this.addMarkerState = false;
+        this.closeModal();
       }
     }
   }
@@ -143,25 +168,81 @@
 
 <style scoped>
   /*modal window on page my_page */
+  .map-search{
+    position: absolute;
+    margin:1% 0 0 -30%;
+    opacity: 0.8;
+    z-index: 9;
+  }
+  .map-search button{
+    font-size: 14px;
+    width:100px;
+    height: 30px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    opacity: 0.8;
+  }
+  .map-search button:hover{
+    background-color: cornflowerblue;
+    opacity: 1;
+  }
+  .map-search .place{
+    width: 360px;
+  }
+  .add-marker{
+    position: absolute;
+    margin:0 0 0 65%;
+    opacity: 0.7;
+    z-index: 9;
+  }
+  .add-marker button{
+    font-size: 14px;
+    width:140px;
+    height: 30px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    box-shadow: 3px 2px 25px #b87b90;
+  }
+  .add-marker button:hover{
+    background-color: cornflowerblue;
+    opacity: 1;
+  }
+  .add-marker button i {
+    color:red;
+    font-size: 18px;
+    padding-right: 4%;
+  }
   #myModal{
     margin-top: 2%;
-    border-radius: 3px; }
-
+    border-radius: 3px;
+  }
   .input-group{
     margin:3% 0;
     width:100%;
-    border: 1px solid #4267b2; }
+    border: 1px solid #4267b2;
+  }
   .modal-save button{
     background-color: #4267b2;
-    color:#000;
-    margin:-15px 0 -15px 0; }
-
+    color:#ffffff;
+    font-size: 14px;
+    margin:-15px 0 -15px 0;
+  }
   .modal-save button:hover{
     background-color: cornflowerblue;
-    color:#ffffff; }
+    color:#ffffff;
+  }
   .modal-header, h4, button, .close {
     background-color: #4267b2;
     color:white;
     text-align: center;
-    font-size: 30px; }
+    font-size: 30px;
+  }
+  .download-photo input{
+    color:#ffffff;
+    background-color: #4267b2; ;
+  }
+  .download-photo input:hover{
+    background-color: cornflowerblue;
+  }
+
 </style>

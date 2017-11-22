@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="css/style.css">
 
 
+
     <!--&lt;!&ndash;подключение анимаций&ndash;&gt;-->
     <!--<link rel="stylesheet" href="css/animate.css">-->
     <!--<script src="js/wow.min.js"></script>-->
@@ -143,6 +144,17 @@
     </div>
 </main>
 
+<script>
+    $(function(){
+        $("#addClass").click(function () {
+            $('#qnimate').addClass('popup-box-on');
+        });
+
+        $("#removeClass").click(function () {
+            $('#qnimate').removeClass('popup-box-on');
+        });
+    })
+</script>
 
 </body>
 </html>

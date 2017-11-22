@@ -14,7 +14,7 @@
 			}
 		},
 		created: function() {
-			this.$http.get('https://jsonplaceholder.typicode.com/users')
+			this.$http.get('')
 				.then(function(response) {
 					console.log(response.data);
 					this.users = response.data
