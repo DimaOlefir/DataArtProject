@@ -3,7 +3,7 @@
   <div>
     <label class="map-search">
            <!--Add place on the map <br>-->
-            <GmapAutocomplete @place_changed="setPlace"></GmapAutocomplete>
+            <GmapAutocomplete class="place" @place_changed="setPlace"></GmapAutocomplete>
             <button @click="usePlace">Search place</button>
           </label>
        <br/>
@@ -185,6 +185,9 @@
   .map-search button:hover{
     background-color: cornflowerblue;
     opacity: 1;
+  }
+  .map-search .place{
+    width: 360px;
   }
   .add-marker{
     position: absolute;
