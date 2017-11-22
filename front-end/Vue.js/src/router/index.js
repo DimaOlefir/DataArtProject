@@ -10,7 +10,7 @@ import Messages from '@/components/User/Messages/Messages';
 
 import Friends from '@/components/User/Friends/Friends';
 
-import Photos from '@/components/User/Photos/Photos';
+import MyNotes from '@/components/User/MyNotes/MyNotes';
 
 import Settings from '@/components/User/Settings/Settings';
 
@@ -41,9 +41,9 @@ export default new Router({
       component: Friends
     },
     {
-      path: '/photos',
-      name: 'Photos',
-      component: Photos
+      path: '/mynotes',
+      name: 'MyNotes',
+      component: MyNotes
     },
     {
       path: '/settings',

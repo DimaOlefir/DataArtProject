@@ -11,19 +11,19 @@
             <h4><span class="glyphicon glyphicon-lock"></span> Sign Up</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
-            <form role="form" method="post">
+            <form role="form" method="post" class="text-left">
               <div class="form-group ">
-                <label for="username"><span class="glyphicon glyphicon-user"></span> Name</label>
-                <input type="text" v-model="name" class="form-control" id="username" placeholder="Your name" required="required" name="name" pattern="[A-Za-zА-Яа-яЁё]{2,}">
+                <label for="username"><span class="glyphicon glyphicon-user"></span> Name *</label>
+                <input type="text" v-model="name" class="form-control" id="username" placeholder="Your name" required="required" name="name">
                 <div  id="name-error"></div>
               </div>
               <div class="form-group">
-                <label for="username"><span class="glyphicon glyphicon-user"></span> Surname</label>
-                <input type="text" v-model="surname" class="form-control" id="surname" placeholder="Your surname" required="required" name="surname" pattern="[A-Za-zА-Яа-яЁё]{2,}">
+                <label for="username"><span class="glyphicon glyphicon-user"></span> Surname *</label>
+                <input type="text" v-model="surname" class="form-control" id="surname" placeholder="Your surname" required="required" name="surname">
                 <div id="surname-error"></div>
               </div>
               <div class="form-group">
-                <label for="email"><span  class="glyphicon glyphicon-envelope"></span> Email</label>
+                <label for="email"><span  class="glyphicon glyphicon-envelope"></span> Email *</label>
                 <input class="email form-control" type="text" v-model="email" id="email"  placeholder="Enter email">
                 <div  class="email-error"></div>
               </div>

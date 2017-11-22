@@ -11,7 +11,7 @@
 		data() {
 			return {
 				users: {}
-			}			
+			}
 		},
 		created: function() {
 			this.$http.get('https://jsonplaceholder.typicode.com/users')

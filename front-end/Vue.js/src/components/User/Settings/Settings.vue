@@ -1,11 +1,11 @@
 <template>
 	<div class="container-fluid">
-		<HeaderComponent />
+    <UserHeader></UserHeader>
 		<div class="user-settings">
-			<User />
+			<User></User>
 			<div class="settings">
 			  	<h2>Your personal information</h2>
-				
+
 				<form class="form-horizontal">
 				   <div class="form-group">
 				    <label for="firstName" class="col-sm-offset-1 col-sm-1 control-label">First Name</label>
@@ -31,7 +31,7 @@
 				  <div class="form-group">
 				    <label for="Sex" class="col-sm-offset-1 col-sm-1 control-label">Sex</label>
 				    <div class="col-sm-9">
-				    	<select class="form-control">
+				    	<select class="form-control" id="sex">
 				    	  <option>male</option>
 				    	  <option>female</option>
 				    	</select>
@@ -55,19 +55,17 @@
 				  <div class="form-group">
 				    <label for="phone" class="col-sm-offset-1 col-sm-1 control-label">Phone</label>
 				    <div class="col-sm-9">
-				    	<input type="tel" class="form-control" pattern="\(\d\d\d\) ?\d\d\d-\d\d-\d\d" placeholder="(###) ###-##-##"/>
+				    	<input type="tel" class="form-control" id="phone" pattern="\(\d\d\d\) ?\d\d\d-\d\d-\d\d" placeholder="(###) ###-##-##"/>
 				    </div>
 				  </div>
 
-				  
-				  <div class="form-group">
+          <div class="form-group">
 				    <div class="col-sm-offset-10 col-sm-1">
 				      <button type="submit" class="btn btn-primary">Sign in</button>
 				    </div>
 				  </div>
 				</form>
-
-			</div>
+      </div>
 		</div>
 		<!-- <FooterComponent /> -->
 	</div>
@@ -75,11 +73,10 @@
 
 <script>
 import User from '../User';
-import HeaderComponent from '../../Header/Header';
-import FooterComponent from '../../Footer/Footer';
+import UserHeader from '../../Header/UserHeader.vue';
 	export default {
 		components: {
-		    User, HeaderComponent, FooterComponent
+		    User, UserHeader
 		}
 	}
 </script>
@@ -99,7 +96,7 @@ import FooterComponent from '../../Footer/Footer';
 		padding-top: 20px;
 	}
 	.settings {
-		width: 70vw;
+		width: 80%;
 		border: 1px solid #4267b2;
 		border-radius: 5px;
 		padding: 0;

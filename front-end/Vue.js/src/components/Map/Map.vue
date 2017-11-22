@@ -1,7 +1,7 @@
 <template>
-  <div >
-    <!--map for index page-->
 
+  <div>
+    <!--map for index page-->
     <GmapMap style="width: 100%; height: 100vh" :zoom="3" :center="{lat:currentLocation.lat, lng:currentLocation.lng}">
     <!--<GmapMap :center="{lat:currentLocation.lat, lng:currentLocation.lng}" :zoom="3" :options="{disableDefaultUI:true}">-->
       <GmapMarker v-for="(marker, index) in markers"

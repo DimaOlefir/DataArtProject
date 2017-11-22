@@ -11,10 +11,10 @@
             <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
-            <form role="form" method="post">
+            <form role="form" method="post" class="text-left">
               <div class="form-group has-feedback">
-                <label for="email"><span class="glyphicon glyphicon-user"></span> Email</label>
-                <input type="email" class="email form-control" v-model="email"  name="email" placeholder="Enter email">
+                <label for="email"><span class="glyphicon glyphicon-user"></span> Email *</label>
+                <input type="email" class="email form-control" v-model="email" id="email" name="email" placeholder="Enter email">
                 <div class="email-error"></div>
               </div>
               <div class="form-group has-feedback">
