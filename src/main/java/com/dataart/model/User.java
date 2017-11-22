@@ -11,14 +11,14 @@ import java.util.Date;
  * Created by Роман on 26.10.2017.
  */
 @Entity
-@Table(name = "User")
+@Table(name = "users")//, schema = "mapper"
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "user_id", unique = true, nullable = false)
     private Long id;
 
     @Column(name = "firstName")
@@ -33,7 +33,7 @@ public class User implements Serializable {
     //@NotEmpty(message = "*Please provide your login")
     private String login;
 
-    @Column(name = "password",nullable = false)
+    @Column(name = "user_password",nullable = false)
     //@Length(min = 5, message = "*Your password must have at least 5 characters")
     //@NotEmpty(message = "*Please provide your password")
     private String password;
@@ -53,11 +53,11 @@ public class User implements Serializable {
     @Column(name = "about")
     private String about;
 
-    @Column(name = "sex", nullable = false)
+    @Column(name = "user_sex", nullable = false)
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
-    @Column(name = "role", nullable = false)
+    @Column(name = "user_role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 
