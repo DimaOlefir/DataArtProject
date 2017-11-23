@@ -17,7 +17,7 @@
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <import resource="security-config.xml"/>
-    <jpa:repositories base-package="com.dataart.dao"/>
+    <jpa:repositories base-package="com.dataart.repository"/>
     <context:component-scan base-package="com.dataart"/>
     <context:annotation-config/>
     <context:property-placeholder location="classpath:database.properties"/>

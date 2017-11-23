@@ -24,7 +24,7 @@ public class Message implements Serializable {
     @Column(name="content")
     private String content;
 
-    @Column(name = "datetime")
+    @Column(name = "dateTime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
 

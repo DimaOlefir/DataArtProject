@@ -1,6 +1,6 @@
 package com.dataart.service;
 
-import com.dataart.dao.UserDao;
+import com.dataart.repository.UserRepository;
 import com.dataart.model.User;
 import com.dataart.model.enums.Role;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;
+    private UserRepository userRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -27,13 +27,13 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public User findById(long id) {
-        return userDao.findOne(id);
+        return userRepository.findOne(id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public User findByLogin(String login) {
-        return userDao.findByLogin(login);//.get();
+        return userRepository.findByLogin(login);//.get();
     }
 
     @Override
@@ -41,26 +41,26 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRole(Role.USER);
-        userDao.saveAndFlush(user);
+        userRepository.saveAndFlush(user);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public void updateUser(User user) {
         //user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userDao.saveAndFlush(user);
+        userRepository.saveAndFlush(user);
     }
 
     @Override
     @Transactional
     public void deleteUserById(long id) {
-        userDao.delete(id);
+        userRepository.delete(id);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<User> findAllUsers() {
-        return userDao.findAll();
+        return userRepository.findAll();
     }
 
     @Override
@@ -74,6 +74,6 @@ public class UserServiceImpl implements UserService {
     @Transactional(propagation = Propagation.REQUIRED)
     public void changePassword(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userDao.saveAndFlush(user);
+        userRepository.saveAndFlush(user);
     }
 }

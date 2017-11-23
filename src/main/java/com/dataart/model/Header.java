@@ -27,7 +27,7 @@ public class Header implements Serializable{
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @Column(name = "datetime")
+    @Column(name = "dateTime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
 
