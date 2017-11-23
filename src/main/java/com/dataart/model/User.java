@@ -6,6 +6,7 @@ import com.dataart.model.enums.Sex;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Роман on 26.10.2017.
@@ -60,6 +61,12 @@ public class User implements Serializable {
     @Column(name = "user_role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "userToMsg")
+    private List<Header> headersIncoming;
+
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "userFromMsg")
+    private List<Header> headersOutgoing;
 
     public User(){
 
@@ -159,6 +166,22 @@ public class User implements Serializable {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<Header> getHeadersIncoming() {
+        return headersIncoming;
+    }
+
+    public void setHeadersIncoming(List<Header> headersIncoming) {
+        this.headersIncoming = headersIncoming;
+    }
+
+    public List<Header> getHeadersOutgoing() {
+        return headersOutgoing;
+    }
+
+    public void setHeadersOutgoing(List<Header> headersOutgoing) {
+        this.headersOutgoing = headersOutgoing;
     }
 
     @Override
