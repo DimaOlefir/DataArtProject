@@ -24,10 +24,14 @@
 	  		      <li v-for="task in tasks">
 	  		        <label>{{ task.text }}</label>
 	  		        <button class="delete" @click="removeTask(task)">X</button>
-	  		      </li>
+              </li>
 	  		    </ul>
-	  		  </section>
+            <Pagination></Pagination>
+          </section>
+
 	  		</div>
+
+
 	  	</div>
 	  	<!-- <FooterComponent /> -->
 	</div>
@@ -38,11 +42,12 @@
 <script>
 	import User from '../User';
   import UserHeader from '../../Header/UserHeader.vue';
+  import Pagination from './Pagination.vue';
 	let nextMessageId = 1;
 
 	export default {
 		components: {
-			User, UserHeader
+			User, UserHeader,Pagination
 		},
 	  	data() {
 	    	return {

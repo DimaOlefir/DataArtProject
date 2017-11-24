@@ -12,15 +12,15 @@
           </div>
           <div class="modal-body" style="padding:40px 50px;">
             <!--<form role="form" action="https://rocky-retreat-50096.herokuapp.com/api/test" method="get" class="text-left">-->
-            <form role="form" action="" method="get" class="text-left">
+            <form role="form" action="#" method="#" class="text-left">
               <div class="form-group ">
                 <label for="username"><span class="glyphicon glyphicon-user"></span> Name *</label>
-                <input type="text" v-model="name" class="form-control" id="username" placeholder="Your name" name="name">
+                <input type="text" v-model="firstName" class="form-control" id="username" placeholder="Your name" name="firstName">
                 <div  id="name-error"></div>
               </div>
               <div class="form-group">
-                <label for="username"><span class="glyphicon glyphicon-user"></span> Surname *</label>
-                <input type="text" v-model="surname" class="form-control" id="surname" placeholder="Your surname" name="surname">
+                <label for="surname"><span class="glyphicon glyphicon-user"></span> Surname *</label>
+                <input type="text" v-model="lastName" class="form-control" id="surname" placeholder="Your surname" name="lastName">
                 <div id="surname-error"></div>
               </div>
               <div class="form-group">
@@ -54,11 +54,11 @@
   export default {
     data() {
       return {
-        name: "",
-        surname: "",
+        firstName: "",
+        lastName: "",
+        login: "",
         email: "",
-        password: "",
-        login: ""
+        password: ""
       }
     },
     methods: {
@@ -72,9 +72,25 @@
         reason += this.validateLogin();
 
         if (reason.length > 0) {
+
+          console.log(3);
           return false;
         } else {
-          // this.$http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+          console.log(1);
+         let data = {
+           firstName : this.firstName,
+           lastName : this.lastName,
+           login : this.login,
+           password : this.password,
+           email : this.email
+         };
+           this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/register',
+             JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
+             .then(function(response){
+             console.log(response);
+           }, function (error) {
+             console.log(error);
+           });
           return false;
         }
       },
@@ -117,6 +133,7 @@
           $("#login").removeClass('error-color');
           $("#login-error").html("");
         }
+        return error;
       },
       validatePassword: function () {
         let error = "";
@@ -136,13 +153,14 @@
           $("#psw").removeClass('error-color');
           $(".password-error").html("");
         }
+        return error;
       },
       validateName: function () {
         let error = "";
-        let tname = this.name.replace(/^\s+|\s+$/, '');
+        let tname = this.firstName.replace(/^\s+|\s+$/, '');
         let nameFilter = /^([a-zA-Zа-яёA-ZЁ]+|\d+)$/i;
 
-        if (this.name === "") {
+        if (this.firstName === "") {
           this.addError("#username","#name-error", "Please enter your name.");
           error = "1";
         } else if (!nameFilter.test(tname)) { //test password for illegal characters
@@ -155,13 +173,14 @@
           $("#username").removeClass('error-color');
           $("#name-error").html("");
         }
+        return error;
       },
       validateSurame: function () {
         let error = "";
-        let tsurname = this.surname.replace(/^\s+|\s+$/, '');
+        let tsurname = this.lastName.replace(/^\s+|\s+$/, '');
         let surnameFilter = /^([a-zA-Zа-яёA-ZЁ]+|\d+)$/i;
 
-        if (this.surname === "") {
+        if (this.lastName === "") {
           this.addError("#surname","#surname-error", "Please enter your surname.");
           error = "1";
         } else if (!surnameFilter.test(tsurname)) { //test password for illegal characters
@@ -174,6 +193,7 @@
           $("#surname").removeClass('error-color');
           $("#surname-error").html("");
         }
+        return error;
       },
       addError: function (el, errorEl, message) {
         $(el).addClass('error-color');

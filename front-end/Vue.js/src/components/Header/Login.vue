@@ -19,7 +19,7 @@
               </div>
               <div class="form-group has-feedback">
                 <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password *</label>
-                <input type="text" id="password" class="form-control" v-model="password"  placeholder="Please enter your password"  name="password">
+                <input type="text" id="password" class="form-control" v-model="password" placeholder="Please enter your password"  name="password">
                 <div id="password-error"></div>
               </div>
               <div class="checkbox">
@@ -39,7 +39,6 @@
   export default {
     data () {
       return {
-        email: "",
         password: "",
         user_login: ""
       }
@@ -54,7 +53,17 @@
         if (reason.length > 0) {
           return false;
         } else {
-          // this.$http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+          let data = {
+            login : this.user_login,
+            password : this.password
+          };
+          this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/login',
+            JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
+            .then(function(response){
+              console.log(response);
+            }, function (error) {
+              console.log(error);
+            });
           return false;
         }
       },
@@ -73,10 +82,10 @@
           this.addError("#user_login","#userlogin-error", "Please enter more then 4 symbols.");
           error = "3";
         } else {
-
           $("#user_login").removeClass('error-color');
           $("#userlogin-error").html("");
         }
+        return error;
       },
       validatePassword: function () {
         let error = "";
@@ -96,6 +105,7 @@
           $("#password").removeClass('error-color');
           $("#password-error").html("");
         }
+        return error;
       },
       addError: function (el, errorEl, message) {
         console.log($(el));
