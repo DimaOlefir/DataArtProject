@@ -10,9 +10,9 @@ public class MessageDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long ifFromUser;
+    private Long idFromUser;
 
-    private Long ifToUser;
+    private Long idToUser;
 
     private String content;
 
@@ -21,27 +21,27 @@ public class MessageDTO implements Serializable {
     public MessageDTO() {
     }
 
-    public MessageDTO(Long ifFromUser, Long ifToUser, String content, Date dateTime) {
-        this.ifFromUser = ifFromUser;
-        this.ifToUser = ifToUser;
+    public MessageDTO(Long idFromUser, Long idToUser, String content, Date dateTime) {
+        this.idFromUser = idFromUser;
+        this.idToUser = idToUser;
         this.content = content;
         this.dateTime = dateTime;
     }
 
-    public Long getIfFromUser() {
-        return ifFromUser;
+    public Long getIdFromUser() {
+        return idFromUser;
     }
 
-    public void setIfFromUser(Long ifFromUser) {
-        this.ifFromUser = ifFromUser;
+    public void setIdFromUser(Long idFromUser) {
+        this.idFromUser = idFromUser;
     }
 
-    public Long getIfToUser() {
-        return ifToUser;
+    public Long getIdToUser() {
+        return idToUser;
     }
 
-    public void setIfToUser(Long ifToUser) {
-        this.ifToUser = ifToUser;
+    public void setIdToUser(Long idToUser) {
+        this.idToUser = idToUser;
     }
 
     public String getContent() {
@@ -67,16 +67,16 @@ public class MessageDTO implements Serializable {
 
         MessageDTO that = (MessageDTO) o;
 
-        if (ifFromUser != null ? !ifFromUser.equals(that.ifFromUser) : that.ifFromUser != null) return false;
-        if (ifToUser != null ? !ifToUser.equals(that.ifToUser) : that.ifToUser != null) return false;
+        if (idFromUser != null ? !idFromUser.equals(that.idFromUser) : that.idFromUser != null) return false;
+        if (idToUser != null ? !idToUser.equals(that.idToUser) : that.idToUser != null) return false;
         if (content != null ? !content.equals(that.content) : that.content != null) return false;
         return dateTime != null ? dateTime.equals(that.dateTime) : that.dateTime == null;
     }
 
     @Override
     public int hashCode() {
-        int result = ifFromUser != null ? ifFromUser.hashCode() : 0;
-        result = 31 * result + (ifToUser != null ? ifToUser.hashCode() : 0);
+        int result = idFromUser != null ? idFromUser.hashCode() : 0;
+        result = 31 * result + (idToUser != null ? idToUser.hashCode() : 0);
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
         return result;
@@ -85,8 +85,8 @@ public class MessageDTO implements Serializable {
     @Override
     public String toString() {
         return "MessageDTO{" +
-                "ifFromUser=" + ifFromUser +
-                ", ifToUser=" + ifToUser +
+                "idFromUser=" + idFromUser +
+                ", idToUser=" + idToUser +
                 ", content='" + content + '\'' +
                 ", dateTime=" + dateTime +
                 '}';

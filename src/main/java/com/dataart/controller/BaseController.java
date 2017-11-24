@@ -15,7 +15,7 @@ public class BaseController {
 
     protected Long getUserId(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String login = auth.getName(); //get logged in username
+        String login = auth.getName(); //get logged in login
         return service.findByLogin(login).getId();
     }
 }

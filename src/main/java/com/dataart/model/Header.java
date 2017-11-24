@@ -102,11 +102,11 @@ public class Header implements Serializable{
     public Header() {
     }
 
-    public Header(String subject, Status status, Date dateTime, List<Message> messages, User userFromMsg, User userToMsg) {
+    public Header(String subject, Status status, Date dateTime, User userFromMsg, User userToMsg) {
         this.subject = subject;
         this.status = status;
         this.dateTime = dateTime;
-        this.messages = messages;
+        //this.messages = messages;
         this.userFromMsg = userFromMsg;
         this.userToMsg = userToMsg;
     }
