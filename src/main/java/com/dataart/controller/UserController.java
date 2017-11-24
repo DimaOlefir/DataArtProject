@@ -27,7 +27,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
-public class UserController {
+public class UserController extends BaseController{
 
     private static final Logger logger= LoggerFactory.getLogger(UserController.class);
 
@@ -115,10 +115,11 @@ public class UserController {
         return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.POST)
-    public ResponseEntity<Void> changeUserSettings(@PathVariable("id") Long id, @RequestBody User user) {
-        logger.debug("...start method for changing the user with id: " + id);
-        User existUser = userService.findById(id);
+    //@RequestMapping(value = "/user/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public ResponseEntity<Void> changeUserSettings(@RequestBody User user) {
+        logger.debug("...start method for changing the user with id: " + getUserId());
+        User existUser = userService.findById(getUserId());
         if (existUser==null){
             return new ResponseEntity <>(HttpStatus.NOT_FOUND);
         }
@@ -147,11 +148,12 @@ public class UserController {
 
 
     //TODO return token in body or not return (c) Shekspir
-    @RequestMapping(value = "/user/password/{id}", method = RequestMethod.POST)
-    public ResponseEntity <Void> changePassword(@PathVariable("id") Long id, @RequestBody PasswordDTO passwordDTO){
-        logger.debug("...change password user with Id:" + id);
+    //@RequestMapping(value = "/user/password/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/password", method = RequestMethod.POST)
+    public ResponseEntity <Void> changePassword( @RequestBody PasswordDTO passwordDTO){
+        logger.debug("...change password user with Id:" + getUserId());
 
-        User existUser = userService.findById(id);
+        User existUser = userService.findById(getUserId());
         if (existUser==null){
             return new ResponseEntity <>(HttpStatus.NOT_FOUND);
         }
@@ -167,10 +169,11 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
-        logger.debug("...get user by Id:" + id);
-        User user = userService.findById(id);
+    //@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public ResponseEntity<User> getUser() {
+        logger.debug("...get user by Id:" + getUserId());
+        User user = userService.findById(getUserId());
         if (user==null){
             return new ResponseEntity <>(HttpStatus.NOT_FOUND);
         }
