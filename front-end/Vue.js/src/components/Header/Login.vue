@@ -66,7 +66,7 @@
                 localStorage.setItem('token', response.body.token );
                 this.$router.push('/mypage');
               }
-              this.$refs.closeModalBtn.click();
+              this.$refs.closeModalBtn.click(); //имитирует закрытие модального окна логина
             }, function (error) {
               console.log(error);
             });
@@ -155,7 +155,7 @@
   .dropdown form{
     margin-left: 25%; }
 
-  .modal-header, h4, button, .close {
+  .modal-header, h4, .close {
     background-color: #4267b2;
     color:white !important;
     text-align: center;

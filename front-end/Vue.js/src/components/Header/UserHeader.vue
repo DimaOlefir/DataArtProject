@@ -32,7 +32,7 @@
     methods: {        //для очистки localstorage и перенаправления на главную страницу
       logout: function (){
         localStorage.removeItem("token");
-        this.$router.push('/');
+        location.replace('/');
       }
     }
   }
