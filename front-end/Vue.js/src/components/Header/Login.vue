@@ -11,7 +11,7 @@
             <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
-            <form role="form" method="post" class="text-left">
+            <form role="form" method="#" class="text-left">
               <div class="form-group has-feedback">
                 <label for="user_login"><span class="glyphicon glyphicon-user"></span> Login *</label>
                 <input type="text" class="form-control" v-model="user_login" id="user_login" placeholder="Please enter your login" name="login">
@@ -19,7 +19,7 @@
               </div>
               <div class="form-group has-feedback">
                 <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password *</label>
-                <input type="text" id="password" class="form-control" v-model="password" placeholder="Please enter your password"  name="password">
+                <input type="password" id="password" class="form-control" v-model="password" placeholder="Please enter your password"  name="password">
                 <div id="password-error"></div>
               </div>
               <div class="checkbox">
@@ -108,7 +108,6 @@
         return error;
       },
       addError: function (el, errorEl, message) {
-        console.log($(el));
         $(el).addClass('error-color');
         $(errorEl).html(message);
       }

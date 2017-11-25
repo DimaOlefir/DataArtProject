@@ -34,8 +34,8 @@
                 <div  class="email-error"></div>
               </div>
               <div class="form-group">
-                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password *</label>
-                <input type="text" v-model="password" id="psw" class="form-control"  placeholder="Enter password" name="password">
+                <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                <input type="password" v-model="password" id="psw" class="form-control"  placeholder="Enter password" required="required" name="password" pattern="[A-Za-z, 0-9]{6,}">
                 <div class="password-error"></div>
               </div>
               <div class="checkbox">
