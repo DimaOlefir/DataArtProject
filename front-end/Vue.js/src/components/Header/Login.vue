@@ -7,7 +7,7 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header" style="padding:35px 50px;">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal" ref="closeModalBtn">&times;</button>
             <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
@@ -61,6 +61,12 @@
             JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
             .then(function(response){
               console.log(response);
+
+              if (response.status === 200 && 'token' in response.body) { //для хранения token в localstorage
+                localStorage.setItem('token', response.body.token );
+                this.$router.push('/mypage');
+              }
+              this.$refs.closeModalBtn.click();
             }, function (error) {
               console.log(error);
             });
@@ -122,7 +128,7 @@
   });
 </script>
 
-<style >
+<style scoped>
   @font-face {
     font-family: FedraSansPro-DemiItalic;
     src: url('../../assets/fonts/FedraSansPro-DemiItalic.otf'); }

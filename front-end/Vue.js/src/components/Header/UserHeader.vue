@@ -13,10 +13,8 @@
 
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <router-link  to="/">
-             <span class="glyphicon glyphicon-log-out"></span>Logout
-              </router-link>
+            <li v-on:click="logout" class="logout">
+              <a href="#"><span class="glyphicon glyphicon-log-out"></span>Logout</a>
             </li>
           </ul>
         </div>
@@ -26,9 +24,17 @@
 </template>
 
 <script>
-
   export default {
-
+    data () {
+      return {
+      }
+    },
+    methods: {        //для очистки localstorage и перенаправления на главную страницу
+      logout: function (){
+        localStorage.removeItem("token");
+        this.$router.push('/');
+      }
+    }
   }
 </script>
 
@@ -44,23 +50,24 @@
     border-radius:0;
     border:none;
     font-size: 16px;
-    box-shadow: 0 1px 15px #000000; }
-
+    box-shadow: 0 1px 15px #000000;
+  }
   .fa-map, .glyphicon-log-out{
-    margin:0 10px 0 20px;  }
-
+    margin:0 10px 0 20px;
+  }
   .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand {
     padding-right: 30px;
-    color:white; }
-
+    color:white;
+  }
   .navbar-collapse ul li{
     padding:0;
     background-color:  #4267b2;
     border-bottom: none;
-
   }
-
   .navbar-collapse ul li:hover {
     background-color: cornflowerblue; }
+  /*.logout{*/
+    /*margin: 10%;*/
+  /*}*/
 
 </style>

@@ -180,7 +180,7 @@
     height: 30px;
     border: 1px solid #ffffff;
     border-radius: 5px;
-    opacity: 0.8;
+    opacity: 0.9;
   }
   .map-search button:hover{
     background-color: cornflowerblue;
@@ -192,7 +192,7 @@
   .add-marker{
     position: absolute;
     margin:0 0 0 65%;
-    opacity: 0.7;
+    opacity: 0.8;
     z-index: 9;
   }
   .add-marker button{
@@ -243,6 +243,9 @@
   }
   .download-photo input:hover{
     background-color: cornflowerblue;
+  }
+  .modal-backdrop fade in{
+    display: none;
   }
 
 </style>

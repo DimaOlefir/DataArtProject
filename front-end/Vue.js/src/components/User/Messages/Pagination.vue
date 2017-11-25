@@ -17,7 +17,7 @@
 
 </script>
 
-<style>
+<style scoped>
   .pagination {
     padding-right: 0;
   }
