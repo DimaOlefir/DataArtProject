@@ -1,7 +1,7 @@
 <template>
 	<div class="container-fluid">
     <UserHeader></UserHeader>
-		<div class="user-messages">
+		<div class="users-messages">
 	  		<User></User>
 	  		<div class="messages">
 	  		  <form class="form-inline search">
@@ -10,159 +10,160 @@
 	  		      <input type="text" class="form-control" id="searchMessage" placeholder="Search Messages" size="70">
 	  		    </div>
 	  		    <button type="submit" class="btn btn-primary">
-				  <span class="glyphicon glyphicon-search"></span>
-	  		    </button>
-	  		  </form>
+  				  <span class="glyphicon glyphicon-search"></span>
+  	  		    </button>
+  	  		  </form>
 
-	  		  <section class="panel">
-	  		    <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">
-	  		    <button @click="clearList">Clear List</button>
-	  		  </section>
+            <UserInfo></UserInfo>
 
-	  		  <section class="list">
-	  		    <ul class="list-item">
-	  		      <li v-for="task in tasks">
-	  		        <label>{{ task.text }}</label>
-	  		        <button class="delete" @click="removeTask(task)">X</button>
-	  		      </li>
-	  		    </ul>
-	  		  </section>
-	  		</div>
+  	  		  <!-- <section class="list">
+  	  		    <ul class="list-item">
+  	  		      <li v-for="message in messages">
+  	  		        <label>{{ message.text }}</label>
+  	  		        <button class="delete" @click="removeMessage(message)">X</button>
+  	  		      </li>
+  	  		    </ul>
+  	  		  </section>
+
+            <section class="panel">
+              <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">
+              <button @click="clearList">Clear List</button>
+            </section> -->
+	  		  </div>
 	  	</div>
-	  	<!-- <FooterComponent /> -->
 	</div>
-
 </template>
 
 
 <script>
 	import User from '../User';
   import UserHeader from '../../Header/UserHeader.vue';
+  import UserInfo from './UserInfo/UserInfo';
 	let nextMessageId = 1;
 
 	export default {
 		components: {
-			User, UserHeader
+			User, UserHeader, UserInfo
 		},
-	  	data() {
-	    	return {
-	      		newMessage: "",
-	      		tasks: [
-			        {
-			          id: nextMessageId++,
-			          text: "This is an example task. Delete or add your own"
-			        }
-	      		]
-	    	}
+  	data() {
+    	return {
+      		newMessage: "",
+      		messages: [
+		        {
+		          id: nextMessageId++,
+		          text: "This is an example message. Delete or add your own"
+		        }
+      		]
+    	}
 		},
     methods: {
-        addMessage: function () {
-		      	let task = this.newMessage.trim();
-		      	if (task) {
-			        this.tasks.push({id: nextMessageId++,text: task});
-			        this.newMessage = "";
-		      	}
-		    },
-      removeTask: function (task) {
-		      	let index = this.tasks.indexOf(task);
-		      	this.tasks.splice(index, 1);
+      addMessage: function () {
+	      	let message = this.newMessage.trim();
+	      	if (message) {
+		        this.messages.push({id: nextMessageId++,text: message});
+		        this.newMessage = "";
+	      	}
+	    },
+      removeMessage: function (message) {
+		      	let index = this.messages.indexOf(message);
+		      	this.messages.splice(index, 1);
 		    },
       clearList: function () {
-		      	this.tasks = [];
+		      	this.messages = [];
 		    }
 	  	}
 	}
 </script>
 
 <style>
-.container-fluid {
-	padding: 0;
-}
-.user-messages {
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: -o-flex;
-	display: flex;
-	justify-content: space-around;
-	background-color: #f0fff0;
-	padding-top: 20px;
-}
-ul, li {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
+  .container-fluid {
+  	padding: 0;
+  }
+  .users-messages {
+  	display: -webkit-flex;
+  	display: -moz-flex;
+  	display: -ms-flex;
+  	display: -o-flex;
+  	display: flex;
+  	justify-content: space-around;
+  	/*background-color: #f0fff0;*/
+  	padding-top: 20px;
+  }
+  ul, li {
+  	margin: 0;
+  	padding: 0;
+  	border: 0;
+  }
 
-/* Global Styles */
-.messages {
-	width: 80%;
-  border: 1px solid #4267b2;
-	border-radius: 5px;
-	padding: 0 100px;
-	background-color: #fff;
-}
-.search {
-	margin: 30px 0 50px 0;
-}
-.btn.btn-primary {
-	height: 35px;
-}
-.panel, li {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	list-style-type: none;
-	padding: 10px;
-	border-bottom: 1px solid #efefef;
-	background-color: #E7E8EB;
-}
-.text-input {
-	border: 1px solid #dedede;
-	padding-left: 10px;
-	width: 70%;
-	height: 35px;
-	color: #555;
-}
-button {
-	color: #555;
-	background-color: #FFFFFF;
-	border: 1px solid #bbb;
-	outline: 0;
-	width: 100px;
-	height: 38px;
-	cursor: pointer;
-	font-size: 14px;
-}
+  /* Global Styles */
+  .messages {
+  	width: 80%;
+    border: 1px solid #4267b2;
+  	border-radius: 5px;
+  	padding: 0 100px;
+  	background-color: #fff;
+  }
+  .search {
+  	margin: 30px 0 50px 0;
+  }
+  .btn.btn-primary {
+  	height: 35px;
+  }
+  .panel, li {
+  	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+  	list-style-type: none;
+  	padding: 10px;
+  	border-bottom: 1px solid #efefef;
+  	background-color: #E7E8EB;
+  }
+  .text-input {
+  	border: 1px solid #dedede;
+  	padding-left: 10px;
+  	width: 70%;
+  	height: 35px;
+  	color: #555;
+  }
+  button {
+  	color: #555;
+  	background-color: #FFFFFF;
+  	border: 1px solid #bbb;
+  	outline: 0;
+  	width: 100px;
+  	height: 38px;
+  	cursor: pointer;
+  	font-size: 14px;
+  }
 
-/* Task  area */
-.list li {
-	background-color: #3465A4;
-}
+  /* message  area */
+  .list li {
+  	background-color: #3465A4;
+  }
 
-.list li button {
-	background-color: transparent;
-	border: 1px solid #3465A4;
-	color: #ddd;
-	visibility: hidden;
-	font-size: 20px;
-	font-weight: bold;
-}
+  .list li button {
+  	background-color: transparent;
+  	border: 1px solid #3465A4;
+  	color: #ddd;
+  	visibility: hidden;
+  	font-size: 20px;
+  	font-weight: bold;
+  }
 
-.list li:hover > button {
-	visibility: visible;
-}
+  .list li:hover > button {
+  	visibility: visible;
+  }
 
-.list label {
-	padding-right: 10px;
-	display: inline-block;
-	width: 70%;
-	font-size: 18px;
-	line-height: 24px;
-	color: #fcfcfc;
-	z-index: 2;
-	overflow: hidden;
-}
+  .list label {
+  	padding-right: 10px;
+  	display: inline-block;
+  	width: 70%;
+  	font-size: 18px;
+  	line-height: 24px;
+  	color: #fcfcfc;
+  	z-index: 2;
+  	overflow: hidden;
+  }
 </style>
 
 
