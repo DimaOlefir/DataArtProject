@@ -14,6 +14,9 @@ import MyNotes from '@/components/User/MyNotes/MyNotes';
 
 import Settings from '@/components/User/Settings/Settings';
 
+// UserMessages
+import UserMessages from '@/components/User/Messages/UserMessages/UserMessages';
+
 
 
 Vue.use(Router)
@@ -54,6 +57,11 @@ export default new Router({
       path: '/mypage',
       name: 'MyPage',
       component: MyPage
+    },
+    {
+      path: '/usermessages',
+      name: 'UserMessages',
+      component: UserMessages
     }
   ]
 })
