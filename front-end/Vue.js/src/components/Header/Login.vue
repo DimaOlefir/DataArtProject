@@ -7,19 +7,19 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header" style="padding:35px 50px;">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal" ref="closeModalBtn">&times;</button>
             <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
           </div>
           <div class="modal-body" style="padding:40px 50px;">
-            <form role="form" method="post" class="text-left">
+            <form role="form" method="#" class="text-left">
               <div class="form-group has-feedback">
                 <label for="user_login"><span class="glyphicon glyphicon-user"></span> Login *</label>
                 <input type="text" class="form-control" v-model="user_login" id="user_login" placeholder="Please enter your login" name="login">
                 <div id="userlogin-error"></div>
               </div>
               <div class="form-group has-feedback">
-                <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                <input type="password" id="password" class="form-control" v-model="password"  placeholder="Enter password" required name="password" pattern="[A-Za-z, 0-9]{6,}">
+                <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password *</label>
+                <input type="password" id="password" class="form-control" v-model="password" placeholder="Please enter your password"  name="password">
                 <div id="password-error"></div>
               </div>
               <div class="checkbox">
@@ -39,7 +39,6 @@
   export default {
     data () {
       return {
-        email: "",
         password: "",
         user_login: ""
       }
@@ -54,7 +53,23 @@
         if (reason.length > 0) {
           return false;
         } else {
-          // this.$http.post('/someUrl', [body], [options]).then(successCallback, errorCallback);
+          let data = {
+            login : this.user_login,
+            password : this.password
+          };
+          this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/login',
+            JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
+            .then(function(response){
+              console.log(response);
+
+              if (response.status === 200 && 'token' in response.body) { //для хранения token в localstorage
+                localStorage.setItem('token', response.body.token );
+                this.$router.push('/mypage');
+              }
+              this.$refs.closeModalBtn.click(); //имитирует закрытие модального окна логина
+            }, function (error) {
+              console.log(error);
+            });
           return false;
         }
       },
@@ -73,10 +88,10 @@
           this.addError("#user_login","#userlogin-error", "Please enter more then 4 symbols.");
           error = "3";
         } else {
-
           $("#user_login").removeClass('error-color');
           $("#userlogin-error").html("");
         }
+        return error;
       },
       validatePassword: function () {
         let error = "";
@@ -96,9 +111,9 @@
           $("#password").removeClass('error-color');
           $("#password-error").html("");
         }
+        return error;
       },
       addError: function (el, errorEl, message) {
-        console.log($(el));
         $(el).addClass('error-color');
         $(errorEl).html(message);
       }
@@ -113,7 +128,7 @@
   });
 </script>
 
-<style >
+<style scoped>
   @font-face {
     font-family: FedraSansPro-DemiItalic;
     src: url('../../assets/fonts/FedraSansPro-DemiItalic.otf'); }
@@ -140,7 +155,7 @@
   .dropdown form{
     margin-left: 25%; }
 
-  .modal-header, h4, button, .close {
+  .modal-header, h4, .close {
     background-color: #4267b2;
     color:white !important;
     text-align: center;

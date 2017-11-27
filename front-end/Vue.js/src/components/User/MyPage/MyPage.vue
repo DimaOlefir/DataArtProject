@@ -21,9 +21,13 @@
 	export default {
 	 	data() {
 	 		return {
-
-	 		}
+      }
 	 	},
+    beforeCreate: function () {     //для того чтобы незареганый пассажир не зашел на эту страницу
+      if (!localStorage.getItem('token')) {
+        this.$router.push('/')
+      }
+    },
 	 	components: {
       UserHeader, LeftMenu, UserMap, PhotosBlock, Comments
 	 	}

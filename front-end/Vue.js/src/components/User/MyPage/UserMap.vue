@@ -2,26 +2,29 @@
 
   <div>
     <label class="map-search">
-           <!--Add place on the map <br>-->
-            <GmapAutocomplete class="place" @place_changed="setPlace"></GmapAutocomplete>
-            <button @click="usePlace">Search place</button>
-          </label>
-       <br/>
-
-    <div class="add-marker">
+      <!--Add place on the map <br>-->
+      <GmapAutocomplete class="place" @place_changed="setPlace"></GmapAutocomplete>
+      <!--<button @click="usePlace">Add marker</button>-->
       <button v-on:click="activateAddMarker">
         <i class="fa fa-map-marker" aria-hidden="true"></i>Add new marker
       </button>
+    </label>
+    <br/>
+
+    <div class="add-marker">
+      <!--<button v-on:click="activateAddMarker">-->
+        <!--<i class="fa fa-map-marker" aria-hidden="true"></i>Add new marker-->
+      <!--</button>-->
     </div>
     <!--map for index page-->
     <GmapMap style="width: 100%; height: 100vh; margin-top: -1.5%" :zoom="3" :center="{lat:currentLocation.lat, lng:currentLocation.lng}" v-on:click="openModal">
-             <!--v-on:click="openModal" data-toggle="modal"  data-target="#myModal">-->
+      <!--v-on:click="openModal" data-toggle="modal"  data-target="#myModal">-->
       <!--<GmapMap :center="{lat:currentLocation.lat, lng:currentLocation.lng}" :zoom="3" :options="{disableDefaultUI:true}">-->
       <GmapMarker v-for="(marker, index) in markers"
                   :key="index"
                   :position="marker.position"
                   :label="marker.label"
-      />
+      ></GmapMarker>
       <GmapMarker
         v-if="this.place"
         label="★"
@@ -29,14 +32,15 @@
           lat: this.place.geometry.location.lat(),
           lng: this.place.geometry.location.lng(),
         }"
-      />
+        v-on:click="showPhotos"
+      ></GmapMarker>
     </GmapMap>
 
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog"
          v-bind:class="{'in': modal_active}" v-bind:style="{display: modal_display}">
-    <!--<div class="modal fade" id="myModal" role="dialog">-->
+      <!--<div class="modal fade" id="myModal" role="dialog">-->
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
@@ -137,11 +141,20 @@
 //      Add marker
       activateAddMarker: function () {
         this.addMarkerState = true;
+        if (this.place) {
+          if(this.addMarkerState) {
+            this.modal_active = true;
+            this.modal_display = 'block';
+            this.newMarkerLat = this.place.geometry.location.lat();
+            this.newMarkerLng = this.place.geometry.location.lng();
+          }
+        }
       },
       closeModal: function () {
         this.modal_active = false;
         this.modal_display = 'none';
         this.addMarkerState = false;
+        this.place = null;
       },
       openModal: function (event) {
         if(this.addMarkerState) {
@@ -159,7 +172,10 @@
           },
         });
         this.closeModal();
-      }
+      },
+      showPhotos: function () {
+
+      },
     }
   }
 </script>
@@ -176,11 +192,11 @@
   }
   .map-search button{
     font-size: 14px;
-    width:100px;
-    height: 30px;
+    width:130px;
+    height: 28px;
     border: 1px solid #ffffff;
     border-radius: 5px;
-    opacity: 0.8;
+    opacity: 0.9;
   }
   .map-search button:hover{
     background-color: cornflowerblue;
@@ -189,29 +205,34 @@
   .map-search .place{
     width: 360px;
   }
-  .add-marker{
-    position: absolute;
-    margin:0 0 0 65%;
-    opacity: 0.7;
-    z-index: 9;
-  }
-  .add-marker button{
-    font-size: 14px;
-    width:140px;
-    height: 30px;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
-    box-shadow: 3px 2px 25px #b87b90;
-  }
-  .add-marker button:hover{
-    background-color: cornflowerblue;
-    opacity: 1;
-  }
-  .add-marker button i {
+  .fa-map-marker{
     color:red;
     font-size: 18px;
     padding-right: 4%;
   }
+  /*.add-marker{*/
+    /*position: absolute;*/
+    /*margin:0 0 0 65%;*/
+    /*opacity: 0.8;*/
+    /*z-index: 9;*/
+  /*}*/
+  /*.add-marker button{*/
+    /*font-size: 14px;*/
+    /*width:140px;*/
+    /*height: 30px;*/
+    /*border: 1px solid #ffffff;*/
+    /*border-radius: 5px;*/
+    /*box-shadow: 3px 2px 25px #b87b90;*/
+  /*}*/
+  /*.add-marker button:hover{*/
+    /*background-color: cornflowerblue;*/
+    /*opacity: 1;*/
+  /*}*/
+  /*.add-marker button i {*/
+    /*color:red;*/
+    /*font-size: 18px;*/
+    /*padding-right: 4%;*/
+  /*}*/
   #myModal{
     margin-top: 2%;
     border-radius: 3px;
@@ -243,6 +264,9 @@
   }
   .download-photo input:hover{
     background-color: cornflowerblue;
+  }
+  .modal-backdrop fade in{
+    display: none;
   }
 
 </style>

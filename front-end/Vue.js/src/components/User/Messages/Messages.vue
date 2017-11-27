@@ -30,6 +30,28 @@
               <button @click="clearList">Clear List</button>
             </section> -->
 	  		  </div>
+				  <span class="glyphicon glyphicon-search"></span>
+	  		    </button>
+	  		  </form>
+
+	  		  <!-- <section class="panel">
+	  		    <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">
+	  		    <button @click="clearList">Clear List</button>
+	  		  </section>
+
+	  		  <section class="list">
+	  		    <ul class="list-item">
+	  		      <li v-for="task in tasks">
+	  		        <label>{{ task.text }}</label>
+	  		        <button class="delete" @click="removeTask(task)">X</button>
+              </li>
+	  		    </ul>
+            <Pagination></Pagination>
+          </section> -->
+
+	  		</div>
+
+
 	  	</div>
 	</div>
 </template>
@@ -39,11 +61,12 @@
 	import User from '../User';
   import UserHeader from '../../Header/UserHeader.vue';
   import UserInfo from './UserInfo/UserInfo';
+  import Pagination from './Pagination.vue';
 	let nextMessageId = 1;
 
 	export default {
 		components: {
-			User, UserHeader, UserInfo
+			User, UserHeader, UserInfo, Pagination
 		},
   	data() {
     	return {
@@ -86,7 +109,7 @@
   	display: -o-flex;
   	display: flex;
   	justify-content: space-around;
-  	/*background-color: #f0fff0;*/
+  	background-color: #f0fff0;
   	padding-top: 20px;
   }
   ul, li {

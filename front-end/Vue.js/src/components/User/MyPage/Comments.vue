@@ -14,17 +14,18 @@
                 <abbr class="timestamp">October 8th, 2015</abbr>
               </div>
 
+              <div class="direct-chat-info clearfix pull-right">
+                <span class="direct-chat-timestamp pull-right">3.36 PM</span>
+              </div>
+
               <div class="direct-chat-msg doted-border">
                 <img alt="message user image" src="../../../assets/img/1_f.png" class="pull-left">
                 <div class="direct-chat-info clearfix">
                   <span class="direct-chat-name pull-left">Osahan</span>
                   <label class="direct-chat-text">{{ task.text }}</label>
-                  <button class="delete" @click="removeTask(task)">X</button>
+                  <button class="delete pull-right" @click="removeTask(task)">Delete</button>
                 </div>
 
-                <div class="direct-chat-info clearfix">
-                  <span class="direct-chat-timestamp pull-right">3.36 PM</span>
-                </div>
               </div>
             </li>
           </ul>
@@ -91,18 +92,19 @@
     padding: 5px ;
      width: 85% ;
   }
-  .list li button {
+  .delete {
     background-color: #3465A4;
-    border: 4px solid #3465A4;
+    border: 2px solid #3465A4;
+    border-radius: 5px;
     color: #ffffff;
-    width: 5%;
+    width: 6%;
     height: 100%;
-    visibility: hidden;
-    font-size: 16px;
-    font-weight: bold;
+    margin: 0 3% 0 0;
+    font-size: 14px;
   }
-  .list li:hover > button {
-    visibility: visible;
+  .delete:hover{
+    background-color: cornflowerblue;
+    border: 2px solid cornflowerblue;
   }
   .list label {
     margin:6px;
@@ -126,9 +128,10 @@
   }
   .direct-chat-name{
     margin-left: 3%;
+    color: cornflowerblue;
   }
   .direct-chat-timestamp{
-    margin: -3% 3% 0 0;
+    margin: 0 30px 0 0;
   }
   .chat-box-single-line {
     border-bottom: 1px solid #3465A4;
