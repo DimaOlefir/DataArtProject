@@ -13,6 +13,11 @@
           <div class="modal-body" style="padding:40px 50px;">
             <!--<form role="form" action="https://rocky-retreat-50096.herokuapp.com/api/test" method="get" class="text-left">-->
             <form role="form" action="#" method="#" class="text-left">
+
+              <div class="login-msg" v-bind:class="{hidden : login_msg}">
+                <p class="text-center success">You are successfully signed up</p>
+                <p class="text-center">Now you can login using login and password</p>
+              </div>
               <div class="form-group ">
                 <label for="username"><span class="glyphicon glyphicon-user"></span> Name *</label>
                 <input type="text" v-model="firstName" class="form-control" id="username" placeholder="Your name" name="firstName">
@@ -42,6 +47,10 @@
                 <label><input type="checkbox" value="" checked>Remember me</label>
               </div>
               <button class="btn btn-success btn-block"  v-on:click="signup"><span class="glyphicon glyphicon-off"></span> Sign Up</button>
+              <div class="loader text-center" v-bind:class="{ hidden : loading}">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+              </div>
             </form>
           </div>
         </div>
@@ -58,7 +67,9 @@
         lastName: "",
         login: "",
         email: "",
-        password: ""
+        password: "",
+        loading: true,
+        login_msg: true,
       }
     },
     methods: {
@@ -76,6 +87,7 @@
           console.log(3);
           return false;
         } else {
+          this.loading = false; //после нажатия на кнопку логин выпадает лоадер
           console.log(1);
          let data = {
            firstName : this.firstName,
@@ -87,8 +99,11 @@
            this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/register',
              JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
              .then(function(response){
+               this.login_msg = false; //если логин или пароль неверно выпадает ошибка
+               this.loading = true;
              console.log(response);
            }, function (error) {
+               this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
              console.log(error);
            });
           return false;
@@ -254,5 +269,10 @@
   .error-color {
     background-color: silver;
     opacity: 0.7;
+  }
+  .login-msg p:first-child {
+    color:red;
+    font-size: 20px;
+    margin-bottom: 0;
   }
 </style>

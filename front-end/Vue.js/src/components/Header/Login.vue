@@ -12,6 +12,10 @@
           </div>
           <div class="modal-body" style="padding:40px 50px;">
             <form role="form" method="#" class="text-left">
+
+              <div class="login-msg" v-bind:class="{hidden : login_msg}">
+               <p class="text-center" style="color:red;">Your login or password incorrect</p>
+              </div>
               <div class="form-group has-feedback">
                 <label for="user_login"><span class="glyphicon glyphicon-user"></span> Login *</label>
                 <input type="text" class="form-control" v-model="user_login" id="user_login" placeholder="Please enter your login" name="login">
@@ -26,6 +30,10 @@
                 <label><input type="checkbox" value="" checked>Remember me</label>
               </div>
               <button type="submit" class="btn btn-success btn-block" v-on:click="login"><span class="glyphicon glyphicon-off"></span> Login</button>
+              <div class="loader text-center" v-bind:class="{ hidden : loading}">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
+              </div>
             </form>
           </div>
         </div>
@@ -40,7 +48,9 @@
     data () {
       return {
         password: "",
-        user_login: ""
+        user_login: "",
+        loading: true,
+        login_msg: true,
       }
     },
     methods: {
@@ -53,6 +63,7 @@
         if (reason.length > 0) {
           return false;
         } else {
+          this.loading = false; //после нажатия на кнопку логин выпадает лоадер
           let data = {
             login : this.user_login,
             password : this.password
@@ -68,6 +79,8 @@
               }
               this.$refs.closeModalBtn.click(); //имитирует закрытие модального окна логина
             }, function (error) {
+              this.login_msg = false; //если логин или пароль неверно выпадает ошибка
+              this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
               console.log(error);
             });
           return false;
@@ -176,5 +189,10 @@
   .error-color {
     background-color: silver;
     opacity: 0.7;
+  }
+  .login-msg p {
+    color:red;
+    font-size: 20px;
+    margin-bottom: 0;
   }
 </style>
