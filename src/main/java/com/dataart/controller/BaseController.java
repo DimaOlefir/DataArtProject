@@ -1,5 +1,6 @@
 package com.dataart.controller;
 
+import com.dataart.model.User;
 import com.dataart.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,7 @@ public class BaseController {
     protected Long getUserId(){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String login = auth.getName(); //get logged in login
-        return service.findByLogin(login).getId();
+        User user = service.findByLogin(login);
+        return user.getId();
     }
 }

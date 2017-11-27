@@ -16,6 +16,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Роман on 24.11.2017.
  */
@@ -56,7 +61,24 @@ public class MessageController extends BaseController{
         return response;
     }
 
+    @RequestMapping(value = "/message", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Map<String, String>>> getIncomingMessages() {
+        User user = userService.findById(getUserId());
+        List <Header> incomingMessages = user.getHeadersIncoming();
+        Map<String, String> body = new HashMap<>();
+        body.put("1","sdf");
+        body.put("2","czvvv");
 
+        Map<String, String> body1 = new HashMap<>();
+        body.put("1","fsdfsdf");
+        body.put("2","czvvv");
+        List <Map<String, String>> list = new ArrayList<>();
+        list.add(body);
+        list.add(body1);
+
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 
 
 

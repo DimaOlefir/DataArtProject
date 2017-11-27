@@ -1,5 +1,6 @@
 package com.dataart.service;
 
+import com.dataart.model.Header;
 import com.dataart.repository.UserRepository;
 import com.dataart.model.User;
 import com.dataart.model.enums.Role;
@@ -75,5 +76,17 @@ public class UserServiceImpl implements UserService {
     public void changePassword(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.saveAndFlush(user);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public List<Header> getHeadersIncomingByUserId(Long id) {
+        return userRepository.getOne(id).getHeadersIncoming();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public List<Header> getHeadersOutgoingByUserId(Long id) {
+        return userRepository.getOne(id).getHeadersOutgoing();
     }
 }

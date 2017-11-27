@@ -2,6 +2,7 @@ package com.dataart.model;
 
 import com.dataart.model.enums.Role;
 import com.dataart.model.enums.Sex;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -62,9 +63,11 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "userToMsg")
     private List<Header> headersIncoming;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "userFromMsg")
     private List<Header> headersOutgoing;
 

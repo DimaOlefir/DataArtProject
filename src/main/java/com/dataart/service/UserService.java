@@ -1,5 +1,6 @@
 package com.dataart.service;
 
+import com.dataart.model.Header;
 import com.dataart.model.User;
 
 import java.util.List;
@@ -24,5 +25,9 @@ public interface UserService {
     public boolean isUserExistByLogin(String login);
 
     void changePassword(User user);
+
+    List<Header> getHeadersIncomingByUserId(Long id);
+
+    List<Header> getHeadersOutgoingByUserId(Long id);
 
 }
