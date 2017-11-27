@@ -6,12 +6,8 @@
       <div class="friends">
         <form class="form-inline search">
           <div class="form-group">
-            <label for="searchFriend">Search</label>
             <input type="text" v-model="searchQuery" class="form-control" id="searchFriend" placeholder="Search Friends" size="70">
           </div>
-          <button type="submit" class="btn btn-primary btn-search">
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
         </form>
 
         <div v-if="filteredFriends.length > 0">
@@ -24,29 +20,42 @@
             <!-- <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Delete friend" @click="deleteFriend(friend)">
               <span class="glyphicon glyphicon-option-horizontal">Delete Friend</span>
             </button> -->
+          </div>
+        </div>
+        <!-- list with friends -->
+        <div class="media friend_list" v-if="filteredFriends.length > 0">
+          <div class="media list-inline" v-for="(friend, index) in filteredFriends">
+            <a href="#" title="Delete friend" class="pull-right" data-toggle="popover" data-placement="bottom" data>
+              <span class="glyphicon glyphicon-option-horizontal"></span>
+            </a>
+            <div class="media-left ava-friends">
+              <img src="../../../assets/img/2_f.jpg" alt="Mountains">
+            </div>
+            <div class="media-body">
+              <h5 class="media-heading text-left">{{friend.firstName}} {{friend.lastName}}</h5>
+              <button type="button" class="btn btn-info btn-sm pull-left" data-toggle="modal" data-target="#myModal">Write letter</button>
+            </div>
+            <hr class="hr-line">
+          </div>
+        </div>
 
-            <!--<div class="modal fade" id="FriendsModal" tabindex="-1" role="dialog" aria-labelledby="FriendsModalLabel">-->
-            <!--<div class="modal-dialog" role="document">-->
-            <!--<div class="modal-content">-->
-            <!--<div class="modal-header">-->
-            <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-            <!--<h4 class="modal-title" id="FriendsModalLabel">Write Letter</h4>-->
-            <!--</div>-->
-            <!--<div class="modal-body">-->
-            <!--<form>-->
-            <!--<div class="form-group">-->
-            <!--<label for="message-text" class="control-label">Message:</label>-->
-            <!--<textarea class="form-control" id="message-text"></textarea>-->
-            <!--</div>-->
-            <!--</form>-->
-            <!--</div>-->
-            <!--<div class="modal-footer">-->
-            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-            <!--<button type="button" class="btn btn-primary">Send message</button>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <form>
+                  <h4>Write letter</h4>
+                  <div class="input-group">
+                    <textarea type="email" class="form-control" id="description" placeholder="marker description" name="email"></textarea>
+                  </div>
+                </form>
+                <div class="modal-save modal-footer">
+                  <button type="button" class="btn btn-default">Save</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -115,9 +124,6 @@
 </script>
 
 <style scoped>
-  template {
-
-  }
   .container-fluid {
     padding: 0;
   }
@@ -166,4 +172,50 @@
   .btn-primary {
     margin-right: 10px;
   }
+  .btn-default{
+    background-color: #4267b2;
+    width:100%;
+  }
+  .friend_list{
+    padding: 5%;
+  }
+  .friend_list hr {
+    border-top: 1px solid #4267b2;;
+  }
+  .ava-friends img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  #myModal{
+    margin-top: 2%;
+    border-radius: 3px;
+  }
+  .modal-header{
+    background-color: #4267b2;
+    color:#ffffff;
+  }
+  .modal-header .close{
+    color:#ffffff;
+  }
+  .input-group {
+    margin: 3% 0;
+    width: 100%;
+    resize: none;
+    border: 1px solid #4267b2;
+  }
+  .input-group textarea{
+    height: 70px;
+    resize: none;
+  }
+  .modal-save button{
+    background-color: #4267b2;
+    color:#ffffff;
+    margin:-15px 0 -15px 0;
+  }
+  .modal-save button:hover{
+    background-color: cornflowerblue;
+    color:#ffffff; }
+
 </style>
