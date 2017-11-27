@@ -10,7 +10,7 @@
 					<textarea class="form-control" rows="3"></textarea>
 					<div class="comments-btn">
 						<button class="btn btn-primary">Add Comment</button>
-						<button class="btn btn-primary">Delete</button>
+						<button class="btn btn-danger">Delete</button>
 					</div>
 				</div>
 			</div>
@@ -88,4 +88,7 @@
 		display: flex;
 		justify-content: flex-end;
 	}
+  .btn-primary {
+    margin-right: 10px;
+  }
 </style>

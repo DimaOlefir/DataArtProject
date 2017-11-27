@@ -15,13 +15,15 @@
         </form>
 
         <div v-if="filteredFriends.length > 0">
-          <div class="friend-list" v-for="(friend, index) in filteredFriends">
+          <div class="friend" v-for="(friend, index) in filteredFriends">
             <span class="glyphicon glyphicon-user">{{friend.firstName}} {{friend.lastName}}</span>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FriendsModal" data-whatever="@getbootstrap">Write letter</button>
 
-            <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Delete friend">
-              <span class="glyphicon glyphicon-option-horizontal"></span>
-            </button>
+            <button type="button" class="btn btn-danger" @click="deleteFriend(friend)">Delete Friend</button>
+
+            <!-- <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Delete friend" @click="deleteFriend(friend)">
+              <span class="glyphicon glyphicon-option-horizontal">Delete Friend</span>
+            </button> -->
 
             <!--<div class="modal fade" id="FriendsModal" tabindex="-1" role="dialog" aria-labelledby="FriendsModalLabel">-->
             <!--<div class="modal-dialog" role="document">-->
@@ -59,6 +61,8 @@
   $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
   });
+
+  let nextFriendId = 1;
   export default {
     components: {
       User, UserHeader
@@ -66,7 +70,12 @@
     data() {
       return {
         searchQuery: '',
-        friends: [],
+        friends: [
+          {id: nextFriendId++, firstName: 'Tanya', lastName: 'Osa'},
+          {id: nextFriendId++, firstName: 'Anya', lastName: 'Korova'},
+          {id: nextFriendId++, firstName: 'Slava', lastName: 'Superman'},
+          {id: nextFriendId++, firstName: 'Roma', lastName: 'Backend'},
+        ],
       }
     },
     created: function () {
@@ -97,6 +106,10 @@
           {firstName: 'Roma', lastName: 'Backend'},
         ];
       },
+      deleteFriend: function(friend) {
+        let index = this.friends.indexOf(friend);
+        this.friends.splice(index, 1);
+      }
     }
   }
 </script>
@@ -134,14 +147,23 @@
   .btn.btn-search {
     padding: 6px 45px;
   }
-  .friend-list {
+  .friend {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
     margin-bottom: 50px;
     padding-bottom: 50px;
     /*padding: 50px 0;*/
     border-bottom: 1px solid #4267b2;
   }
   .glyphicon-user {
+    width: 60%;
     margin-bottom: -10px;
     font-size: 25px;
+  }
+  .btn-primary {
+    margin-right: 10px;
   }
 </style>
