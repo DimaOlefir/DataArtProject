@@ -1,6 +1,7 @@
 package com.dataart.model;
 
 import com.dataart.model.enums.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +17,7 @@ public class Header implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="headerId")
     private Long id;
 
@@ -29,17 +30,18 @@ public class Header implements Serializable{
 
     @Column(name = "dateTime")
     @Temporal(TemporalType.TIMESTAMP)
+    //@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private Date dateTime;
 
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "header")
     private List<Message> messages;
 
     //in user won't be opportunity to send message more than one user
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fromId", nullable = false)
     private User userFromMsg;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "toId", nullable = false)
     private User userToMsg;
 

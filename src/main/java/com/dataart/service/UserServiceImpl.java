@@ -1,15 +1,18 @@
 package com.dataart.service;
 
 import com.dataart.model.Header;
+import com.dataart.repository.HeaderRepository;
 import com.dataart.repository.UserRepository;
 import com.dataart.model.User;
 import com.dataart.model.enums.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
 /**
@@ -19,8 +22,12 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
+
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private HeaderRepository headerRepository;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -81,12 +88,16 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public List<Header> getHeadersIncomingByUserId(Long id) {
-        return userRepository.getOne(id).getHeadersIncoming();
+        return headerRepository.getHeadersByToId(id);
+        //Query query = (Query) entityManagerFactory.createEntityManager().createQuery(
+          //      "SELECT h FROM headers h WHERE toId = " + id);
+
+//        query.setParameter('name', name);
     }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public List<Header> getHeadersOutgoingByUserId(Long id) {
-        return userRepository.getOne(id).getHeadersOutgoing();
+        return headerRepository.getHeadersByFromId(id);
     }
 }

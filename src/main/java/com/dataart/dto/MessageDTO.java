@@ -1,5 +1,7 @@
 package com.dataart.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,7 +17,7 @@ public class MessageDTO implements Serializable {
     private Long idToUser;
 
     private String content;
-
+    //@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private Date dateTime;
 
     public MessageDTO() {
