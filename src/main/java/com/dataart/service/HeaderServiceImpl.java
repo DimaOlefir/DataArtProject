@@ -1,7 +1,9 @@
 package com.dataart.service;
 
 import com.dataart.model.Header;
+import com.dataart.model.Message;
 import com.dataart.repository.HeaderRepository;
+import com.dataart.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,6 +20,9 @@ public class HeaderServiceImpl implements HeaderService{
 
     @Autowired
     HeaderRepository headerRepository;
+
+    @Autowired
+    MessageRepository messageRepository;
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
@@ -43,6 +48,11 @@ public class HeaderServiceImpl implements HeaderService{
     @Override
     public void deleteAll() {
         headerRepository.deleteAll();
+    }
+
+    @Override
+    public List<Message> messagesByHeaderId(long id) {
+        return messageRepository.getMessagesByHeaderId(id);
     }
 
 }

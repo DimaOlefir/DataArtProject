@@ -31,7 +31,7 @@ public class Message implements Serializable {
     @Column(name="isRead")
     private Boolean isRead;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "headerId", nullable = false)
     private Header header;
 

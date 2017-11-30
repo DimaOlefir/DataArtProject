@@ -84,7 +84,7 @@ public class MessageController extends BaseController{
             body.put("userToSurname",header.getUserToMsg().getLastName());
             body.put("subject",header.getSubject());
             body.put("datetime",String.valueOf(header.getDateTime()));
-
+            body.put("headerId",String.valueOf(header.getId()));
             list.add(body);
         }
 
@@ -108,14 +108,48 @@ public class MessageController extends BaseController{
             body.put("userToSurname",user.getLastName());
             body.put("subject",header.getSubject());
             body.put("datetime",String.valueOf(header.getDateTime()));
-
+            body.put("headerId",String.valueOf(header.getId()));
             list.add(body);
         }
 
 
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
+    @RequestMapping(value = "/message/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Map<String, String>> getMessageById(@PathVariable("id") Long id) {
+        Header header = headerService.findById(id);
 
+        if(header==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        String content = headerService.messagesByHeaderId(header.getId()).get(0).getContent();//index = 0, because in list we have only one message
 
+        User sender = header.getUserFromMsg();
+        User receiver = header.getUserToMsg();
+
+        if(getUserId()!=sender.getId()||getUserId()!=receiver.getId()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        Map<String, String> map = new HashMap<>();
+
+        map.put("userFromId",String.valueOf(sender.getId()));
+        map.put("userFromName",sender.getFirstName());
+        map.put("userFromSurname",sender.getLastName());
+        map.put("userToId",String.valueOf(receiver.getId()));
+        map.put("userToName",receiver.getFirstName());
+        map.put("userToSurname",receiver.getLastName());
+        map.put("content",content);
+        map.put("datetime",String.valueOf(header.getDateTime()));
+
+        //if getId()!=header.getUserFromMsg().getId()||header.getUserToMsg().getId()
+
+        /*MessageDTO messageDTO = new MessageDTO(header.getUserFromMsg().getId(),
+                header.getUserToMsg().getId(),
+                content,
+                header.getDateTime());*/
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
 
 }
