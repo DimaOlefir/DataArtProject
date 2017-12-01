@@ -4,6 +4,16 @@
 		<div class="user-photos">
       <User></User>
 			<div class="photos">
+				<h2>{{title}}</h2>
+				<div class="photo-list" v-for="item in photoItem">
+					<p class="text-left">{{item.title}}</p>
+					<textarea class="form-control" rows="3"></textarea>
+					<div class="comments-btn">
+						<button class="btn btn-primary">Add Comment</button>
+						<button class="btn btn-danger">Delete</button>
+					</div>
+				</div>
+			</div>
         <div class="photo navbar-right">
           <h3>Your photo on the marks</h3>
 
@@ -128,6 +138,9 @@
     height: 80px;
     resize: none;
 	}
+  .btn-primary {
+    margin-right: 10px;
+  }
   .input-group {
     display: block;
   }

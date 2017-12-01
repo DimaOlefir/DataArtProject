@@ -46,7 +46,7 @@
 				  </div>
 
 				  <div class="form-group">
-				    <label for="birthday" class="col-sm-2 control-label">Name</label>
+				    <label for="birthday" class="col-sm-2 control-label">Birthday</label>
 				    <div class="col-sm-8">
 				    	<input type="date" id="birthday" class="form-control" max="2100-01-01" min="1900-01-01" value="2017-01-01" />
 				    </div>

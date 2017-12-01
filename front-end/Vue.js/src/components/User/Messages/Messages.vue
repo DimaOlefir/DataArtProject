@@ -30,11 +30,11 @@
               <button @click="clearList">Clear List</button>
             </section> -->
 	  		  </div>
-				  <span class="glyphicon glyphicon-search"></span>
+				  <!-- <span class="glyphicon glyphicon-search"></span>
 	  		    </button>
 	  		  </form>
 
-	  		  <!-- <section class="panel">
+	  		  <section class="panel">
 	  		    <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">
 	  		    <button @click="clearList">Clear List</button>
 	  		  </section>
