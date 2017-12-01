@@ -48,7 +48,7 @@
             <form action="#" method="post" enctype="multipart/form-data">
               <h4>Add description</h4>
               <div class="input-group">
-                <input id="address" type="text"  class="form-control" name="adress" placeholder="address" required>
+                <input id="address" type="text"  class="form-control" name="adress" placeholder="Place name" required>
               </div>
               <div class="input-group">
                 <textarea type="email" class="form-control" id="description" placeholder="marker description" name="email"></textarea>

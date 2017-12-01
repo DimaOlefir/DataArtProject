@@ -109,7 +109,7 @@
       validatePassword: function () {
         let error = "";
         let tpassword = this.password.replace(/^\s+|\s+$/, '');
-        let passwordFilter = /^([a-zA-Z, 0-9]+|\d+)$/i;
+        let passwordFilter = /^([a-zA-Z, 0-9]+)$/i;
 
         if (this.password === "") {
           this.addError("#password", "#password-error", "Please enter a password.");
@@ -180,8 +180,7 @@
 
   .btn-success:hover {
     background-color: cornflowerblue; }
-
-  .password-error,.email-error,#password-error,#userlogin-error,#surname-error,#name-error{
+  #password-error,#userlogin-error{
     font-family: Helvetica, Arial, sans-serif;
     font-size: 10px;
     color:red;

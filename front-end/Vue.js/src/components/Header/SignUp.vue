@@ -40,7 +40,7 @@
               </div>
               <div class="form-group">
                 <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-                <input type="password" v-model="password" id="psw" class="form-control"  placeholder="Enter password" required="required" name="password" pattern="[A-Za-z, 0-9]{6,}">
+                <input type="password" v-model="password" id="psw" class="form-control"  placeholder="Enter password" name="password">
                 <div class="password-error"></div>
               </div>
               <div class="checkbox">
@@ -173,7 +173,7 @@
       validateName: function () {
         let error = "";
         let tname = this.firstName.replace(/^\s+|\s+$/, '');
-        let nameFilter = /^([a-zA-Zа-яёA-ZЁ]+|\d+)$/i;
+        let nameFilter = /^([a-zA-Zа-яёA-ZЁ]+)$/i;
 
         if (this.firstName === "") {
           this.addError("#username","#name-error", "Please enter your name.");
@@ -193,7 +193,7 @@
       validateSurame: function () {
         let error = "";
         let tsurname = this.lastName.replace(/^\s+|\s+$/, '');
-        let surnameFilter = /^([a-zA-Zа-яёA-ZЁ]+|\d+)$/i;
+        let surnameFilter = /^([a-zA-Zа-яёA-ZЁ]+)$/i;
 
         if (this.lastName === "") {
           this.addError("#surname","#surname-error", "Please enter your surname.");
