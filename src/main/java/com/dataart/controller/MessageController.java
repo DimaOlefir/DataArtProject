@@ -11,6 +11,7 @@ import com.dataart.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,17 +76,19 @@ public class MessageController extends BaseController{
         List <Map<String, String>> list = new ArrayList<>();
 
         for(Header header : outGoingMessages){
-            Map<String, String> body = new HashMap<>();
-            body.put("userFromId",String.valueOf(user.getId()));
-            body.put("userFromName",user.getFirstName());
-            body.put("userFromSurname",user.getLastName());
-            body.put("userToId",String.valueOf(header.getUserToMsg().getId()));
-            body.put("userToName",header.getUserToMsg().getFirstName());
-            body.put("userToSurname",header.getUserToMsg().getLastName());
-            body.put("subject",header.getSubject());
-            body.put("datetime",String.valueOf(header.getDateTime()));
-            body.put("headerId",String.valueOf(header.getId()));
-            list.add(body);
+            if(header.getStatus()!=Status.REMOVESENDER & header.getStatus()!=Status.REMOVEBOTH) {
+                Map<String, String> body = new HashMap<>();
+                body.put("userFromId", String.valueOf(user.getId()));
+                body.put("userFromName", user.getFirstName());
+                body.put("userFromSurname", user.getLastName());
+                body.put("userToId", String.valueOf(header.getUserToMsg().getId()));
+                body.put("userToName", header.getUserToMsg().getFirstName());
+                body.put("userToSurname", header.getUserToMsg().getLastName());
+                body.put("subject", header.getSubject());
+                body.put("datetime", String.valueOf(header.getDateTime()));
+                body.put("headerId", String.valueOf(header.getId()));
+                list.add(body);
+            }
         }
 
         return new ResponseEntity<>(list, HttpStatus.OK);
@@ -99,17 +102,19 @@ public class MessageController extends BaseController{
         List <Map<String, String>> list = new ArrayList<>();
 
         for(Header header : incomingMessages){
-            Map<String, String> body = new HashMap<>();
-            body.put("userFromId",String.valueOf(header.getUserFromMsg().getId()));
-            body.put("userFromName",header.getUserFromMsg().getFirstName());
-            body.put("userFromSurname",header.getUserFromMsg().getLastName());
-            body.put("userToId",String.valueOf(user.getId()));
-            body.put("userToName",user.getFirstName());
-            body.put("userToSurname",user.getLastName());
-            body.put("subject",header.getSubject());
-            body.put("datetime",String.valueOf(header.getDateTime()));
-            body.put("headerId",String.valueOf(header.getId()));
-            list.add(body);
+            if(header.getStatus()!=Status.REMOVERECEIVER & header.getStatus()!=Status.REMOVEBOTH) {
+                Map<String, String> body = new HashMap<>();
+                body.put("userFromId", String.valueOf(header.getUserFromMsg().getId()));
+                body.put("userFromName", header.getUserFromMsg().getFirstName());
+                body.put("userFromSurname", header.getUserFromMsg().getLastName());
+                body.put("userToId", String.valueOf(user.getId()));
+                body.put("userToName", user.getFirstName());
+                body.put("userToSurname", user.getLastName());
+                body.put("subject", header.getSubject());
+                body.put("datetime", String.valueOf(header.getDateTime()));
+                body.put("headerId", String.valueOf(header.getId()));
+                list.add(body);
+            }
         }
 
 
@@ -127,7 +132,23 @@ public class MessageController extends BaseController{
         User sender = header.getUserFromMsg(); //userService.getSenderByHeaderId(header.getId());
         User receiver = header.getUserToMsg();
 
-        if(!(getUserId()!=sender.getId()||getUserId()!=receiver.getId())){
+        /*if(!(getUserId()!=sender.getId()||getUserId()!=receiver.getId())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }*/
+
+        if(getUserId().equals(sender.getId())){
+            if(header.getStatus()==Status.REMOVESENDER||
+                    header.getStatus()==Status.REMOVEBOTH){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        }
+        else if(getUserId().equals(receiver.getId())){
+            if(header.getStatus()==Status.REMOVERECEIVER||
+                    header.getStatus()==Status.REMOVEBOTH){
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        }
+        else{
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
@@ -153,4 +174,42 @@ public class MessageController extends BaseController{
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/message", method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResponseEntity<Void> deleteMessage(@RequestBody Map<String, Integer> map) {
+        Long messageId = Long.valueOf(map.get("messageId"));
+        Header header = headerService.findById(messageId);
+
+        if(header==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        User sender = header.getUserFromMsg();
+        User receiver = header.getUserToMsg();
+
+        /*if(!(getUserId()!=sender.getId()||getUserId()!=receiver.getId())){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }*/
+
+        if(getUserId().equals(sender.getId())){
+            if(header.getStatus()==Status.REMOVERECEIVER){
+                header.setStatus(Status.REMOVEBOTH);
+            }
+            header.setStatus(Status.REMOVESENDER);
+        }
+        else if(getUserId().equals(receiver.getId())){
+            if(header.getStatus()==Status.REMOVESENDER){
+                header.setStatus(Status.REMOVEBOTH);
+            }
+            header.setStatus(Status.REMOVERECEIVER);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        headerService.updateHeader(header);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
+
 }
+
+
