@@ -26,8 +26,8 @@ public interface UserService {
 
     void changePassword(User user);
 
-    List<Header> getHeadersIncomingByUserId(Long id);
 
-    List<Header> getHeadersOutgoingByUserId(Long id);
+
+    User getSenderByHeaderId (long id);
 
 }

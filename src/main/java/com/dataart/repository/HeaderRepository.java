@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public interface HeaderRepository extends JpaRepository<Header, Long> {
 
+    //Header getHeaderById(long id);
+
     @Query("SELECT h FROM com.dataart.model.Header h WHERE fromId = ?1")
     List<Header> getHeadersByFromId(long id);
 

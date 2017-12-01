@@ -70,7 +70,7 @@ public class MessageController extends BaseController{
     @ResponseBody
     public ResponseEntity<List<Map<String, String>>> getOutgoingMessages() {
         User user = userService.findById(getUserId());
-        List <Header> outGoingMessages = userService.getHeadersOutgoingByUserId(user.getId());
+        List <Header> outGoingMessages = headerService.getHeadersOutgoingByUserId(user.getId());
 
         List <Map<String, String>> list = new ArrayList<>();
 
@@ -95,7 +95,7 @@ public class MessageController extends BaseController{
     @ResponseBody
     public ResponseEntity<List<Map<String, String>>> getIncomingMessages() {
         User user = userService.findById(getUserId());
-        List <Header> incomingMessages = userService.getHeadersIncomingByUserId(user.getId());
+        List <Header> incomingMessages = headerService.getHeadersIncomingByUserId(user.getId());
         List <Map<String, String>> list = new ArrayList<>();
 
         for(Header header : incomingMessages){
@@ -123,14 +123,15 @@ public class MessageController extends BaseController{
         if(header==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        String content = headerService.messagesByHeaderId(header.getId()).get(0).getContent();//index = 0, because in list we have only one message
-
-        User sender = header.getUserFromMsg();
+        //System.out.println("header  :" + header);
+        User sender = header.getUserFromMsg(); //userService.getSenderByHeaderId(header.getId());
         User receiver = header.getUserToMsg();
 
-        if(getUserId()!=sender.getId()||getUserId()!=receiver.getId()){
+        if(!(getUserId()!=sender.getId()||getUserId()!=receiver.getId())){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
+        String content = headerService.messagesByHeaderId(header.getId()).get(0).getContent();//index = 0, because in list we have only one message
         Map<String, String> map = new HashMap<>();
 
         map.put("userFromId",String.valueOf(sender.getId()));

@@ -85,19 +85,11 @@ public class UserServiceImpl implements UserService {
         userRepository.saveAndFlush(user);
     }
 
+    //this method I 've used for testing when I 've got the lazy exception
     @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public List<Header> getHeadersIncomingByUserId(Long id) {
-        return headerRepository.getHeadersByToId(id);
-        //Query query = (Query) entityManagerFactory.createEntityManager().createQuery(
-          //      "SELECT h FROM headers h WHERE toId = " + id);
-
-//        query.setParameter('name', name);
+    public User getSenderByHeaderId(long id) {
+        return headerRepository.findOne(id).getUserFromMsg();
     }
 
-    @Override
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public List<Header> getHeadersOutgoingByUserId(Long id) {
-        return headerRepository.getHeadersByFromId(id);
-    }
+
 }

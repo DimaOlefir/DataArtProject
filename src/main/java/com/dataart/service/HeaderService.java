@@ -23,4 +23,8 @@ public interface HeaderService {
     List<Message> messagesByHeaderId(long id);
     //List <Header> findAllHeaders();
 
+    List<Header> getHeadersIncomingByUserId(Long id);
+
+    List<Header> getHeadersOutgoingByUserId(Long id);
+
 }

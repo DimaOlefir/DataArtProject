@@ -27,7 +27,7 @@ public class HeaderServiceImpl implements HeaderService{
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Header findById(long id) {
-        return headerRepository.getOne(id);
+        return headerRepository.findOne(id);
     }
 
     @Override
@@ -55,4 +55,19 @@ public class HeaderServiceImpl implements HeaderService{
         return messageRepository.getMessagesByHeaderId(id);
     }
 
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public List<Header> getHeadersIncomingByUserId(Long id) {
+        return headerRepository.getHeadersByToId(id);
+        //Query query = (Query) entityManagerFactory.createEntityManager().createQuery(
+        //      "SELECT h FROM headers h WHERE toId = " + id);
+
+//        query.setParameter('name', name);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public List<Header> getHeadersOutgoingByUserId(Long id) {
+        return headerRepository.getHeadersByFromId(id);
+    }
 }
