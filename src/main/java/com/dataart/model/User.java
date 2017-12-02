@@ -71,6 +71,10 @@ public class User implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "userFromMsg")
     private List<Header> headersOutgoing;
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Marker> markers;
+
     public User(){
 
     }
@@ -185,6 +189,14 @@ public class User implements Serializable {
 
     public void setHeadersOutgoing(List<Header> headersOutgoing) {
         this.headersOutgoing = headersOutgoing;
+    }
+
+    public List<Marker> getMarkers() {
+        return markers;
+    }
+
+    public void setMarkers(List<Marker> markers) {
+        this.markers = markers;
     }
 
     @Override
