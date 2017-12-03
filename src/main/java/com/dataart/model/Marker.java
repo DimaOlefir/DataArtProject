@@ -26,6 +26,12 @@ public class Marker implements Serializable {
     @Column(name="address")
     private String address;
 
+    @Column(name="name")
+    private String name;
+
+    @Column(name="description")
+    private String description;
+
     @Column(name = "dateTime")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTime;
@@ -46,6 +52,17 @@ public class Marker implements Serializable {
     public Marker(User user, String address, Date dateTime, Double lat, Double lng, AccessMarker accessMarker) {
         this.user = user;
         this.address = address;
+        this.dateTime = dateTime;
+        this.lat = lat;
+        this.lng = lng;
+        this.accessMarker = accessMarker;
+    }
+
+    public Marker(User user, String address, String name, String description, Date dateTime, Double lat, Double lng, AccessMarker accessMarker) {
+        this.user = user;
+        this.address = address;
+        this.name = name;
+        this.description = description;
         this.dateTime = dateTime;
         this.lat = lat;
         this.lng = lng;
@@ -108,6 +125,22 @@ public class Marker implements Serializable {
         this.accessMarker = accessMarker;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,6 +150,8 @@ public class Marker implements Serializable {
 
         if (user != null ? !user.equals(marker.user) : marker.user != null) return false;
         if (address != null ? !address.equals(marker.address) : marker.address != null) return false;
+        if (name != null ? !name.equals(marker.name) : marker.name != null) return false;
+        if (description != null ? !description.equals(marker.description) : marker.description != null) return false;
         if (dateTime != null ? !dateTime.equals(marker.dateTime) : marker.dateTime != null) return false;
         if (lat != null ? !lat.equals(marker.lat) : marker.lat != null) return false;
         if (lng != null ? !lng.equals(marker.lng) : marker.lng != null) return false;
@@ -127,6 +162,8 @@ public class Marker implements Serializable {
     public int hashCode() {
         int result = user != null ? user.hashCode() : 0;
         result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
         result = 31 * result + (lat != null ? lat.hashCode() : 0);
         result = 31 * result + (lng != null ? lng.hashCode() : 0);
@@ -137,7 +174,10 @@ public class Marker implements Serializable {
     @Override
     public String toString() {
         return "Marker{" +
-                "address='" + address + '\'' +
+                "user=" + user +
+                ", address='" + address + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", dateTime=" + dateTime +
                 ", lat=" + lat +
                 ", lng=" + lng +
