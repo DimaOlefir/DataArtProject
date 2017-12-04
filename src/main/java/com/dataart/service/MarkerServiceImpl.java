@@ -42,19 +42,20 @@ public class MarkerServiceImpl implements MarkerService{
     }
 
     @Override
-    public List<Marker> getOnlyMyMarkersByUserId(long id) {
-        List <Marker> markers = markerRepository.getMarkersBuUserId(id)
+    public List<Marker> getAllMarkersByUserId(long id) {
+        /*List <Marker> markers = markerRepository.getMarkersBuUserId(id)
                 .stream()
                 .filter(m -> m.getAccessMarker()== AccessMarker.ME)
                 .collect(Collectors.toList());
-        return markers;
+        return markers;*/
+        return markerRepository.getMarkersBuUserId(id);
     }
 
     @Override
     public List<Marker> getMarkersForFriendsByUserId(long id) {
         List <Marker> markers = markerRepository.getMarkersBuUserId(id)
                 .stream()
-                .filter(m -> m.getAccessMarker()== AccessMarker.FRIENDS)
+                .filter(m -> m.getAccessMarker()== AccessMarker.FRIENDS || m.getAccessMarker()== AccessMarker.ALLUSERS)
                 .collect(Collectors.toList());
         return markers;
     }

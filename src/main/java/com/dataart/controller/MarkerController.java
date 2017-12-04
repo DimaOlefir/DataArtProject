@@ -14,6 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Роман on 03.12.2017.
  */
@@ -33,7 +36,7 @@ public class MarkerController extends BaseController{
 
     @RequestMapping(value = "/marker", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<String> create(@RequestBody MarkerDTO markerDTO) {
+    public ResponseEntity<String> createMarker(@RequestBody MarkerDTO markerDTO) {
 
         User user = userService.findById(getUserId());
         AccessMarker accessMarker = AccessMarker.values()[markerDTO.getAccess()];
@@ -53,6 +56,95 @@ public class MarkerController extends BaseController{
         return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/mymarkers", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Marker>> getOnlyForUserMarkers(){
+        List<Marker> markers = markerService.getAllMarkersByUserId(getUserId());
+        if(markers==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(markers, HttpStatus.OK);
+    }
 
+    @RequestMapping(value = "/frindmarkers", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Marker>> getMarkersForFriends(){
+        List<Marker> markers = markerService.getMarkersForFriendsByUserId(getUserId());
+        if(markers==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(markers, HttpStatus.OK);
+    }
 
+    @RequestMapping(value = "/publicmarkers", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Marker>> getMarkersForAllUser(){
+        List<Marker> markers = markerService.getMarkersForAllUsersByUserId(getUserId());
+        if(markers==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(markers, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/marker/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Marker> getMarkerById(@PathVariable("id") Long id) {
+        Marker marker = markerService.findById(id);
+        if(marker==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if(marker.getUser().getId()!=getUserId()) {
+            if (marker.getAccessMarker() != AccessMarker.ALLUSERS){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+        }
+        return new ResponseEntity<>(marker, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/marker/{id}", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<String> updateMarker(@PathVariable("id") Long id, @RequestBody MarkerDTO markerDTO) {
+
+        Marker marker = markerService.findById(id);
+        if(marker==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if(marker.getUser().getId()!=getUserId()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        //User user = userService.findById(getUserId());
+        AccessMarker accessMarker = AccessMarker.values()[markerDTO.getAccess()];
+
+        marker.setName(markerDTO.getName());
+        marker.setDescription(markerDTO.getDescription());
+        marker.setDateTime(markerDTO.getDateTime());
+        marker.setAccessMarker(accessMarker);
+        marker.setLat(markerDTO.getLat());
+        marker.setLng(markerDTO.getLng());
+
+        markerService.updateMarker(marker);
+
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(headers, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/marker/{id}", method = RequestMethod.DELETE)
+    @ResponseBody
+    public ResponseEntity<Void> deleteMarkerById(@PathVariable("id") Long id) {
+        Marker marker = markerService.findById(id);
+        if(marker==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if(marker.getUser().getId()!=getUserId()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        markerService.deleteMarkerById(id);
+
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
 }

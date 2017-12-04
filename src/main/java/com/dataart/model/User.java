@@ -35,6 +35,7 @@ public class User implements Serializable {
     //@NotEmpty(message = "*Please provide your login")
     private String login;
 
+    @JsonIgnore
     @Column(name = "user_password",nullable = false)
     //@Length(min = 5, message = "*Your password must have at least 5 characters")
     //@NotEmpty(message = "*Please provide your password")
@@ -59,6 +60,7 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
+    @JsonIgnore
     @Column(name = "user_role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
