@@ -109,6 +109,7 @@ public class UserController extends BaseController{
             headers.set("Error.", "Such user exist.");
             return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
         }
+
         userService.saveUser(new User(user.getFirstName(),user.getLastName(),user.getLogin(), user.getPassword(), user.getEmail()));
         logger.debug("...save user in db");
         HttpHeaders headers = new HttpHeaders();

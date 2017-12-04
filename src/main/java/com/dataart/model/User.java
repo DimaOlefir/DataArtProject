@@ -35,7 +35,7 @@ public class User implements Serializable {
     //@NotEmpty(message = "*Please provide your login")
     private String login;
 
-    @JsonIgnore
+    //@JsonIgnore
     @Column(name = "user_password",nullable = false)
     //@Length(min = 5, message = "*Your password must have at least 5 characters")
     //@NotEmpty(message = "*Please provide your password")
