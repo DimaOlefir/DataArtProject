@@ -77,6 +77,10 @@ public class User implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "user")
     private List<Marker> markers;
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "creator")
+    private List<CommentMarker> commentsMarker;
+
     public User(){
 
     }
@@ -199,6 +203,14 @@ public class User implements Serializable {
 
     public void setMarkers(List<Marker> markers) {
         this.markers = markers;
+    }
+
+    public List<CommentMarker> getCommentsMarker() {
+        return commentsMarker;
+    }
+
+    public void setCommentsMarker(List<CommentMarker> commentsMarker) {
+        this.commentsMarker = commentsMarker;
     }
 
     @Override

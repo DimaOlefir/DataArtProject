@@ -5,6 +5,7 @@ import com.dataart.model.enums.AccessMarker;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Роман on 02.12.2017.
@@ -45,6 +46,10 @@ public class Marker implements Serializable {
     @Column(name = "access", nullable = false)
     @Enumerated(EnumType.STRING)
     private AccessMarker accessMarker;
+
+    //@JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "marker")
+    private List<CommentMarker> commentsMarker;
 
     public Marker() {
     }
@@ -139,6 +144,14 @@ public class Marker implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<CommentMarker> getCommentsMarker() {
+        return commentsMarker;
+    }
+
+    public void setCommentsMarker(List<CommentMarker> commentsMarker) {
+        this.commentsMarker = commentsMarker;
     }
 
     @Override
