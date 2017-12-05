@@ -27,16 +27,19 @@ public class MarkerServiceImpl implements MarkerService{
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public void saveMarker(Marker marker) {
         markerRepository.saveAndFlush(marker);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public void updateMarker(Marker marker) {
         markerRepository.saveAndFlush(marker);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public void deleteMarkerById(long id) {
         markerRepository.delete(id);
     }

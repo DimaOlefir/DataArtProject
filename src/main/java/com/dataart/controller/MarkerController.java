@@ -1,9 +1,11 @@
 package com.dataart.controller;
 
+import com.dataart.dto.CommentMarkerDTO;
 import com.dataart.dto.MarkerDTO;
 import com.dataart.model.Marker;
 import com.dataart.model.User;
 import com.dataart.model.enums.AccessMarker;
+import com.dataart.service.CommentMarkerService;
 import com.dataart.service.MarkerService;
 import com.dataart.service.UserService;
 import org.slf4j.Logger;
@@ -34,9 +36,13 @@ public class MarkerController extends BaseController{
     @Autowired
     MarkerService markerService;
 
+    @Autowired
+    CommentMarkerService commentMarkerService;
+
+
     @RequestMapping(value = "/marker", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<String> createMarker(@RequestBody MarkerDTO markerDTO) {
+    public ResponseEntity<Void> createMarker(@RequestBody MarkerDTO markerDTO) {
 
         User user = userService.findById(getUserId());
         AccessMarker accessMarker = AccessMarker.values()[markerDTO.getAccess()];
@@ -146,5 +152,13 @@ public class MarkerController extends BaseController{
         markerService.deleteMarkerById(id);
 
         return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+    }
+
+    @RequestMapping(value = "/marker/comment", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<Void> createComment(@RequestBody CommentMarkerDTO commentMarkerDTO) {
+        //commentMarkerService.saveCommentMarker();
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(headers, HttpStatus.OK);
     }
 }
