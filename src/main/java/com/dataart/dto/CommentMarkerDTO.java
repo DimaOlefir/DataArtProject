@@ -12,8 +12,6 @@ public class CommentMarkerDTO implements Serializable {
 
     private Long markerId;
 
-    private Long userId;
-
     private String text;
 
     private Date dateTime;
@@ -21,9 +19,8 @@ public class CommentMarkerDTO implements Serializable {
     public CommentMarkerDTO() {
     }
 
-    public CommentMarkerDTO(Long markerId, Long userId, String text, Date dateTime) {
+    public CommentMarkerDTO(Long markerId, String text, Date dateTime) {
         this.markerId = markerId;
-        this.userId = userId;
         this.text = text;
         this.dateTime = dateTime;
     }
@@ -34,14 +31,6 @@ public class CommentMarkerDTO implements Serializable {
 
     public void setMarkerId(Long markerId) {
         this.markerId = markerId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
     }
 
     public String getText() {
@@ -68,7 +57,6 @@ public class CommentMarkerDTO implements Serializable {
         CommentMarkerDTO that = (CommentMarkerDTO) o;
 
         if (markerId != null ? !markerId.equals(that.markerId) : that.markerId != null) return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (text != null ? !text.equals(that.text) : that.text != null) return false;
         return dateTime != null ? dateTime.equals(that.dateTime) : that.dateTime == null;
     }
@@ -76,7 +64,6 @@ public class CommentMarkerDTO implements Serializable {
     @Override
     public int hashCode() {
         int result = markerId != null ? markerId.hashCode() : 0;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (text != null ? text.hashCode() : 0);
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
         return result;
@@ -86,7 +73,6 @@ public class CommentMarkerDTO implements Serializable {
     public String toString() {
         return "CommentMarkerDTO{" +
                 "markerId=" + markerId +
-                ", userId=" + userId +
                 ", text='" + text + '\'' +
                 ", dateTime=" + dateTime +
                 '}';
