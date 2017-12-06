@@ -239,8 +239,8 @@ public class MarkerController extends BaseController{
         if(marker==null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
-        if(marker.getAccessMarker()==AccessMarker.ME & marker.getUser().getId()!=getUserId()) {
+        User user = userService.findById(getUserId());
+        if(commentMarker.getCreator().getId()!=user.getId() & marker.getUser().getId()!=user.getId()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 

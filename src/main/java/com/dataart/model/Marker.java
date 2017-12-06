@@ -1,6 +1,7 @@
 package com.dataart.model;
 
 import com.dataart.model.enums.AccessMarker;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -47,7 +48,7 @@ public class Marker implements Serializable {
     @Enumerated(EnumType.STRING)
     private AccessMarker accessMarker;
 
-    //@JsonIgnore
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "marker")
     private List<CommentMarker> commentsMarker;
 
