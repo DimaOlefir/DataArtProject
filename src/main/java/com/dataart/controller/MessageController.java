@@ -25,8 +25,8 @@ import java.util.Map;
 /**
  * Created by Роман on 24.11.2017.
  */
-@CrossOrigin(origins = {"http://localhost:8080","http://localhost:8090"},
-        maxAge = 4800)
+/*@CrossOrigin(//origins = {"http://localhost:8080","http://localhost:8090"},
+        maxAge = 4800)*/
 @RestController
 @RequestMapping("/api")
 public class MessageController extends BaseController{
