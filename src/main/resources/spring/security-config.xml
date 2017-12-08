@@ -33,10 +33,47 @@
     <http pattern="/api/test" security="none"/>
 
     <http pattern="/api/**" entry-point-ref="restAuthenticationEntryPoint" create-session="stateless">
+        <!--<cors configuration-source-ref="corsSource"/>-->
         <csrf disabled="true"/>
         <custom-filter before="FORM_LOGIN_FILTER" ref="jwtAuthenticationFilter"/>
     </http>
 
+    <!--<beans:bean id="corsSource" class="com.dataart.config.CorsFilter">
+        <beans:bean id="corsSource" class="org.springframework.web.cors.UrlBasedCorsConfigurationSource">
+            <property name="corsConfigurations">
+                <util:map>
+                    <entry key="/**">
+                        <bean class="org.springframework.web.cors.CorsConfiguration">
+                            <property name="allowCredentials" value="true" />
+                            <property name="allowedHeaders">
+                                <list>
+                                    <value>Authorization</value>
+                                    <value>Content-Type</value>
+                                </list>
+                            </property>
+                            <property name="allowedMethods">
+                                <list>
+                                    <value>POST</value>
+                                    <value>GET</value>
+                                    <value>PUT</value>
+                                    <value>DELETE</value>
+                                </list>
+                            </property>
+                            <property name="allowedOrigins" value="${cors.allowed.origins}" />
+                            <property name="exposedHeaders">
+                                <list>
+                                    <value>Location</value>
+                                </list>
+                            </property>
+                            <property name="maxAge" value="86400" />
+                        </bean>
+                    </entry>
+                </util:map>
+            </property>
+
+</beans:bean>
+
+-->
     <beans:bean id="jwtAuthenticationFilter" class="com.dataart.security.JwtAuthenticationFilter">
         <beans:property name="authenticationManager" ref="authenticationManager"/>
         <beans:property name="authenticationSuccessHandler" ref="jwtAuthenticationSuccessHandler"/>

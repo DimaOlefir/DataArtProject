@@ -45,11 +45,10 @@ public class MessageController extends BaseController{
     @RequestMapping(value = "/message", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<String> create(@RequestBody MessageDTO messageDTO) {
+
         if(messageDTO.getIdFromUser()!=getUserId()){
             return new ResponseEntity <>(HttpStatus.BAD_REQUEST);
         }
-
-        //System.out.println(messageDTO.getDateTime());
 
         User userFromMsg = userService.findById(messageDTO.getIdFromUser());
         User userToMsg = userService.findById(messageDTO.getIdToUser());
