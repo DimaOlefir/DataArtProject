@@ -13,7 +13,7 @@ import Messages from './components/User/Messages/Messages';
 Vue.config.productionTip = false
 
 Vue.use(vueResource)
-Vue.http.options.root = 'https://rocky-retreat-50096.herokuapp.com/api/';
+Vue.http.options.root = 'https://rocky-retreat-50096.herokuapp.com/';
 Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
 
 /* eslint-disable no-new */

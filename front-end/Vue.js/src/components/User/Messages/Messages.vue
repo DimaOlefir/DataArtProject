@@ -4,55 +4,69 @@
 		<div class="users-messages">
 	  		<User></User>
 	  		<div class="messages">
+
+          <div class="messages-test">
+            <router-link to="/messagesTest">
+              <a class="list-group-item">Messages</a>
+            </router-link>
+            <router-link to="/messagesTestIn">
+              <a class="list-group-item">In Messages</a>
+            </router-link>
+            <router-link to="/messagesTestOut">
+              <a class="list-group-item">Out Messages</a>
+            </router-link>
+          </div>
+
+
 	  		  <form class="form-inline search">
 	  		    <div class="form-group">
 	  		      <label for="searchMessage">Search</label>
 	  		      <input type="text" class="form-control" id="searchMessage" placeholder="Search Messages" size="70">
 	  		    </div>
 	  		    <button type="submit" class="btn btn-primary">
-  				  <span class="glyphicon glyphicon-search"></span>
-  	  		    </button>
-  	  		  </form>
+  				    <span class="glyphicon glyphicon-search"></span>
+  	  		  </button>
+  	  		</form>
 
-            <UserInfo></UserInfo>
+          <UserInfo></UserInfo>
 
-  	  		  <!-- <section class="list">
-  	  		    <ul class="list-item">
-  	  		      <li v-for="message in messages">
-  	  		        <label>{{ message.text }}</label>
-  	  		        <button class="delete" @click="removeMessage(message)">X</button>
-  	  		      </li>
-  	  		    </ul>
-  	  		  </section>
-
-            <section class="panel">
-              <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">
-              <button @click="clearList">Clear List</button>
-            </section> -->
-	  		  </div>
-				  <!-- <span class="glyphicon glyphicon-search"></span>
-	  		    </button>
-	  		  </form>
-
-	  		  <section class="panel">
-	  		    <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">
-	  		    <button @click="clearList">Clear List</button>
+	  		  <!-- <section class="list">
+	  		    <ul class="list-item">
+	  		      <li v-for="message in messages">
+	  		        <label>{{ message.text }}</label>
+	  		        <button class="delete" @click="removeMessage(message)">X</button>
+	  		      </li>
+	  		    </ul>
 	  		  </section>
 
-	  		  <section class="list">
-	  		    <ul class="list-item">
-	  		      <li v-for="task in tasks">
-	  		        <label>{{ task.text }}</label>
-	  		        <button class="delete" @click="removeTask(task)">X</button>
-              </li>
-	  		    </ul>
-            <Pagination></Pagination>
+          <section class="panel">
+            <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">
+            <button @click="clearList">Clear List</button>
           </section> -->
+  		  </div>
+			  <!-- <span class="glyphicon glyphicon-search"></span>
+  		    </button>
+  		  </form>
 
-	  		</div>
+  		  <section class="panel">
+  		    <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">
+  		    <button @click="clearList">Clear List</button>
+  		  </section>
+
+  		  <section class="list">
+  		    <ul class="list-item">
+  		      <li v-for="task in tasks">
+  		        <label>{{ task.text }}</label>
+  		        <button class="delete" @click="removeTask(task)">X</button>
+            </li>
+  		    </ul>
+          <Pagination></Pagination>
+        </section> -->
+
+  		</div>
 
 
-	  	</div>
+  	</div>
 	</div>
 </template>
 

@@ -17,6 +17,10 @@ import Settings from '@/components/User/Settings/Settings';
 // UserMessages
 import UserMessages from '@/components/User/Messages/UserMessages/UserMessages';
 
+// MessagesTest
+import MessagesTest from '@/components/User/Messages/MessagesTest/MessagesTest';
+import MessagesTestIn from '@/components/User/Messages/MessagesTest/MessagesTestIn';
+import MessagesTestOut from '@/components/User/Messages/MessagesTest/MessagesTestOut';
 
 
 Vue.use(Router)
@@ -62,6 +66,21 @@ export default new Router({
       path: '/usermessages',
       name: 'UserMessages',
       component: UserMessages
+    },
+    {
+      path: '/messagesTest',
+      name: 'MessagesTest',
+      component: MessagesTest
+    },
+    {
+      path: '/messagesTestIn',
+      name: 'MessagesTestIn',
+      component: MessagesTestIn
+    },
+    {
+      path: '/messagesTestOut',
+      name: 'MessagesTestOut',
+      component: MessagesTestOut
     }
   ]
 })
