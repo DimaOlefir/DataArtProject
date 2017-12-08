@@ -59,8 +59,9 @@ public class MarkerController extends BaseController{
 
         markerService.saveMarker(marker);
 
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+        //HttpHeaders headers = new HttpHeaders();
+        //return new ResponseEntity<>(headers, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/mymarkers", method = RequestMethod.GET)
@@ -134,8 +135,10 @@ public class MarkerController extends BaseController{
 
         markerService.updateMarker(marker);
 
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+        //HttpHeaders headers = new HttpHeaders();
+        //return new ResponseEntity<>(headers, HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/marker/{id}", method = RequestMethod.DELETE)
@@ -177,8 +180,10 @@ public class MarkerController extends BaseController{
 
         commentMarkerService.saveCommentMarker(commentMarker);
 
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+        //HttpHeaders headers = new HttpHeaders();
+        //return new ResponseEntity<>(headers, HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/marker/comment/{id}", method = RequestMethod.POST)
@@ -205,8 +210,10 @@ public class MarkerController extends BaseController{
 
         commentMarkerService.updateCommentMarker(commentMarker);
 
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+        //HttpHeaders headers = new HttpHeaders();
+        //return new ResponseEntity<>(headers, HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/marker/{id}/comments", method = RequestMethod.GET)
@@ -246,8 +253,13 @@ public class MarkerController extends BaseController{
 
         commentMarkerService.deleteCommentMarkerById(commentMarker.getId());
 
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(headers, HttpStatus.NO_CONTENT);
+        //HttpHeaders headers = new HttpHeaders();
+        //return new ResponseEntity<>(headers, HttpStatus.NO_CONTENT);
+
+        //HttpHeaders headers = new HttpHeaders();
+        //return new ResponseEntity<>(headers, HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

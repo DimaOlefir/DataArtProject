@@ -20,7 +20,7 @@ public class CorsFilter implements Filter {
         httpResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
         httpResponse.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type");
         httpResponse.setHeader("Access-Control-Expose-Headers", "custom-header1, custom-header2");
-        httpResponse.setHeader("Access-Control-Allow-Credentials", "false");
+        httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpResponse.setHeader("Access-Control-Max-Age", "4800");
         System.out.println("---CORS Configuration Completed---");
         chain.doFilter(request, response);

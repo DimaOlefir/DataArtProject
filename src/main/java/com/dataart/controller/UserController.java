@@ -112,9 +112,9 @@ public class UserController extends BaseController{
 
         userService.saveUser(new User(user.getFirstName(),user.getLastName(),user.getLogin(), user.getPassword(), user.getEmail()));
         logger.debug("...save user in db");
-        HttpHeaders headers = new HttpHeaders();
+//        HttpHeaders headers = new HttpHeaders();
         //headers.setLocation(builder.path("/article?id={id}").buildAndExpand(article.getArticleId()).toUri());
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     //@RequestMapping(value = "/user/{id}", method = RequestMethod.POST)
@@ -144,8 +144,8 @@ public class UserController extends BaseController{
 
         userService.updateUser(existUser);
         logger.debug("...update user in db");
-        HttpHeaders headers = new HttpHeaders();
-        return new ResponseEntity<>(headers, HttpStatus.OK);
+//        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

@@ -62,9 +62,8 @@ public class MessageController extends BaseController{
         headerService.saveHeader(header);
         messageService.saveMessage(message);
 
-        HttpHeaders headers = new HttpHeaders();
-        ResponseEntity<String> response = new ResponseEntity<>(headers, HttpStatus.OK);
-        return response;
+    //    HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<>( HttpStatus.OK);
     }
 
     @RequestMapping(value = "/outmessage", method = RequestMethod.GET)
