@@ -1,75 +1,74 @@
 <template>
-	<div class="container-fluid">
+  <div class="container-fluid">
     <UserHeader></UserHeader>
-		<div class="user-photos">
+    <div class="user-photos">
       <User></User>
-			<div class="photos">
-				<h2>{{title}}</h2>
-				<div class="photo-list" v-for="item in photoItem">
-					<p class="text-left">{{item.title}}</p>
-					<textarea class="form-control" rows="3"></textarea>
-					<div class="comments-btn">
-						<button class="btn btn-primary">Add Comment</button>
-						<button class="btn btn-danger">Delete</button>
-					</div>
-				</div>
-			</div>
-        <div class="photo navbar-right">
-          <h3>Your photo on the marks</h3>
+      <div class="photos">
+        <h2>{{title}}</h2>
+        <div class="photo-list" v-for="item in photoItem">
+          <p class="text-left">{{item.title}}</p>
+          <textarea class="form-control" rows="3"></textarea>
+          <div class="comments-btn">
+            <button class="btn btn-primary">Add Comment</button>
+            <button class="btn btn-danger">Delete</button>
+          </div>
+        </div>
 
-          <!-- list with photo -->
-          <div class="photo_list">
-            <div class="media list-inline">
-              <a href="#" title="Hide comments" class="pull-right" data-toggle="popover" data-placement="bottom" data>
-                <span class="glyphicon glyphicon-option-horizontal"></span>
-              </a>
-              <div class="media-left">
-                <img src="../../../assets/img/4_b.jpg" class="media-object" style="width:100px">
-              </div>
-              <div class="media-body">
-                <h5 class="media-heading text-left">Eiffel Tower in Paris on the street Radicul 16</h5>
-                <form>
-                  <div class="input-group">
-                    <textarea type="email" class="form-control"  placeholder="add comment" name="email"></textarea>
-                  </div>
-                </form>
-                <div class="btn-group pull-right">
-                  <button type="button" class="btn btn-primary">Add comment</button>
-                  <button type="button" class="btn btn-primary">Delete</button>
+      <div class="photo navbar-right">
+        <h3>Your photo on the marks</h3>
+
+        <!-- list with photo -->
+        <div class="photo_list">
+          <div class="media list-inline">
+            <a href="#" title="Hide comments" class="pull-right" data-toggle="popover" data-placement="bottom" data>
+              <span class="glyphicon glyphicon-option-horizontal"></span>
+            </a>
+            <div class="media-left">
+              <img src="../../../assets/img/4_b.jpg" class="media-object" style="width:100px">
+            </div>
+            <div class="media-body">
+              <h5 class="media-heading text-left">Eiffel Tower in Paris on the street Radicul 16</h5>
+              <form>
+                <div class="input-group">
+                  <textarea type="email" class="form-control"  placeholder="add comment" name="email"></textarea>
                 </div>
+              </form>
+              <div class="btn-group pull-right">
+                <button type="button" class="btn btn-primary">Add comment</button>
+                <button type="button" class="btn btn-primary">Delete</button>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- list with photo -->
-          <div class="photo_list">
-            <div class="media list-inline">
-              <a href="#" title="Hide comments" class="pull-right" data-toggle="popover" data-placement="bottom" data>
-                <span class="glyphicon glyphicon-option-horizontal"></span>
-              </a>
-              <div class="media-left">
-                <img src="../../../assets/img/4_b.jpg" class="media-object" style="width:100px">
-              </div>
-              <div class="media-body">
-                <h5 class="media-heading text-left">Eiffel Tower in Paris on the street Radicul 16</h5>
-                <form>
-                  <div class="input-group">
-                    <textarea type="email" class="form-control"  placeholder="add comment" name="email"></textarea>
-                  </div>
-                </form>
-                <div class="btn-group pull-right">
-                  <button type="button" class="btn btn-primary">Add comment</button>
-                  <button type="button" class="btn btn-primary">Delete</button>
+        <!-- list with photo -->
+        <div class="photo_list">
+          <div class="media list-inline">
+            <a href="#" title="Hide comments" class="pull-right" data-toggle="popover" data-placement="bottom" data>
+              <span class="glyphicon glyphicon-option-horizontal"></span>
+            </a>
+            <div class="media-left">
+              <img src="../../../assets/img/4_b.jpg" class="media-object" style="width:100px">
+            </div>
+            <div class="media-body">
+              <h5 class="media-heading text-left">Eiffel Tower in Paris on the street Radicul 16</h5>
+              <form>
+                <div class="input-group">
+                  <textarea type="email" class="form-control"  placeholder="add comment" name="email"></textarea>
                 </div>
+              </form>
+              <div class="btn-group pull-right">
+                <button type="button" class="btn btn-primary">Add comment</button>
+                <button type="button" class="btn btn-primary">Delete</button>
               </div>
             </div>
           </div>
-
         </div>
       </div>
-		</div>
-		<!-- <FooterComponent /> -->
-	</div>
+    </div>
+  </div>
+  <!-- <FooterComponent /> -->
+  </div>
 </template>
 
 <script>

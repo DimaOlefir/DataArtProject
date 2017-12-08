@@ -18,7 +18,7 @@
                 <p class="text-center success">You are successfully signed up</p>
                 <p class="text-center">Now you can login using login and password</p>
               </div>
-              <div class="form-group ">
+              <div class="form-group">
                 <label for="username"><span class="glyphicon glyphicon-user"></span> Name *</label>
                 <input type="text" v-model="firstName" class="form-control" id="username" placeholder="Your name" name="firstName">
                 <div  id="name-error"></div>

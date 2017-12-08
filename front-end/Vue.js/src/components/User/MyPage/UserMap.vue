@@ -48,15 +48,15 @@
             <form action="#" method="post" enctype="multipart/form-data">
               <h4>Add description</h4>
               <div class="input-group">
-                <input id="address" type="text"  class="form-control" name="adress" placeholder="Place name" required>
+                <input id="address" type="text" v-model="name" class="form-control" name="name" placeholder="Place name" required>
               </div>
               <div class="input-group">
-                <textarea type="email" class="form-control" id="description" placeholder="marker description" name="email"></textarea>
+                <textarea type="text" v-model="description" class="form-control" id="description" placeholder="marker description" name="description"></textarea>
               </div>
               <div class="btn-group btn-group-justified">
-                <a href="#" class="btn btn-primary">Privat</a>
-                <a href="#" class="btn btn-primary">All friends</a>
-                <a href="#" class="btn btn-primary">Public</a>
+                <a href="#" v-on:click="access=0" class="btn btn-primary">Privat</a>
+                <a href="#" v-on:click="access=1" class="btn btn-primary">All friends</a>
+                <a href="#" v-on:click="access=2" class="btn btn-primary">Public</a>
               </div>
               <!--форма для загрузки картинок-->
               <div class="input-group download-photo">
@@ -102,7 +102,13 @@
         newMarkerLng: null,
         addMarkerState: false,
         modal_active: false,
-        modal_display: 'none'
+        modal_display: 'none',
+        name:"",
+        description:"",
+        access:"2",
+        loading:false,
+        login_msg:false,
+
       }
     },
     mounted : function() {
@@ -165,13 +171,35 @@
         }
       },
       saveMarker: function (){
-        this.markers.push({
-          position: {
-            lat: this.newMarkerLat,
-            lng: this.newMarkerLng
-          },
-        });
-        this.closeModal();
+        this.loading = false; //после нажатия на кнопку логин выпадает лоадер
+        let data = {
+          name : this.name,
+          description : this.description,
+          access : +this.access,
+          lat : +this.newMarkerLat,
+          lng : +this.newMarkerLng,
+          dateTime: new Date()
+        };
+        this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/marker',
+          JSON.stringify(data), {headers: {'Content-Type': 'application/json',
+//            'Origin': 'http://localhost:8080',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+          .then(function(response){
+            this.login_msg = false; //если логин или пароль неверно выпадает ошибка
+            this.loading = true;
+            console.log(response);
+            this.markers.push({
+              position: {
+                lat: this.newMarkerLat,
+                lng: this.newMarkerLng
+              },
+            });
+            this.closeModal();
+          }, function (error) {
+            this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
+            console.log(error);
+          });
+        return false;
       },
       showPhotos: function () {
 
