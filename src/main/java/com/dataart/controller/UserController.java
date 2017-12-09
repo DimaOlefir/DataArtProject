@@ -1,6 +1,8 @@
 package com.dataart.controller;
 
+import com.dataart.converter.Converter;
 import com.dataart.dto.PasswordDTO;
+import com.dataart.dto.UserDTO;
 import com.dataart.model.User;
 import com.dataart.security.UserAuthentication;
 import com.dataart.service.UserService;
@@ -119,14 +121,14 @@ public class UserController extends BaseController{
 
     //@RequestMapping(value = "/user/{id}", method = RequestMethod.POST)
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public ResponseEntity<Void> changeUserSettings(@RequestBody User user) {
+    public ResponseEntity<Void> changeUserSettings(@RequestBody UserDTO user) {
         logger.debug("...start method for changing the user with id: " + getUserId());
         User existUser = userService.findById(getUserId());
         if (existUser==null){
             return new ResponseEntity <>(HttpStatus.NOT_FOUND);
         }
 
-        if (userService.isUserExistByLogin(user.getLogin())) {//, user.getEmail()
+        if ((!existUser.getLogin().equals(user.getLogin()))&userService.isUserExistByLogin(user.getLogin())) {//, user.getEmail()
             HttpHeaders headers = new HttpHeaders();
             logger.debug("...user with this login exists");
             headers.set("Error.", "Such user with pointed login is existed.");
@@ -173,13 +175,14 @@ public class UserController extends BaseController{
 
     //@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public ResponseEntity<User> getUser() {
+    public ResponseEntity<UserDTO> getUser() {
         logger.debug("...get user by Id:" + getUserId());
         User user = userService.findById(getUserId());
         if (user==null){
             return new ResponseEntity <>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        UserDTO userDTO = Converter.convert(user);
+        return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
