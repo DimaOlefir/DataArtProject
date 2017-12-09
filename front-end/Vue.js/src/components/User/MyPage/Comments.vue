@@ -1,70 +1,42 @@
 <template>
-  <div class="container-fluid">
-      <div class="messages">
+  <li>
+    <div class="chat-box-single-line">
+      <abbr class="timestamp">{{date}}</abbr>
+    </div>
 
-        <div class="panel popup-messages-footer">
-          <textarea id="status_message" v-model="newMessage" @keyup.enter="addMessage" placeholder="Add comments" class="text-input" rows="10" cols="40" name="message"></textarea>
-          <button class="btn btn-primary btn-clear" @click="clearList">Clear comments</button>
-        </div>
+    <div class="direct-chat-info clearfix pull-right">
+      <span class="direct-chat-timestamp pull-right">{{time}}</span>
+    </div>
 
-        <section class="list">
-          <ul class="list-item">
-            <li v-for="task in tasks">
-              <div class="chat-box-single-line">
-                <abbr class="timestamp">October 8th, 2015</abbr>
-              </div>
-
-              <div class="direct-chat-info clearfix pull-right">
-                <span class="direct-chat-timestamp pull-right">3.36 PM</span>
-              </div>
-
-              <div class="direct-chat-msg doted-border">
-                <img alt="message user image" src="../../../assets/img/1_f.png" class="pull-left">
-                <div class="direct-chat-info clearfix">
-                  <span class="direct-chat-name pull-left">Osahan</span>
-                  <label class="direct-chat-text">{{ task.text }}</label>
-                  <button class="delete pull-right" @click="removeTask(task)">Delete</button>
-                </div>
-
-              </div>
-            </li>
-          </ul>
-        </section>
+    <div class="direct-chat-msg doted-border">
+      <img alt="message user image" src="../../../assets/img/1_f.png" class="pull-left">
+      <div class="direct-chat-info clearfix">
+        <span class="direct-chat-name pull-left">{{author}}</span>
+        <label class="direct-chat-text">{{ text }}</label>
+        <button class="delete pull-right" @click="$emit('remove')">Delete</button>
       </div>
-  </div>
-
+    </div>
+  </li>
 </template>
 
 
 <script>
   let nextMessageId = 1;
   export default {
+    props: ['date', 'time', 'author', 'text'],
     data() {
       return {
-        newMessage: "",
-        tasks: [
-          {
-            id: nextMessageId++,
-            text: "This is an example task. Delete or add your own"
-          }
-        ]
+//        newMessage: "",
       }
     },
     methods: {
-      addMessage: function () {
-        let task = this.newMessage.trim();
-        if (task) {
-          this.tasks.unshift({id: nextMessageId++,text: task});
-          this.newMessage = "";
-        }
-      },
-      removeTask: function (task) {
-        let index = this.tasks.indexOf(task);
-        this.tasks.splice(index, 1);
-      },
-      clearList: function () {
-        this.tasks = [];
-      }
+//      removeTask: function (task) {
+//        let index = this.tasks.indexOf(task);
+//        this.tasks.splice(index, 1);
+//      },
+//      clearList: function () {
+//        this.tasks = [];
+//      }
     }
   }
 </script>

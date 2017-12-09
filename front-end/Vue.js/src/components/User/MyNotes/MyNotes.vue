@@ -1,68 +1,27 @@
 <template>
   <div class="container-fluid">
     <UserHeader></UserHeader>
-    <div class="user-photos">
+    <div class="user-marks">
       <User></User>
-      <div class="photos">
-        <h2>{{title}}</h2>
-        <div class="photo-list" v-for="item in photoItem">
-          <p class="text-left">{{item.title}}</p>
-          <textarea class="form-control" rows="3"></textarea>
-          <div class="comments-btn">
-            <button class="btn btn-primary">Add Comment</button>
-            <button class="btn btn-danger">Delete</button>
+      <div class="marks">
+        <form class="form-inline search">
+          <div class="form-group">
+            <input type="text" v-model="searchQuery" class="form-control" id="searchFriend" placeholder="Search marks name" size="70">
           </div>
-        </div>
+        </form>
 
       <div class="photo navbar-right">
-        <h3>Your photo on the marks</h3>
-
+        <h3>All your marks</h3>
         <!-- list with photo -->
         <div class="photo_list">
-          <div class="media list-inline">
-            <a href="#" title="Hide comments" class="pull-right" data-toggle="popover" data-placement="bottom" data>
-              <span class="glyphicon glyphicon-option-horizontal"></span>
-            </a>
-            <div class="media-left">
-              <img src="../../../assets/img/4_b.jpg" class="media-object" style="width:100px">
-            </div>
-            <div class="media-body">
-              <h5 class="media-heading text-left">Eiffel Tower in Paris on the street Radicul 16</h5>
-              <form>
-                <div class="input-group">
-                  <textarea type="email" class="form-control"  placeholder="add comment" name="email"></textarea>
-                </div>
-              </form>
-              <div class="btn-group pull-right">
-                <button type="button" class="btn btn-primary">Add comment</button>
-                <button type="button" class="btn btn-primary">Delete</button>
-              </div>
-            </div>
-          </div>
-        </div>
+          <NotesMarker v-for="(marker, index) in filteredMarkers"
+                v-bind:key="marker.id"
+                v-bind:date="new Date(marker.dateTime).toLocaleString()"
+                v-bind:name="marker.name"
+                v-bind:description="marker.description"
+                v-on:remove="deleteMarker(marker.id, index)"
+          ></NotesMarker>
 
-        <!-- list with photo -->
-        <div class="photo_list">
-          <div class="media list-inline">
-            <a href="#" title="Hide comments" class="pull-right" data-toggle="popover" data-placement="bottom" data>
-              <span class="glyphicon glyphicon-option-horizontal"></span>
-            </a>
-            <div class="media-left">
-              <img src="../../../assets/img/4_b.jpg" class="media-object" style="width:100px">
-            </div>
-            <div class="media-body">
-              <h5 class="media-heading text-left">Eiffel Tower in Paris on the street Radicul 16</h5>
-              <form>
-                <div class="input-group">
-                  <textarea type="email" class="form-control"  placeholder="add comment" name="email"></textarea>
-                </div>
-              </form>
-              <div class="btn-group pull-right">
-                <button type="button" class="btn btn-primary">Add comment</button>
-                <button type="button" class="btn btn-primary">Delete</button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -74,22 +33,68 @@
 <script>
   import User from '../User';
   import UserHeader from '../../Header/UserHeader.vue';
+  import NotesMarker from './NotesMarker.vue';
   export default {
-		data() {
-//			return {
-////				title: 'Your photo on the marks',
-////				photoItem: [
-////					{
-////						title: 'Eiffel Tower in Paris on the street Radicul 16'
-////					},
-////					{
-////						title: 'House with my dream on the Rococo street'
-////					}
-////				]
-//			}
-		},
+    data() {
+      return {
+        markers: [],
+        searchQuery: '',
+      }
+    },
+    computed: {    //вычисляемая переменная поиск каждой введенной буквы
+      filteredMarkers: function () {
+        let self = this;
+        return this.markers.filter(function (marker) {
+          let filterName = marker.name.toLowerCase();
+          let searchQuery = self.searchQuery.toLowerCase();
+          return filterName.indexOf(searchQuery) !== -1;
+        });
+      },
+    },
+    mounted : function() {
+      this.getmarkers('mymarkers');
+    },
+    methods: {
+      getmarkers(access) {
+        this.$http.get('https://rocky-retreat-50096.herokuapp.com/api/' + access, // запрос на чтение маркеров
+          {headers: {'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+          .then(function(response){
+            console.log(response);
+            let self = this;
+            this.login_msg = false; //если логин или пароль неверно выпадает ошибка
+            this.loading = true;
+            self.markers = [];
+            response.body.forEach(function(value, key) { // цикл для отображения маркеров на карте, все маркеры добавляются в массив this.markers
+              value.position = {
+                lat: value.lat,
+                lng: value.lng
+              };
+              self.markers.push(value);
+            });
+            self.markers.sort(function (element) {
+              return element.dateTime;
+            });
+          }, function (error) {
+            this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
+            this.markers = [];
+            console.log(error);
+          });
+      },
+      deleteMarker(id, index){
+        this.$http.delete('https://rocky-retreat-50096.herokuapp.com/api/marker/' + id, // запрос на чтение маркеров
+          {headers: {'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+          .then(function(response){
+            console.log(response);
+            this.markers.splice(index, 1);
+          }, function (error) {
+            console.log(error);
+          });
+      }
+    },
 		components: {
-		    User, UserHeader
+		    User, UserHeader, NotesMarker
 		}
 	}
 </script>
@@ -98,7 +103,7 @@
 	.container-fluid {
 		padding: 0;
 	}
-	.user-photos {
+	.user-marks {
 		display: -webkit-flex;
 		display: -moz-flex;
 		display: -ms-flex;
@@ -108,13 +113,16 @@
 		background-color: #f0fff0;
 		padding-top: 20px;
 	}
-	.photos {
+	.marks {
 		width: 80%;
 		border: 1px solid #4267b2;
     border-radius: 5px;
 		padding: 0 100px;
 		background-color: #fff;
 	}
+  .search {
+    margin: 30px 0 50px 0;
+  }
 	h2 {
 		margin-bottom: 50px;
 	}

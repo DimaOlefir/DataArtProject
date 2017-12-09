@@ -6,7 +6,6 @@
 			<div class="my-page">
         <UserMap></UserMap>
         <PhotosBlock></PhotosBlock>
-        <Comments></Comments>
 			</div>
 		</div>
 	</div>
@@ -17,7 +16,6 @@
   import LeftMenu from './LeftMenu.vue';
   import UserMap from './UserMap.vue';
 	import PhotosBlock from './PhotosBlock.vue';
-	import Comments from './Comments.vue';
 	export default {
 	 	data() {
 	 		return {
@@ -29,7 +27,7 @@
       }
     },
 	 	components: {
-      UserHeader, LeftMenu, UserMap, PhotosBlock, Comments
+      UserHeader, LeftMenu, UserMap, PhotosBlock
 	 	}
 	}
 </script>

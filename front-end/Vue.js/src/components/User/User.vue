@@ -2,7 +2,7 @@
   <div class="user-info">
     <div class="jumbotron">
       <span class="glyphicon glyphicon-user"></span>
-      <h5>John Doe</h5>
+      <h5>{{firstName}} {{lastName}}</h5>
     </div>
     <div class="menu-list text-left">
       <router-link  to="/mypage">
@@ -27,7 +27,30 @@
 
 <script>
 	export default {
+    data() {
+      return {
+        firstName: "",
+        lastName: "",
+        id: ""
+      }
+    },
+    created: function () {
+      this.$http.get('https://rocky-retreat-50096.herokuapp.com/api/user',
+        {headers: {'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+        .then(function(response){
+          this.login_msg = false; //если логин или пароль неверно выпадает ошибка
+          this.loading = true;
+          console.log(response);
+          this.firstName = response.body.firstName;
+          this.lastName = response.body.lastName;
+          this.id = response.body.id;
 
+        }, function (error) {
+          this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
+          console.log(error);
+        });
+    },
 	}
 </script>
 

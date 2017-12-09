@@ -3,9 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="13ed1703-eaa3-4d55-9f42-d9bfffa48ab2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Friends/Friends.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Friends/Friends.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/Comments.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/Comments.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/LeftMenu.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/LeftMenu.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/MyPage.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/MyPage.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/User.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/User.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,67 +21,72 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Comments.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/Comments.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2533">
+              <caret line="149" column="0" lean-forward="true" selection-start-line="44" selection-start-column="2" selection-end-line="149" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserMap.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="323" column="42" lean-forward="false" selection-start-line="323" selection-start-column="42" selection-end-line="323" selection-end-column="42" />
+              <folding>
+                <element signature="n#style#0;n#GmapMap#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#2622#2629#1" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#5631#5680#0" expanded="true" />
+                <element signature="e#6942#7972#0" expanded="false" />
+                <element signature="e#7996#8032#0" expanded="false" />
+                <element signature="e#8056#8321#0" expanded="false" />
+                <element signature="e#8353#8787#0" expanded="false" />
+                <element signature="e#8845#9190#0" expanded="false" />
+                <element signature="e#9222#9367#0" expanded="false" />
+                <element signature="e#9403#9632#0" expanded="false" />
+                <element signature="e#9663#10817#0" expanded="false" />
+                <element signature="e#10854#11460#0" expanded="false" />
+                <element signature="e#11566#12391#0" expanded="false" />
+                <element signature="e#12435#12930#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MyNotes.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
-              <folding>
-                <element signature="e#2941#2968#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SignUp.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/Header/SignUp.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1683">
-              <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserMap.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="189" column="35" lean-forward="true" selection-start-line="188" selection-start-column="12" selection-end-line="189" selection-end-column="35" />
-              <folding>
-                <element signature="n#style#0;n#input#1;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Settings.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MessagesTestIn.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/Map/Map.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="69" column="6" lean-forward="false" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
+              <caret line="84" column="8" lean-forward="false" selection-start-line="84" selection-start-column="8" selection-end-line="92" selection-end-column="13" />
               <folding>
-                <element signature="e#740#789#0" expanded="true" />
+                <element signature="e#1007#1034#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NotesMarker.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/NotesMarker.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-68">
+              <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MyPage.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/MyPage.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="29" column="48" lean-forward="false" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+              <folding>
+                <element signature="e#266#319#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -109,10 +118,22 @@
       <find>Authorization</find>
       <find>loca</find>
       <find>app.use</find>
+      <find>John Doe</find>
+      <find>LeftMenu</find>
+      <find>markers</find>
+      <find>this.markers</find>
+      <find>user-page</find>
+      <find>Mark</find>
+      <find>Marker</find>
+      <find>photos</find>
+      <find>addMessage</find>
+      <find>friend</find>
+      <find>deleteComment</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
       <replace>openModal</replace>
+      <replace>NotesMarker</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -121,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/front-end/avatar.php" />
         <option value="$PROJECT_DIR$/front-end/my-marks.js" />
         <option value="$PROJECT_DIR$/front-end/marks.js" />
         <option value="$PROJECT_DIR$/front-end/css/marks.js" />
@@ -146,32 +166,33 @@
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserHeader.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/router/index.js" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/App.vue" />
-        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/User.vue" />
-        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/LeftMenu.vue" />
         <option value="$PROJECT_DIR$/front-end/.gitignore" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/index.html" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/Map/Map.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Users.vue" />
         <option value="$PROJECT_DIR$/front-end/comments-style.css" />
-        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/Comments.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/Messages.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/Pagination.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/.gitignore" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/Header/Header.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/Main.vue" />
-        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/MyPage.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/PhotosBlock.vue" />
         <option value="$PROJECT_DIR$/front-end/message.html" />
         <option value="$PROJECT_DIR$/front-end/css/style.css" />
-        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Friends/Friends.vue" />
         <option value="$PROJECT_DIR$/front-end/my-notes.html" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/Header/UserHeader.vue" />
-        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/Header/SignUp.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/Header/Login.vue" />
-        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue" />
+        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/User.vue" />
+        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/LeftMenu.vue" />
+        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/Mark.vue" />
+        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Friends/Friends.vue" />
+        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue" />
+        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/MyPage.vue" />
+        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/Comments.vue" />
+        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue" />
       </list>
     </option>
   </component>
@@ -192,7 +213,7 @@
     <handled-path value="$PROJECT_DIR$/front-end/Vue.js/node_modules" />
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="295" />
     <option name="y" value="157" />
     <option name="width" value="934" />
@@ -216,7 +237,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -257,6 +277,24 @@
               <item name="Vue.js" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Header" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="_DataArt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="_DataArt" type="462c0819:PsiDirectoryNode" />
+              <item name="front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="Vue.js" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Map" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="_DataArt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="_DataArt" type="462c0819:PsiDirectoryNode" />
+              <item name="front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="Vue.js" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -267,7 +305,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
-              <item name="Messages" type="462c0819:PsiDirectoryNode" />
+              <item name="Friends" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="_DataArt" type="b2602c69:ProjectViewProjectNode" />
@@ -277,13 +315,33 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
-              <item name="Messages" type="462c0819:PsiDirectoryNode" />
-              <item name="MessagesTest" type="462c0819:PsiDirectoryNode" />
+              <item name="MyNotes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="_DataArt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="_DataArt" type="462c0819:PsiDirectoryNode" />
+              <item name="front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="Vue.js" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="MyPage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="_DataArt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="_DataArt" type="462c0819:PsiDirectoryNode" />
+              <item name="front-end" type="462c0819:PsiDirectoryNode" />
+              <item name="Vue.js" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="Settings" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -296,6 +354,9 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\viacheslav\Desktop\_DataArt\front-end\Vue.js\src\components\User\MyNotes" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\viacheslav\Desktop\_DataArt\front-end\Vue.js\static" />
       <recent name="C:\Users\viacheslav\Desktop\_DataArt\front-end\Vue.js\src\components\Header" />
@@ -371,18 +432,21 @@
       <workItem from="1512668270311" duration="9642000" />
       <workItem from="1512711750630" duration="1296000" />
       <workItem from="1512750648454" duration="5351000" />
+      <workItem from="1512830927797" duration="23068000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326425000" />
+    <option name="totallyTimeSpent" value="349493000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26934522" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26860118" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -394,7 +458,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -424,19 +487,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue</url>
-          <line>136</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="6" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/front-end/photos.html" />
     <entry file="file://$PROJECT_DIR$/DataArt_project/hello.vue" />
     <entry file="file://$PROJECT_DIR$/DataArt_project/index.html" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp" />
@@ -514,13 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/LeftMenu.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="83" column="2" lean-forward="false" selection-start-line="83" selection-start-column="2" selection-end-line="83" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
@@ -550,13 +598,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end/comments-style.css" />
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/Comments.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="130" column="26" lean-forward="false" selection-start-line="130" selection-start-column="26" selection-end-line="130" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/Pagination.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -575,13 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/User.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="58" column="3" lean-forward="true" selection-start-line="56" selection-start-column="2" selection-end-line="58" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -620,13 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/MyPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/friends.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -655,13 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Friends/Friends.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="120" column="23" lean-forward="true" selection-start-line="120" selection-start-column="4" selection-end-line="120" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -673,33 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/Header/UserHeader.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="8" lean-forward="false" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
-          <folding>
-            <element signature="e#2941#2968#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/Map/Map.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="69" column="6" lean-forward="false" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
-          <folding>
-            <element signature="e#740#789#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -717,37 +710,128 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/Header/UserHeader.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="57" selection-end-line="16" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/Header/SignUp.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
+        <state relative-caret-position="1088">
           <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue">
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/User.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="68">
+          <caret line="4" column="41" lean-forward="false" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue">
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/Map/Map.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="189" column="35" lean-forward="true" selection-start-line="188" selection-start-column="12" selection-end-line="189" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#input#1;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="1156">
+          <caret line="69" column="6" lean-forward="false" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+        <state relative-caret-position="68">
+          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/LeftMenu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="41" column="6" lean-forward="true" selection-start-line="36" selection-start-column="4" selection-end-line="41" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Friends/Friends.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="89" column="26" lean-forward="true" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/MyPage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="48" lean-forward="false" selection-start-line="29" selection-start-column="48" selection-end-line="29" selection-end-column="48" />
+          <folding>
+            <element signature="e#266#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/Comments.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2533">
+          <caret line="149" column="0" lean-forward="true" selection-start-line="44" selection-start-column="2" selection-end-line="149" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/NotesMarker.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="23" column="43" lean-forward="true" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="84" column="8" lean-forward="false" selection-start-line="84" selection-start-column="8" selection-end-line="92" selection-end-column="13" />
+          <folding>
+            <element signature="e#1007#1034#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="323" column="42" lean-forward="false" selection-start-line="323" selection-start-column="42" selection-end-line="323" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#GmapMap#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#2622#2629#1" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#5631#5680#0" expanded="true" />
+            <element signature="e#6942#7972#0" expanded="false" />
+            <element signature="e#7996#8032#0" expanded="false" />
+            <element signature="e#8056#8321#0" expanded="false" />
+            <element signature="e#8353#8787#0" expanded="false" />
+            <element signature="e#8845#9190#0" expanded="false" />
+            <element signature="e#9222#9367#0" expanded="false" />
+            <element signature="e#9403#9632#0" expanded="false" />
+            <element signature="e#9663#10817#0" expanded="false" />
+            <element signature="e#10854#11460#0" expanded="false" />
+            <element signature="e#11566#12391#0" expanded="false" />
+            <element signature="e#12435#12930#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

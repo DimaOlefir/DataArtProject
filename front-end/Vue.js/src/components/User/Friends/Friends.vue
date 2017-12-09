@@ -150,9 +150,7 @@
   .form-inline {
     margin-bottom: 50px;
   }
-  .btn.btn-search {
-    padding: 6px 45px;
-  }
+
   .friend {
     display: -webkit-flex;
     display: -moz-flex;

@@ -2,7 +2,7 @@
   <div class="user-info">
     <div class="jumbotron">
       <span class="glyphicon glyphicon-user"></span>
-      <h5>John Doe</h5>
+      <h5>{{firstName}} {{lastName}}</h5>
     </div>
     <div class="menu-list text-left">
       <router-link  to="/mypage">
@@ -21,29 +21,41 @@
         <a class="list-group-item" href="#"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i>Settings</a>
       </router-link>
     </div>
-
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Privacy level
-        <span class="caret"></span></button>
-      <form class="dropdown-menu">
-        <div class="checkbox text-left">
-          <label><input type="checkbox" value="">Privat</label>
-        </div>
-        <div class="checkbox text-left">
-          <label><input type="checkbox" value="">Only friends</label>
-        </div>
-        <div class="checkbox text-left">
-          <label><input type="checkbox" value="" disabled>Public</label>
-        </div>
-      </form>
-    </div>
     <h5 class="footer_logo">SiteMap@2017</h5>
   </div>
 </template>
 
 <script>
   export default {
-
+    data() {
+      return {
+        firstName: "",
+        lastName: "",
+        id: "",
+      }
+    },
+    watch: {
+      access: function(access)
+      {
+        console.log(access);
+      }
+    },
+    mounted: function () {
+      this.$http.get('https://rocky-retreat-50096.herokuapp.com/api/user',
+        {headers: {'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+        .then(function(response){
+          this.login_msg = false; //если логин или пароль неверно выпадает ошибка
+          this.loading = true;
+          console.log(response);
+          this.firstName = response.body.firstName;
+          this.lastName = response.body.lastName;
+          this.id = response.body.id;
+        }, function (error) {
+          this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
+          console.log(error);
+        });
+    },
   }
 </script>
 
