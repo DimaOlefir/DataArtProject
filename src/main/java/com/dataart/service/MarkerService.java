@@ -17,6 +17,8 @@ public interface MarkerService {
 
     void deleteMarkerById (long id);
 
+    List <Marker> getAllPublicMarkers();
+
     List <Marker> getAllMarkersByUserId(long id);
 
     List <Marker> getMarkersForFriendsByUserId(long id);

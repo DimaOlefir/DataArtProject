@@ -15,4 +15,7 @@ public interface MarkerRepository extends JpaRepository<Marker, Long> {
 
     @Query("SELECT m FROM com.dataart.model.Marker m WHERE userId = ?1")
     List<Marker> getMarkersBuUserId(long id);
+
+    @Query("SELECT m FROM com.dataart.model.Marker m WHERE access = ?1 OR access = ?2")
+    List<Marker> getMarkersBuUserId(String allusers, String friends);
 }

@@ -43,7 +43,7 @@ public class MarkerController extends BaseController{
 
     @RequestMapping(value = "/marker", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Void> createMarker(@RequestBody MarkerDTO markerDTO) {
+    public ResponseEntity<Marker> createMarker(@RequestBody MarkerDTO markerDTO) {
 
         User user = userService.findById(getUserId());
         AccessMarker accessMarker = AccessMarker.values()[markerDTO.getAccess()];
@@ -61,7 +61,17 @@ public class MarkerController extends BaseController{
 
         //HttpHeaders headers = new HttpHeaders();
         //return new ResponseEntity<>(headers, HttpStatus.OK);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(marker,HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/markers", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Marker>> getAllUsersPublicMarkers() {
+        List<Marker> markers = markerService.getAllPublicMarkers();
+        if (markers == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(markers, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/mymarkers", method = RequestMethod.GET)

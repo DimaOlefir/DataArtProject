@@ -45,6 +45,12 @@ public class MarkerServiceImpl implements MarkerService{
     }
 
     @Override
+    public List<Marker> getAllPublicMarkers() {
+        //System.out.println("------------------- AccessMarker.ALLUSERS.toString() ----" + AccessMarker.ALLUSERS.toString());
+        return markerRepository.getMarkersBuUserId(AccessMarker.ALLUSERS.toString(),AccessMarker.FRIENDS.toString());
+    }
+
+    @Override
     public List<Marker> getAllMarkersByUserId(long id) {
         /*List <Marker> markers = markerRepository.getMarkersBuUserId(id)
                 .stream()
