@@ -29,10 +29,9 @@
     //   }
     // },
     created: function () {
-      let data = {}
+
       this.$http.get('https://rocky-retreat-50096.herokuapp.com/api/inmessage',
-        JSON.stringify(data),
-        {headers: 
+        {headers:
           {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('token')

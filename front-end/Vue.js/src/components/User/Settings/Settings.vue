@@ -103,18 +103,39 @@ import UserHeader from '../../Header/UserHeader.vue';
             sex:"",
             city:"",
             birthday:"",
+            id: ""
           }
         },
+    created: function () {
+      this.$http.get('https://rocky-retreat-50096.herokuapp.com/api/user',
+        {headers: {'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+        .then(function(response){
+          this.login_msg = false; //если логин или пароль неверно выпадает ошибка
+          this.loading = true;
+          console.log(response);
+          this.firstName = response.body.firstName;
+          this.lastName = response.body.lastName;
+          this.login = response.body.login;
+          this.birthDate = response.body.birthDate;
+          this.sex = response.body.sex;
+          this.id = response.body.id;
+
+        }, function (error) {
+          this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
+          console.log(error);
+        });
+    },
         methods: {
           save_settings: function (event) {
             event.preventDefault();
             let reason = "";
 //            reason += this.validate();
-            reason += this.validatePassword();
+//            reason += this.validatePassword();
             reason += this.validateName();
             reason += this.validateSurame();
             reason += this.validateLogin();
-            reason += this.validateCity();
+//            reason += this.validateCity();
 
 
             if (reason.length > 0) {
@@ -126,18 +147,21 @@ import UserHeader from '../../Header/UserHeader.vue';
               console.log(1);
               let data = {
                 firstName : this.firstName,
+                about : this.firstName,
                 lastName : this.lastName,
                 login : this.login,
-                password : this.password,
+//                password : this.password,
                 email : this.email,
-                phone : this.phone,
+//                phone : this.phone,
                 sex: this.sex,
-                city: this.city,
-                birthday:this.birthday
+//                city: this.city,
+                birthday: this.birthday,
+//                id: this.id
 
               };
               this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/user',
-                JSON.stringify(data), {headers: {'Content-Type': 'application/json'}})
+                JSON.stringify(data), {headers: {'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + localStorage.getItem('token')}})
                 .then(function(response){
                   this.login_msg = false; //если логин или пароль неверно выпадает ошибка
                   this.loading = true;

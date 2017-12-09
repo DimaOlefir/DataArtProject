@@ -180,6 +180,9 @@
           lng : +this.newMarkerLng,
           dateTime: new Date()
         };
+        console.log(data);
+        console.log('Bearer ' + localStorage.getItem('token'));
+
         this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/marker',
           JSON.stringify(data), {headers: {'Content-Type': 'application/json',
 //            'Origin': 'http://localhost:8080',

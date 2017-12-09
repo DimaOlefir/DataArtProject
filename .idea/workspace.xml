@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="13ed1703-eaa3-4d55-9f42-d9bfffa48ab2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/Header/SignUp.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/Header/SignUp.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyNotes/MyNotes.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue" afterPath="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue" />
     </list>
@@ -33,7 +32,7 @@
       <file leaf-file-name="SignUp.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/Header/SignUp.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="1683">
               <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
               <folding />
             </state>
@@ -43,8 +42,8 @@
       <file leaf-file-name="UserMap.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="183" column="78" lean-forward="false" selection-start-line="183" selection-start-column="78" selection-end-line="183" selection-end-column="78" />
+            <state relative-caret-position="221">
+              <caret line="189" column="35" lean-forward="true" selection-start-line="188" selection-start-column="12" selection-end-line="189" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#input#1;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
@@ -55,8 +54,18 @@
       <file leaf-file-name="Settings.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+            <state relative-caret-position="238">
+              <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MessagesTestIn.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -112,7 +121,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/front-end/js/index_map.js" />
         <option value="$PROJECT_DIR$/front-end/avatar.php" />
         <option value="$PROJECT_DIR$/front-end/my-marks.js" />
         <option value="$PROJECT_DIR$/front-end/marks.js" />
@@ -162,6 +170,7 @@
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/Header/SignUp.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/Header/Login.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue" />
+        <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue" />
         <option value="$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue" />
       </list>
     </option>
@@ -183,7 +192,7 @@
     <handled-path value="$PROJECT_DIR$/front-end/Vue.js/node_modules" />
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="295" />
     <option name="y" value="157" />
     <option name="width" value="934" />
@@ -207,6 +216,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -247,24 +257,6 @@
               <item name="Vue.js" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Header" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="_DataArt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="_DataArt" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="Vue.js" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="Map" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="_DataArt" type="b2602c69:ProjectViewProjectNode" />
-              <item name="_DataArt" type="462c0819:PsiDirectoryNode" />
-              <item name="front-end" type="462c0819:PsiDirectoryNode" />
-              <item name="Vue.js" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -275,7 +267,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
-              <item name="MyPage" type="462c0819:PsiDirectoryNode" />
+              <item name="Messages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="_DataArt" type="b2602c69:ProjectViewProjectNode" />
@@ -285,13 +277,13 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="User" type="462c0819:PsiDirectoryNode" />
-              <item name="Settings" type="462c0819:PsiDirectoryNode" />
+              <item name="Messages" type="462c0819:PsiDirectoryNode" />
+              <item name="MessagesTest" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -377,18 +369,18 @@
       <workItem from="1512591430827" duration="3574000" />
       <workItem from="1512649142289" duration="758000" />
       <workItem from="1512668270311" duration="9642000" />
-      <workItem from="1512711750630" duration="807000" />
+      <workItem from="1512711750630" duration="1296000" />
+      <workItem from="1512750648454" duration="5351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="320585000" />
+    <option name="totallyTimeSpent" value="326425000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22098215" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26934522" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -444,7 +436,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DataArt_project/vuee.js" />
     <entry file="file://$PROJECT_DIR$/front-end/photos.html" />
     <entry file="file://$PROJECT_DIR$/DataArt_project/hello.vue" />
     <entry file="file://$PROJECT_DIR$/DataArt_project/index.html" />
@@ -728,16 +719,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/Header/SignUp.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="1683">
           <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Messages/MessagesTest/MessagesTestIn.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/MyPage/UserMap.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="183" column="78" lean-forward="false" selection-start-line="183" selection-start-column="78" selection-end-line="183" selection-end-column="78" />
+        <state relative-caret-position="221">
+          <caret line="189" column="35" lean-forward="true" selection-start-line="188" selection-start-column="12" selection-end-line="189" selection-end-column="35" />
           <folding>
             <element signature="n#style#0;n#input#1;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
@@ -746,8 +745,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end/Vue.js/src/components/User/Settings/Settings.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        <state relative-caret-position="238">
+          <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
           <folding />
         </state>
       </provider>
