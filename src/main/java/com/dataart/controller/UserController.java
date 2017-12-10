@@ -12,14 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -154,7 +149,7 @@ public class UserController extends BaseController{
     //TODO return token in body or not return (c) Shekspir
     //@RequestMapping(value = "/user/password/{id}", method = RequestMethod.POST)
     @RequestMapping(value = "/user/password", method = RequestMethod.POST)
-    public ResponseEntity <Void> changePassword( @RequestBody PasswordDTO passwordDTO){
+    public ResponseEntity <Void> changePassword(@RequestBody PasswordDTO passwordDTO){
         logger.debug("...change password user with Id:" + getUserId());
 
         User existUser = userService.findById(getUserId());
@@ -162,11 +157,11 @@ public class UserController extends BaseController{
             return new ResponseEntity <>(HttpStatus.NOT_FOUND);
         }
 
-        if(!bCryptPasswordEncoder.matches(passwordDTO.getPaswwordOld(),existUser.getPassword())){
+        if(!bCryptPasswordEncoder.matches(passwordDTO.getPasswordOld(),existUser.getPassword())){
             return new ResponseEntity <>(HttpStatus.CONFLICT);
         }
 
-        existUser.setPassword(passwordDTO.getPaswwordNew());
+        existUser.setPassword(passwordDTO.getPasswordNew());
 
         userService.changePassword(existUser);
 

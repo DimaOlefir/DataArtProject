@@ -9,29 +9,32 @@ public class PasswordDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String paswwordOld;
+    private String passwordOld;
 
-    private String paswwordNew;
+    private String passwordNew;
 
-    public PasswordDTO(String paswwordOld, String paswwordNew) {
-        this.paswwordOld = paswwordOld;
-        this.paswwordNew = paswwordNew;
+    public PasswordDTO() {
     }
 
-    public String getPaswwordOld() {
-        return paswwordOld;
+    public PasswordDTO(String passwordOld, String passwordNew) {
+        this.passwordOld = passwordOld;
+        this.passwordNew = passwordNew;
     }
 
-    public void setPaswwordOld(String paswwordOld) {
-        this.paswwordOld = paswwordOld;
+    public String getPasswordOld() {
+        return passwordOld;
     }
 
-    public String getPaswwordNew() {
-        return paswwordNew;
+    public void setPasswordOld(String passwordOld) {
+        this.passwordOld = passwordOld;
     }
 
-    public void setPaswwordNew(String paswwordNew) {
-        this.paswwordNew = paswwordNew;
+    public String getPasswordNew() {
+        return passwordNew;
+    }
+
+    public void setPasswordNew(String passwordNew) {
+        this.passwordNew = passwordNew;
     }
 
     @Override
@@ -41,22 +44,22 @@ public class PasswordDTO implements Serializable {
 
         PasswordDTO that = (PasswordDTO) o;
 
-        if (paswwordOld != null ? !paswwordOld.equals(that.paswwordOld) : that.paswwordOld != null) return false;
-        return paswwordNew != null ? paswwordNew.equals(that.paswwordNew) : that.paswwordNew == null;
+        if (passwordOld != null ? !passwordOld.equals(that.passwordOld) : that.passwordOld != null) return false;
+        return passwordNew != null ? passwordNew.equals(that.passwordNew) : that.passwordNew == null;
     }
 
     @Override
     public int hashCode() {
-        int result = paswwordOld != null ? paswwordOld.hashCode() : 0;
-        result = 31 * result + (paswwordNew != null ? paswwordNew.hashCode() : 0);
+        int result = passwordOld != null ? passwordOld.hashCode() : 0;
+        result = 31 * result + (passwordNew != null ? passwordNew.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "PasswordDTO{" +
-                "paswwordOld='" + paswwordOld + '\'' +
-                ", paswwordNew='" + paswwordNew + '\'' +
+                "passwordOld='" + passwordOld + '\'' +
+                ", passwordNew='" + passwordNew + '\'' +
                 '}';
     }
 }
