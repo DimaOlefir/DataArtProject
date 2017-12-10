@@ -2,7 +2,7 @@
 
   <div>
     <!--PRIVACY LEVEL-->
-    <div class="dropdown">
+    <div class="dropdown privacy-level">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Privacy level
         <span class="caret"></span></button>
       <form class="dropdown-menu">
@@ -13,7 +13,7 @@
         <div class="radio">
           <label><input type="radio" name="optradio" value="1" v-model="accessSelected">Only friends</label>
         </div>
-        <div class="radio disabled">
+        <div class="radio">
           <label><input type="radio" name="optradio" value="2" v-model="accessSelected">Public</label>
         </div>
       </form>
@@ -29,11 +29,7 @@
     </label>
     <br/>
 
-    <div class="add-marker">
-      <!--<button v-on:click="activateAddMarker">-->
-      <!--<i class="fa fa-map-marker" aria-hidden="true"></i>Add new marker-->
-      <!--</button>-->
-    </div>
+
     <!--map for index page-->
     <GmapMap style="width: 100%; height: 100vh; margin-top: -1.5%" :zoom="3" :center="{lat:currentLocation.lat, lng:currentLocation.lng}" v-on:click="openModal">
       <!--v-on:click="openModal" data-toggle="modal"  data-target="#myModal">-->
@@ -97,11 +93,25 @@
       </div>
     </div>
 
+    <!-- MAIN (Center website) -->
+    <div class="photo-block" v-bind:class="{ hidden : !clickedMarkerId}">
+      <h3 class="text-left">Photo attached to this place</h3>
+      <p class="text-left">You can leave a comment on this photo</p>
+      <!-- Portfolio Gallery Grid -->
+      <div class="row">
+        <PhotosBlock  v-for="(photo, index) in photos"
+                      v-bind:key="photo.id"
+                      v-bind:photoLink="photo.photoLink">
+        </PhotosBlock>
+      </div>
+    </div>
+
     <div class="container-fluid">
-      <div class="messages">
+      <div class="messages" v-bind:class="{ hidden : !clickedMarkerId}">
 
         <div class="panel popup-messages-footer">
           <textarea id="status_message" v-model="newMessage" @keyup.enter="addMessage" placeholder="Add comments" class="text-input" rows="10" cols="40" name="message"></textarea>
+          <button class="btn-primary" v-on:click="addMessage">Add comments</button>
           <!--<button class="btn btn-primary btn-clear" @click="clearList">Clear comments</button>-->
         </div>
 
@@ -129,6 +139,7 @@
 <script>
   import * as VueGoogleMaps from 'vue2-google-maps'
   import Comments from './Comments.vue';
+  import PhotosBlock from './PhotosBlock.vue';
   import Vue from 'vue';
   Vue.use(VueGoogleMaps, {
     load: {
@@ -156,7 +167,8 @@
         accessSelected: 2,
         clickedMarkerId: null,
         newMessage: "",
-        comments: []
+        comments: [],
+        photos:[]
       }
     },
     watch: {
@@ -166,12 +178,12 @@
         access = +access;
         if (access === 0) {this.getmarkers('mymarkers')}
         else if (access === 1) {this.getmarkers('friendsmarkers')}
-        else if (access === 2) {this.getmarkers('publicmarkers')}
+        else if (access === 2) {this.getmarkers('markers')}
       }
     },
     mounted : function() {
       this.geolocation();
-      this.getmarkers('publicmarkers');
+      this.getmarkers('markers');
     },
     methods: {
       getmarkers(access) {
@@ -269,12 +281,12 @@
             this.login_msg = false; //если логин или пароль неверно выпадает ошибка
             this.loading = true;
             console.log(response);
-            this.markers.push({
-              position: {
-                lat: this.newMarkerLat,
-                lng: this.newMarkerLng
-              },
-            });
+            let marker = response.body;
+            marker.position = {
+              lat: marker.lat,
+              lng: marker.lng
+            };
+            this.markers.push(marker);
             this.closeModal();
           }, function (error) {
             this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
@@ -296,8 +308,26 @@
           }, function (error) {
             console.log(error);
           });
+
+//        для отправки запроса по id маркера для загрузки фото
+        this.$http.get('https://rocky-retreat-50096.herokuapp.com/api/marker/' + id + '/photos', // запрос на чтение маркеров
+          {headers: {'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+          .then(function(response){
+            console.log(response);
+            this.photos = response.body;
+          }, function (error) {
+            console.log(error);
+            this.photos = [
+              {id: 1, photoLink: "http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-xlarge.jpg"},
+              {id: 2, photoLink: "../../../../assets/img/1_b.jpg"},
+              {id: 3, photoLink: "../../../../assets/img/1_b.jpg"},
+              {id: 4, photoLink: "../../../../assets/img/1_b.jpg"},
+              {id: 5, photoLink: "../../../../assets/img/1_b.jpg"},
+            ]
+          });
       },
-//      clearList: function () {
+//      clearList: function () {    delete button all comments
 //        this.comments = [];
 //      },
       addMessage: function () {
@@ -322,9 +352,9 @@
         this.getMarkerData(this.clickedMarkerId);
       },
       deleteComment: function (id, index) {
+        console.log(id, localStorage.getItem('token'));
         this.$http.delete('https://rocky-retreat-50096.herokuapp.com/api/marker/comment', // запрос на чтение маркеров
-          JSON.stringify({commentId: id}),
-          {headers: {'Content-Type': 'application/json',
+          {body: JSON.stringify({commentId: +id}), headers: {'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + localStorage.getItem('token')}})
           .then(function(response){
             console.log(response);
@@ -335,7 +365,7 @@
       },
     },
     components: {
-      Comments,
+      Comments, PhotosBlock
     }
   }
 </script>
@@ -343,6 +373,22 @@
 
 
 <style scoped>
+
+  .privacy-level {
+    position: absolute;
+    margin: 1% 60%;
+    z-index: 9;
+  }
+  .dropdown form{
+    margin-left:2%;
+    padding: 4%}
+
+  .privacy-level button{
+    padding: 2.5% 10% 2.5% 12%;
+    font-size: 14px;
+    opacity: 0.7;
+    border: 1px solid #ffffff;
+  }
   /*modal window on page my_page */
   .map-search{
     position: absolute;
@@ -358,6 +404,7 @@
     border-radius: 5px;
     opacity: 0.9;
   }
+  .privacy-level button:hover,
   .map-search button:hover{
     background-color: cornflowerblue;
     opacity: 1;
@@ -370,29 +417,6 @@
     font-size: 18px;
     padding-right: 4%;
   }
-  /*.add-marker{*/
-  /*position: absolute;*/
-  /*margin:0 0 0 65%;*/
-  /*opacity: 0.8;*/
-  /*z-index: 9;*/
-  /*}*/
-  /*.add-marker button{*/
-  /*font-size: 14px;*/
-  /*width:140px;*/
-  /*height: 30px;*/
-  /*border: 1px solid #ffffff;*/
-  /*border-radius: 5px;*/
-  /*box-shadow: 3px 2px 25px #b87b90;*/
-  /*}*/
-  /*.add-marker button:hover{*/
-  /*background-color: cornflowerblue;*/
-  /*opacity: 1;*/
-  /*}*/
-  /*.add-marker button i {*/
-  /*color:red;*/
-  /*font-size: 18px;*/
-  /*padding-right: 4%;*/
-  /*}*/
   #myModal{
     margin-top: 2%;
     border-radius: 3px;

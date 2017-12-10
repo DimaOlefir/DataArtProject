@@ -5,7 +5,6 @@
       <LeftMenu></LeftMenu>
 			<div class="my-page">
         <UserMap></UserMap>
-        <PhotosBlock></PhotosBlock>
 			</div>
 		</div>
 	</div>
@@ -15,7 +14,6 @@
   import UserHeader from '../../Header/UserHeader.vue';
   import LeftMenu from './LeftMenu.vue';
   import UserMap from './UserMap.vue';
-	import PhotosBlock from './PhotosBlock.vue';
 	export default {
 	 	data() {
 	 		return {
@@ -27,7 +25,7 @@
       }
     },
 	 	components: {
-      UserHeader, LeftMenu, UserMap, PhotosBlock
+      UserHeader, LeftMenu, UserMap
 	 	}
 	}
 </script>
@@ -51,6 +49,6 @@
 		padding-top: 20px;
 	}
 	.my-page {
-		width: 80%;
+		width: 79%;
 	}
 </style>

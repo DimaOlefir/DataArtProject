@@ -1,54 +1,14 @@
 <template>
-
-  <!-- MAIN (Center website) -->
-  <div class="photo-block">
-    <h3 class="text-left">Photo attached to this place</h3>
-    <p class="text-left">You can leave a comment on this photo</p>
-    <!-- Portfolio Gallery Grid -->
-    <div class="row">
       <div class="column">
         <div class="content">
-          <img src="../../../assets/img/1_f.png" alt="Mountains">
-          <h4> place name </h4>
-          <p>Brief description of the place, brief description of the place, brief description of the place </p>
+          <img v-bind:src="photoLink" alt="Mountains">
         </div>
       </div>
-      <div class="column">
-        <div class="content">
-          <img src="../../../assets/img/1_b.jpg" alt="Lights">
-          <h4> place name </h4>
-          <p>Brief description of the place, brief description of the place, brief description of the place </p>
-        </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img src="../../../assets/img/1_s.jpg" alt="Nature">
-          <h4>place name </h4>
-          <p>Brief description of the place, brief description of the place, brief description of the place </p>
-        </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img src="../../../assets/img/2_f.jpg" alt="Mountains">
-          <h4> place name </h4>
-          <p>Brief description of the place, brief description of the place, brief description of the place </p>
-        </div>
-      </div>
-      <div class="column">
-        <div class="content">
-          <img src="../../../assets/img/2_b.jpg" alt="Nature">
-          <h4> place name </h4>
-          <p>Brief description of the place, brief description of the place, brief description of the place </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </template>
 
 <script>
   export default {
-
+    props: ['photoLink']
   }
 </script>
 

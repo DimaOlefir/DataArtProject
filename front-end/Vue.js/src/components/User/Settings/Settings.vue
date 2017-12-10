@@ -32,10 +32,11 @@
           </div>
 
 				  <div class="form-group">
-				    <label for="psw" class="col-sm-2 control-label">Password</label>
-				    <div class="col-sm-8">
-				      <input type="password" class="form-control" v-model="password" id="psw" placeholder="Your password">
-              <div  class="password-error"></div>
+				    <label class="col-sm-2 control-label">Password</label>
+				    <div class="col-sm-2">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Change password</button>
+				      <!--<input type="password" class="form-control" v-model="password" id="psw" placeholder="Your password">-->
+              <!--<div  class="password-error"></div>-->
 				    </div>
 				  </div>
 
@@ -43,8 +44,8 @@
 				    <label for="Sex" class="col-sm-2 control-label">Sex</label>
 				    <div class="col-sm-8">
 				    	<select class="form-control"  v-model="sex" id="sex">
-				    	  <option>male</option>
-				    	  <option>female</option>
+				    	  <option>MAN</option>
+				    	  <option>WOMAN</option>
 				    	</select>
 				    </div>
 				  </div>
@@ -57,19 +58,19 @@
 				  </div>
 
 				  <div class="form-group">
-				    <label for="City" class="col-sm-2 control-label">City</label>
+				    <label for="about" class="col-sm-2 control-label">About</label>
 				    <div class="col-sm-8">
-				      <input type="email" class="form-control " v-model="city" id="City" placeholder="City">
-              <div id="city-error"></div>
+				      <input type="email" class="form-control" v-model="about" id="about" placeholder="Pless enter information about yourself">
+              <div id="about-error"></div>
 				    </div>
 				  </div>
 
-				  <div class="form-group">
-				    <label for="phone" class="col-sm-2 control-label">Phone</label>
-				    <div class="col-sm-8">
-				    	<input type="tel" class="form-control" id="phone" v-model="phone" pattern="\(\d\d\d\) ?\d\d\d-\d\d-\d\d" placeholder="(###) ###-##-##"/>
-				    </div>
-				  </div>
+				  <!--<div class="form-group">-->
+				    <!--<label for="phone" class="col-sm-2 control-label">Phone</label>-->
+				    <!--<div class="col-sm-8">-->
+				    	<!--<input type="tel" class="form-control" id="phone" v-model="phone" pattern="\(\d\d\d\) ?\d\d\d-\d\d-\d\d" placeholder="(###) ###-##-##"/>-->
+				    <!--</div>-->
+				  <!--</div>-->
 
           <div class="form-group">
 				    <div class="col-sm-1 col-sm-offset-9 sign-in">
@@ -77,6 +78,37 @@
 				    </div>
 				  </div>
 				</form>
+
+        <!-- Modal for password -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Change password </h4>
+                <h5 v-bind:class="{hidden : passwordChanged}">Your password successfully changed</h5>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Existing password</label>
+                  <input type="password" class="form-control" v-model="passwordOld"  placeholder="Your password">
+                </div>
+                <div class="form-group">
+                  <label>New password</label>
+                  <input type="password" class="form-control psw" v-model="passwordNew" placeholder="Your password">
+                  <div  class="password-error"></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-default" v-on:click="changePassword">Send</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
 		</div>
 		<!-- <FooterComponent /> -->
@@ -96,14 +128,15 @@ import UserHeader from '../../Header/UserHeader.vue';
             lastName: "",
             login: "",
             email: "",
-            password: "",
-            loading: true,
-            login_msg: true,
-            phone:"",
+            passwordNew: "",
+            passwordOld:"",
+//            loading: true,
+//            login_msg: true,
+//            phone:"",
             sex:"",
-            city:"",
+            about:"",
             birthday:"",
-            id: ""
+            passwordChanged: true
           }
         },
     created: function () {
@@ -126,16 +159,17 @@ import UserHeader from '../../Header/UserHeader.vue';
           console.log(error);
         });
     },
+
         methods: {
           save_settings: function (event) {
             event.preventDefault();
             let reason = "";
-//            reason += this.validate();
+            reason += this.validate();
 //            reason += this.validatePassword();
             reason += this.validateName();
             reason += this.validateSurame();
             reason += this.validateLogin();
-//            reason += this.validateCity();
+            reason += this.validateAbout();
 
 
             if (reason.length > 0) {
@@ -144,7 +178,7 @@ import UserHeader from '../../Header/UserHeader.vue';
               return false;
             } else {
               this.loading = false; //после нажатия на кнопку логин выпадает лоадер
-              console.log(1);
+              console.log(this.birthday);
               let data = {
                 firstName : this.firstName,
                 about : this.firstName,
@@ -155,7 +189,7 @@ import UserHeader from '../../Header/UserHeader.vue';
 //                phone : this.phone,
                 sex: this.sex,
 //                city: this.city,
-                birthday: this.birthday,
+                birthDate: this.birthday,
 //                id: this.id
 
               };
@@ -171,6 +205,34 @@ import UserHeader from '../../Header/UserHeader.vue';
                   console.log(error);
                 });
               return false;
+            }
+          },
+          changePassword: function (event) {
+//            event.preventDefault();
+            console.log(1);
+            let reason = "";
+//            reason += this.validatePassword();
+            if (reason.length > 0) {
+              console.log(3);
+              return false;
+            } else {
+              let data = {
+                passwordOld : this.passwordOld,
+                passwordNew : this.passwordNew
+              };
+
+              console.log(JSON.stringify(data));
+
+              this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/user/password',
+                {body: JSON.stringify(data),headers: {'Content-Type': 'application/json',
+                  'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+                .then(function(response){
+                  this.passwordChanged = false;
+                }, function (error) {
+                  console.log(error);
+                });
+//              localStorage.removeItem("token");
+//              location.replace('/');
             }
           },
           validate: function () {
@@ -219,24 +281,25 @@ import UserHeader from '../../Header/UserHeader.vue';
           },
           validatePassword: function () {
             let error = "";
-            let tpassword = this.password.replace(/^\s+|\s+$/, '');
+            let tpassword = this.passwordNew.replace(/^\s+|\s+$/, '');
             let passwordFilter = /^([a-zA-Z, 0-9]+|\d+)$/i;
 
-            if (this.password === "") {
-              this.addError("#psw", ".password-error", "Please enter a password.");
+            if (this.passwordNew === "") {
+              this.addError(".psw", ".password-error", "Please enter a password.");
               error = "1";
             } else if (!passwordFilter.test(tpassword)) { //test password for illegal characters
-              this.addError("#psw", ".password-error", "Please enter only latin letters and numbers.");
+              this.addError(".psw", ".password-error", "Please enter only latin letters and numbers.");
               error = "2";
             } else if (tpassword.length < 6) { //test password for illegal characters
-              this.addError("#psw", ".password-error", "Please enter more then 6 symbols.");
+              this.addError(".psw", ".password-error", "Please enter more then 6 symbols.");
               error = "3";
             } else {
-              $("#psw").removeClass('error-color');
+              $(".psw").removeClass('error-color');
               $(".password-error").html("");
             }
             return error;
           },
+
           validateName: function () {
             let error = "";
             let tname = this.firstName.replace(/^\s+|\s+$/, '');
@@ -283,27 +346,32 @@ import UserHeader from '../../Header/UserHeader.vue';
             }
             return error;
           },
-          validateCity: function () {
+          validateAbout: function () {
             let error = "";
-            let tcity = this.city.replace(/^\s+|\s+$/, '');
-            let cityFilter = /^([a-zA-Zа-яёA-ZЁ]+)$/i;
+            let tabout = this.about.replace(/^\s+|\s+$/, '');
+            if (tabout) {
+              let aboutFilter = /^([a-zA-Zа-яёA-ZЁ]+)$/i;
 
-            if (this.city === "") {
-              this.addError("#City","#city-error", "Please enter your city.", );
-              error = "1";
-            } else if (!cityFilter.test(tcity)) { //test password for illegal characters
-              this.addError("#City","#city-error", "Please enter only letters.");
-              error = "2";
-            } else if (tcity.length < 2) { //test password for illegal characters
-              this.addError("#City", "#city-error", "Please enter more then 2 symbols.");
-              error = "3";
-            }else if (tcity.length > 30) { //test password for illegal characters
-                this.addError("#City","#city-error", "Please enter less then 30 symbols.");
+//            if (this.about === "") {
+//              this.addError("#about","#about-error", "Please enter your city.", );
+//              error = "1";
+//            } else
+//              if (!aboutFilter.test(tabout)) { //test password for illegal characters
+//                this.addError("#about","#about-error", "Please enter only letters.");
+//                error = "2";
+//              } else
+                if (tabout.length < 2) { //test password for illegal characters
+                this.addError("#about", "#about-error", "Please enter more then 2 symbols.");
                 error = "3";
-            } else {
-              $("#City").removeClass('error-color');
-              $("#city-error").html("");
+              }else if (tabout.length > 100) { //test password for illegal characters
+                this.addError("#about","#about-error", "Please enter less then 100 symbols.");
+                error = "3";
+              } else {
+                $("#about").removeClass('error-color');
+                $("#about-error").html("");
+              }
             }
+
             return error;
           },
           addError: function (el, errorEl, message) {
