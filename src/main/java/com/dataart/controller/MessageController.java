@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,6 +65,29 @@ public class MessageController extends BaseController{
     //    HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<>( HttpStatus.OK);
     }
+
+    public ResponseEntity<String> createMessageByLoginReceiver(@RequestBody Map<String, String> map) {
+
+        User userFromMsg = userService.findById(getUserId());
+        User userToMsg = userService.findByLogin(map.get("loginReceiver"));
+
+        if(userToMsg==null){
+            String error = "User with login: " + map.get("loginReceiver") + "doesn't exist";
+            return new ResponseEntity<>( error, HttpStatus.NOT_FOUND);
+        }
+
+        Header header = new Header(map.get("content"), Status.EXISTBOTH, Date.valueOf(map.get("dateTime")),userFromMsg,userToMsg);
+
+        Message message = new Message(true,map.get("content"),Date.valueOf(map.get("dateTime")),false,header);
+
+        //System.out.println(header.getDateTime());
+
+        headerService.saveHeader(header);
+        messageService.saveMessage(message);
+
+        return new ResponseEntity<>( HttpStatus.OK);
+    }
+
 
     @RequestMapping(value = "/outmessage", method = RequestMethod.GET)
     @ResponseBody
