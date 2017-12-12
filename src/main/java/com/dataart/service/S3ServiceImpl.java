@@ -33,7 +33,7 @@ public class S3ServiceImpl implements S3Service {
     public byte[] getMarkerImagesByMarkerId(String path) throws IOException {
         S3Object s3object = s3client.getObject(bucket,path);
         S3ObjectInputStream inputStream = s3object.getObjectContent();//S3ObjectInputStream
-        
+
         byte[] buffer = new byte[inputStream.available()];
 
         return buffer;
