@@ -10,23 +10,23 @@
           </div>
         </form>
 
-      <div class="photo navbar-right">
-        <h3>All your marks</h3>
-        <!-- list with photo -->
-        <div class="photo_list">
-          <NotesMarker v-for="(marker, index) in filteredMarkers"
-                v-bind:key="marker.id"
-                v-bind:date="new Date(marker.dateTime).toLocaleString()"
-                v-bind:name="marker.name"
-                v-bind:description="marker.description"
-                v-on:remove="deleteMarker(marker.id, index)"
-          ></NotesMarker>
+        <h3 class="text-center">All your marks</h3>
+        <div class="notes navbar-right">
+          <!-- list with photo -->
+          <div class="photo_list">
+            <NotesMarker v-for="(marker, index) in filteredMarkers"
+                         v-bind:key="marker.id"
+                         v-bind:date="new Date(marker.dateTime).toLocaleString()"
+                         v-bind:name="marker.name"
+                         v-bind:description="marker.description"
+                         v-on:remove="deleteMarker(marker.id, index)"
+            ></NotesMarker>
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- <FooterComponent /> -->
+    <!-- <FooterComponent /> -->
   </div>
 </template>
 
@@ -39,6 +39,11 @@
       return {
         markers: [],
         searchQuery: '',
+      }
+    },
+    beforeCreate: function () {     //для того чтобы незареганый пассажир не зашел на эту страницу
+      if (!localStorage.getItem('token')) {
+        this.$router.push('/')
       }
     },
     computed: {    //вычисляемая переменная поиск каждой введенной буквы
@@ -93,58 +98,60 @@
           });
       }
     },
-		components: {
-		    User, UserHeader, NotesMarker
-		}
-	}
+    components: {
+      User, UserHeader, NotesMarker
+    }
+  }
 </script>
 
 <style scoped>
-	.container-fluid {
-		padding: 0;
-	}
-	.user-marks {
-		display: -webkit-flex;
-		display: -moz-flex;
-		display: -ms-flex;
-		display: -o-flex;
-		display: flex;
-		justify-content: space-around;
-		background-color: #f0fff0;
-		padding-top: 20px;
-	}
-	.marks {
-		width: 80%;
-		border: 1px solid #4267b2;
+  .container-fluid {
+    padding: 0;
+  }
+  .user-marks {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0fff0;
+    padding-top: 20px;
+  }
+  .marks {
+    width: 80%;
+    border: 1px solid #4267b2;
     border-radius: 5px;
-		padding: 0 100px;
-		background-color: #fff;
-	}
+    padding: 0 100px;
+    background-color: #fff;
+  }
   .search {
     margin: 30px 0 50px 0;
   }
-	h2 {
-		margin-bottom: 50px;
-	}
-	.photo_list {
+  h2 {
+    margin-bottom: 50px;
+  }
+  .photo_list {
     margin-top:8%;
-		margin-bottom: 50px;
-		padding-bottom: 20px;
-		border-bottom: 1px solid #4267b2;
-	}
-	.photo-list p {
-		margin-bottom: 30px;
-	}
-	.media-body textarea {
+    margin-bottom: 50px;
+    padding-bottom: 20px;
+  }
+  .photo_list hr{
+    border-top: 1px solid #4267b2;
+  }
+  .photo_list p {
+    margin-bottom: 30px;
+  }
+  .media-body textarea {
     display: block;
     width:98%;
     margin: 1%;
-		margin-bottom: 20px;
+    margin-bottom: 20px;
     border-radius: 0;
     border-color: #4267b2;
     height: 80px;
     resize: none;
-	}
+  }
   .btn-primary {
     margin-right: 10px;
   }

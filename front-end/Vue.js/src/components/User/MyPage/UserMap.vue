@@ -18,7 +18,7 @@
         </div>
       </form>
     </div>
-
+     <!--search field-->
     <label class="map-search">
       <!--Add place on the map <br>-->
       <GmapAutocomplete class="place" @place_changed="setPlace"></GmapAutocomplete>
@@ -78,10 +78,10 @@
                 <input type="submit" value="Download photo" class="btn btn-default down-photo" style="width:80%; margin-top:-20%;"><br>
               </div>
 
-              <div class="input-group">
+              <div class="input-group" style="display: none">
                 <input id="lat" v-model="newMarkerLat" type="text" class="form-control" placeholder="lat" name="lat"  required>
               </div>
-              <div class="input-group">
+              <div class="input-group" style="display: none">
                 <input id="lng" v-model="newMarkerLng" type="text" class="form-control" placeholder="lng" name="lng"  required>
               </div>
             </form>
@@ -107,11 +107,13 @@
     </div>
 
     <div class="container-fluid">
-      <div class="messages" v-bind:class="{ hidden : !clickedMarkerId}">
 
+      <div class="messages" v-bind:class="{ hidden : !clickedMarkerId}">
+        <h5>You can leave a comment on this mark</h5>
         <div class="panel popup-messages-footer">
+
           <textarea id="status_message" v-model="newMessage" @keyup.enter="addMessage" placeholder="Add comments" class="text-input" rows="10" cols="40" name="message"></textarea>
-          <button class="btn-primary" v-on:click="addMessage">Add comments</button>
+          <button class="btn-primary add-commentMark" v-on:click="addMessage">Add comments</button>
           <!--<button class="btn btn-primary btn-clear" @click="clearList">Clear comments</button>-->
         </div>
 
@@ -320,10 +322,10 @@
             console.log(error);
             this.photos = [
               {id: 1, photoLink: "http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-xlarge.jpg"},
-              {id: 2, photoLink: "../../../../assets/img/1_b.jpg"},
-              {id: 3, photoLink: "../../../../assets/img/1_b.jpg"},
-              {id: 4, photoLink: "../../../../assets/img/1_b.jpg"},
-              {id: 5, photoLink: "../../../../assets/img/1_b.jpg"},
+              {id: 2, photoLink: "http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-xlarge.jpg"},
+              {id: 3, photoLink: "http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-xlarge.jpg"},
+              {id: 4, photoLink: "http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-xlarge.jpg"},
+              {id: 5, photoLink: "http://www.telegraph.co.uk/content/dam/Travel/Destinations/Europe/France/Paris/paris-attractions-xlarge.jpg"},
             ]
           });
       },
@@ -455,10 +457,17 @@
 
   .messages {
     font-family: FedraSansPro-DemiItalic, Helvetica, sans-serif;
-    width: 100%;
     border: 1px solid #efefef;
-    padding:0 5% 0 5% ;
+    padding:5%;
     background-color: #EBE9E9;
+    margin-left:-15px;
+    /*padding-right:0;*/
+  }
+  .messages h5{
+    font-size: 20px;
+    background-color: transparent;
+    text-align: center;
+    color: #2c3e50;
   }
   .panel {
     display: flex;
@@ -473,7 +482,8 @@
     border-bottom: 1px solid #3465A4;
     height: 40px ;
     padding: 5px ;
-    width: 85% ;
+    width: 82% ;
+    resize: none;
   }
   .delete {
     background-color: #3465A4;
@@ -558,6 +568,16 @@
     padding: 5px 10px;
     position: relative;
   }
-
+  .add-commentMark {
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+  }
+  .add-commentMark:hover{
+    background-color: cornflowerblue;
+  }
+  .input-group textarea{
+    resize: none;
+  }
 
 </style>

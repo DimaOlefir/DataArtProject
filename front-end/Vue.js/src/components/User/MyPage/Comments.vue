@@ -4,9 +4,9 @@
       <abbr class="timestamp">{{date}}</abbr>
     </div>
 
-    <div class="direct-chat-info clearfix pull-right">
-      <span class="direct-chat-timestamp pull-right">{{time}}</span>
-    </div>
+    <!--<div class="direct-chat-info clearfix pull-right">-->
+      <!--<span class="direct-chat-timestamp pull-right">{{time}}</span>-->
+    <!--</div>-->
 
     <div class="direct-chat-msg doted-border">
       <img alt="message user image" src="../../../assets/img/1_f.png" class="pull-left">

@@ -1,6 +1,6 @@
 <template>
   <div class="media list-inline">
-    <time class="text-right">{{date}}</time>
+    <time>{{date}}</time>
     <div class="media-left">
       <img src="../../../assets/img/4_b.jpg" class="media-object" style="width:100px">
     </div>
@@ -8,7 +8,7 @@
       <h5 class="media-heading text-left">{{name}}</h5>
       <form>
         <div class="input-group">
-          <p class="form-control">{{description}}</p>
+          <textarea class="form-control" rows="10" cols="40" name="messages">{{description}}</textarea>
         </div>
       </form>
       <div class="btn-group pull-right">
@@ -16,6 +16,7 @@
         <button type="button" class="btn btn-primary" v-on:click="$emit('remove')">Delete mark</button>
       </div>
     </div>
+    <hr>
   </div>
 </template>
 
@@ -29,31 +30,15 @@
   .container-fluid {
     padding: 0;
   }
-  .user-photos {
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    display: flex;
-    justify-content: space-around;
-    background-color: #f0fff0;
-    padding-top: 20px;
+  hr{
+    border-top: 1px solid #4267b2;
   }
-  .photos {
-    width: 80%;
-    border: 1px solid #4267b2;
-    border-radius: 5px;
-    padding: 0 100px;
-    background-color: #fff;
-  }
-  h2 {
-    margin-bottom: 50px;
-  }
-  .photo_list {
-    margin-top:8%;
-    margin-bottom: 50px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #4267b2;
+  time{
+   color:silver;
+ }
+  .media-body h5{
+    font-size: 18px;
+    margin-left: 1%;
   }
   .photo-list p {
     margin-bottom: 30px;
@@ -65,8 +50,11 @@
     margin-bottom: 20px;
     border-radius: 0;
     border-color: #4267b2;
-    height: 80px;
+    height: 60px;
     resize: none;
+  }
+  .btn-group button:hover {
+    background-color: cornflowerblue;
   }
   .btn-primary {
     margin-right: 10px;

@@ -67,7 +67,7 @@
   .navbar-collapse ul li:hover {
     background-color: cornflowerblue; }
   /*.logout{*/
-    /*margin: 10%;*/
+  /*margin: 10%;*/
   /*}*/
 
 </style>

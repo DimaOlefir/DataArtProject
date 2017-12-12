@@ -12,7 +12,7 @@
         <a class="list-group-item" href="#"><i class="fa fa-comments fa-1x fa-fw" aria-hidden="true"></i>Messages</a>
       </router-link>
       <router-link  to="/friends">
-       <a class="list-group-item" href="#"><i class="fa fa fa-users fa-1x fa-fw " aria-hidden="true"></i>&nbsp; Friends</a>
+        <a class="list-group-item" href="#"><i class="fa fa fa-users fa-1x fa-fw " aria-hidden="true"></i>&nbsp; Friends</a>
       </router-link>
       <router-link  to="/mynotes">
         <a class="list-group-item" href="#"><i class="fa fa-picture-o fa-1x fa-fw" aria-hidden="true"></i>My notes</a>

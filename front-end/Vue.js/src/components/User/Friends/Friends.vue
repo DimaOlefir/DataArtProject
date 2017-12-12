@@ -10,23 +10,24 @@
           </div>
         </form>
 
-        <div v-if="filteredFriends.length > 0">
-          <div class="friend" v-for="(friend, index) in filteredFriends">
-            <span class="glyphicon glyphicon-user">{{friend.firstName}} {{friend.lastName}}</span>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FriendsModal" data-whatever="@getbootstrap">Write letter</button>
+        <!--<div v-if="filteredFriends.length > 0">-->
+          <!--<div class="friend" v-for="(friend, index) in filteredFriends">-->
+            <!--<span class="glyphicon glyphicon-user">{{friend.firstName}} {{friend.lastName}}</span>-->
+            <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FriendsModal" data-whatever="@getbootstrap">Write letter</button>-->
 
-            <button type="button" class="btn btn-danger" @click="deleteFriend(friend)">Delete Friend</button>
+            <!--<button type="button" class="btn btn-danger" @click="deleteFriend(friend)">Delete Friend</button>-->
 
             <!-- <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Delete friend" @click="deleteFriend(friend)">
               <span class="glyphicon glyphicon-option-horizontal">Delete Friend</span>
             </button> -->
-          </div>
-        </div>
+          <!--</div>-->
+        <!--</div>-->
+
         <!-- list with friends -->
         <div class="media friend_list" v-if="filteredFriends.length > 0">
           <div class="media list-inline" v-for="(friend, index) in filteredFriends">
             <a href="#" title="Delete friend" class="pull-right" data-toggle="popover" data-placement="bottom" data>
-              <span class="glyphicon glyphicon-option-horizontal"></span>
+              <button type="button" class="btn btn-danger" @click="deleteFriend(friend)">Delete Friend</button>
             </a>
             <div class="media-left ava-friends">
               <img src="../../../assets/img/2_f.jpg" alt="Mountains">
@@ -38,6 +39,22 @@
             <hr class="hr-line">
           </div>
         </div>
+        <div class="media friend_list" v-if="filteredFriends.length > 0">
+          <div class="media list-inline" v-for="(friend, index) in filteredFriends">
+            <a href="#" title="Delete friend" class="pull-right" data-toggle="popover" data-placement="bottom" data>
+              <button type="button" class="btn btn-danger" @click="deleteFriend(friend)">Delete Friend</button>
+            </a>
+            <div class="media-left ava-friends">
+              <img src="../../../assets/img/2_f.jpg" alt="Mountains">
+            </div>
+            <div class="media-body">
+              <h5 class="media-heading text-left">{{friend.firstName}} {{friend.lastName}}</h5>
+              <button type="button" class="btn btn-info btn-sm pull-left" data-toggle="modal" data-target="#myModal">Write letter</button>
+            </div>
+            <hr class="hr-line">
+          </div>
+        </div>
+
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -85,6 +102,11 @@
           {id: nextFriendId++, firstName: 'Slava', lastName: 'Superman'},
           {id: nextFriendId++, firstName: 'Roma', lastName: 'Backend'},
         ],
+      }
+    },
+    beforeCreate: function () {     //для того чтобы незареганый пассажир не зашел на эту страницу
+      if (!localStorage.getItem('token')) {
+        this.$router.push('/')
       }
     },
     created: function () {
@@ -173,6 +195,11 @@
   .btn-default{
     background-color: #4267b2;
     width:100%;
+  }
+  .btn-danger {
+    padding: 3%;
+    margin-bottom: -4%;
+    margin-left: -4%;
   }
   .friend_list{
     padding: 5%;
