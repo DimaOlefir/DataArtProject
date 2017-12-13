@@ -41,7 +41,7 @@ public class ImageController extends BaseController{
 
     @Autowired
     MarkerImageService markerImageService;
-
+    // TODO check the user token and also check credentials for uploading new image to current marker
     @RequestMapping(value = "/doUpload", method = RequestMethod.POST)
     public ResponseEntity<String> upload(@RequestParam MultipartFile multipartFile, String markerId) throws IOException {
         File file = null;
@@ -55,7 +55,7 @@ public class ImageController extends BaseController{
         if (file!=null) {
             System.out.println("create the path " + markerId);
 
-            String path = markerId + "marker" + file.getName();
+            String path = markerId + "marker" + file.getName().toString();
             s3Service.saveMarkerImageByMarkerId(file,path);
 
             System.out.println("saved file to amazon");
