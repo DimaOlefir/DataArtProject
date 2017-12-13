@@ -52,6 +52,10 @@ public class Marker implements Serializable {
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "marker")
     private List<CommentMarker> commentsMarker;
 
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "marker")
+    private List<MarkerImage> markerImages;
+
     public Marker() {
     }
 

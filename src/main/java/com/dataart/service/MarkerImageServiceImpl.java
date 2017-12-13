@@ -3,6 +3,9 @@ package com.dataart.service;
 import com.dataart.model.MarkerImage;
 import com.dataart.repository.MarkerImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,17 +13,21 @@ import java.util.stream.Collectors;
 /**
  * Created by Роман on 13.12.2017.
  */
+@Service
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class MarkerImageServiceImpl implements MarkerImageService {
 
     @Autowired
     MarkerImageRepository markerImageRepository;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public void saveImage(MarkerImage image) {
         markerImageRepository.saveAndFlush(image);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = false)
     public void deleteImageById(long id) {
         MarkerImage markerImage = markerImageRepository.findOne(id);
         markerImage.setExist(false);
