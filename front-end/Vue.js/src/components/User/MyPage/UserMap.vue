@@ -62,10 +62,12 @@
             <form action="#" method="post" enctype="multipart/form-data">
               <h4>Add description</h4>
               <div class="input-group">
-                <input id="address" type="text" v-model="name" class="form-control" name="name" placeholder="Place name" required>
+                <input id="address" type="text" v-model="name" class="form-control name" name="name" placeholder="Place name" >
+                <div class="name-error"></div>
               </div>
               <div class="input-group">
                 <textarea type="text" v-model="description" class="form-control" id="description" placeholder="marker description" name="description"></textarea>
+                <div id="description-error"></div>
               </div>
               <div class="btn-group btn-group-justified">
                 <a href="#" v-on:click="access=0" class="btn btn-primary">Private</a>
@@ -108,7 +110,7 @@
 
     <div class="container-fluid">
 
-      <div class="messages" v-bind:class="{ hidden : !clickedMarkerId}">
+      <div class="messages" v-bind:class="{hidden : !clickedMarkerId}">
         <h5>You can leave a comment on this mark</h5>
         <div class="panel popup-messages-footer">
 
@@ -267,34 +269,43 @@
         }
       },
       saveMarker: function (){
-        this.loading = false; //после нажатия на кнопку логин выпадает лоадер
-        let data = {
-          name : this.name,
-          description : this.description,
-          access : +this.access,
-          lat : +this.newMarkerLat,
-          lng : +this.newMarkerLng,
-          dateTime: new Date()
+        let reason = "";
+        reason += this. validateName();
+        reason += this.validateDescription();
+
+        if (reason.length > 0) {
+          return false;
+        }
+        else {
+          this.loading = false; //после нажатия на кнопку логин выпадает лоадер
+          let data = {
+            name : this.name,
+            description : this.description,
+            access : +this.access,
+            lat : +this.newMarkerLat,
+            lng : +this.newMarkerLng,
+            dateTime: new Date()
+          };
+          this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/marker',
+            JSON.stringify(data), {headers: {'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+            .then(function(response){
+              this.login_msg = false; //если логин или пароль неверно выпадает ошибка
+              this.loading = true;
+              console.log(response);
+              let marker = response.body;
+              marker.position = {
+                lat: marker.lat,
+                lng: marker.lng
+              };
+              this.markers.push(marker);
+              this.closeModal();
+            }, function (error) {
+              this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
+              console.log(error);
+            });
+          return false;
         };
-        this.$http.post('https://rocky-retreat-50096.herokuapp.com/api/marker',
-          JSON.stringify(data), {headers: {'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem('token')}})
-          .then(function(response){
-            this.login_msg = false; //если логин или пароль неверно выпадает ошибка
-            this.loading = true;
-            console.log(response);
-            let marker = response.body;
-            marker.position = {
-              lat: marker.lat,
-              lng: marker.lng
-            };
-            this.markers.push(marker);
-            this.closeModal();
-          }, function (error) {
-            this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
-            console.log(error);
-          });
-        return false;
       },
       getMarkerData: function (id) {
         this.$http.get('https://rocky-retreat-50096.herokuapp.com/api/marker/' + id + '/comments', // запрос на чтение маркеров
@@ -364,6 +375,50 @@
           }, function (error) {
             console.log(error);
           });
+      },
+      validateName: function () {
+        let error = "";
+        let tname = this.name.replace(/^\s+|\s+$/, '');
+        let nameFilter = /^([a-zA-Zа-яёA-ZЁ]+)$/i;
+
+        if (this.name === "") {
+          this.addError(".name",".name-error", "Please enter place name.");
+          error = "1";
+        } else if (tname.length < 2) { //test password for illegal characters
+          this.addError(".name",".name-error", "Please enter more then 2 symbols.");
+          error = "3";
+        } else if (tname.length > 50) { //test password for illegal characters
+          this.addError(".name", ".name-error", "Please enter less then 50 symbols.");
+          error = "3";
+        }else {
+          $(".name").removeClass('error-color');
+          $(".name-error").html("");
+        }
+        return error;
+      },
+      validateDescription: function () {
+        let error = "";
+        let tsurname = this.description.replace(/^\s+|\s+$/, '');
+        let surnameFilter = /^([a-zA-Zа-яёA-ZЁ]+)$/i;
+
+        if (this.description === "") {
+          this.addError("#description","#description-error", "Please enter description mark.");
+          error = "1";
+        } else if (tsurname.length < 2) { //test password for illegal characters
+          this.addError("#description","#description-error", "Please enter more then 2 symbols.");
+          error = "3";
+        } else if (tsurname.length > 500) { //test password for illegal characters
+          this.addError("#description", "#description-error", "Please enter less then 150 symbols.");
+          error = "4";
+        }else {
+          $("#description").removeClass('error-color');
+          $("#description-error").html("");
+        }
+        return error;
+      },
+      addError: function (el, errorEl, message) {
+        $(el).addClass('error-color');
+        $(errorEl).html(message);
       },
     },
     components: {
@@ -578,6 +633,14 @@
   }
   .input-group textarea{
     resize: none;
+  }
+  #description-error, .name-error{
+    color:orange;
+    font-size: 12px;
+    text-align: left;
+  }
+  .error-color{
+    border:2px solid orange;
   }
 
 </style>

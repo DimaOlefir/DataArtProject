@@ -76,7 +76,7 @@
           <div class="form-group">
             <label for="about" class="col-sm-2 control-label">About</label>
             <div class="col-sm-8">
-              <input type="email" class="form-control" v-model="about" id="about" placeholder="Pless enter information about yourself">
+              <input type="email" class="form-control" v-model="about" id="about" placeholder="Please enter information about yourself">
               <div id="about-error"></div>
             </div>
           </div>
@@ -174,9 +174,10 @@
           this.lastName = response.body.lastName;
           this.login = response.body.login;
           this.email = response.body.email;
-          this.birthDate = response.body.birthDate;
+          let date = new Date(response.body.birthDate);
+          this.birthday = date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + ("0" + date.getDate()).slice(-2);
           this.sex = response.body.sex;
-          this.id = response.body.id;
+          this.about = response.body.about;
 
         }, function (error) {
           this.loading = true; //если логин или пароль неверно то лоадер после выпадения ошибки исчезает
@@ -202,7 +203,6 @@
           console.log(this.birthday);
           let data = {
             firstName : this.firstName,
-            about : this.firstName,
             lastName : this.lastName,
             login : this.login,
 //                password : this.password,
@@ -211,6 +211,7 @@
             sex: this.sex,
 //                city: this.city,
             birthDate: this.birthday,
+            about : this.about,
 //                id: this.id
 
           };
@@ -219,6 +220,10 @@
               'Authorization': 'Bearer ' + localStorage.getItem('token')}})
             .then(function(response){
               this.settings_msg = false;
+              if (data.login) { // разлогинить пользователя если менялся логин
+                localStorage.removeItem("token");
+                location.replace('/');
+              }
               console.log(response);
             }, function (error) {
               this.settings_msgerror = false;
