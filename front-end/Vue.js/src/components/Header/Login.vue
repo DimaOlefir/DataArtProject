@@ -100,7 +100,10 @@
         } else if (tlogin.length < 4) { //test password for illegal characters
           this.addError("#user_login","#userlogin-error", "Please enter more then 4 symbols.");
           error = "3";
-        } else {
+        } else if (tlogin.length > 30) { //test password for illegal characters
+          this.addError("#user_login", "#userlogin-error", "Please enter less then 30 symbols.");
+          error = "4";
+        }else {
           $("#user_login").removeClass('error-color');
           $("#userlogin-error").html("");
         }
@@ -120,7 +123,10 @@
         } else if (tpassword.length < 6) { //test password for illegal characters
           this.addError("#password", "#password-error", "Please enter more then 6 symbols.");
           error = "3";
-        } else {
+        } else if (tpassword.length > 30) { //test password for illegal characters
+          this.addError("#password", "#password-error", "Please enter less then 30 symbols.");
+          error = "4";
+        }else {
           $("#password").removeClass('error-color');
           $("#password-error").html("");
         }

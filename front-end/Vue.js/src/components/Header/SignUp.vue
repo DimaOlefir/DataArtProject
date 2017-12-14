@@ -144,7 +144,10 @@
         } else if (tlogin.length < 4) { //test password for illegal characters
           this.addError("#login","#login-error", "Please enter more then 4 symbols.");
           error = "3";
-        } else {
+        } else if (tlogin.length > 30) { //test password for illegal characters
+          this.addError("#login", "#login-error", "Please enter less then 30 symbols.");
+          error = "3";
+        }else {
           $("#login").removeClass('error-color');
           $("#login-error").html("");
         }
@@ -164,7 +167,10 @@
         } else if (tpassword.length < 6) { //test password for illegal characters
           this.addError("#psw", ".password-error", "Please enter more then 6 symbols.");
           error = "3";
-        } else {
+        } else if (tpassword.length > 30) { //test password for illegal characters
+          this.addError("#psw", ".password-error", "Please enter less then 30 symbols.");
+          error = "3";
+        }else {
           $("#psw").removeClass('error-color');
           $(".password-error").html("");
         }
@@ -184,7 +190,10 @@
         } else if (tname.length < 2) { //test password for illegal characters
           this.addError("#username","#name-error", "Please enter more then 2 symbols.");
           error = "3";
-        } else {
+        } else if (tname.length > 30) { //test password for illegal characters
+          this.addError("#username", "#name-error", "Please enter less then 30 symbols.");
+          error = "3";
+        }else {
           $("#username").removeClass('error-color');
           $("#name-error").html("");
         }
@@ -204,7 +213,10 @@
         } else if (tsurname.length < 2) { //test password for illegal characters
           this.addError("#surname","#surname-error", "Please enter more then 2 symbols.");
           error = "3";
-        } else {
+        }else if (tsurname.length > 30) { //test password for illegal characters
+          this.addError("#surname", "#surname-error", "Please enter less then 30 symbols.");
+          error = "3";
+        }else {
           $("#surname").removeClass('error-color');
           $("#surname-error").html("");
         }

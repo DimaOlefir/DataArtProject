@@ -6,7 +6,7 @@
       <div class="messages">
         <ul>
           <li v-for="message in messages">
-            {{ message.body }}
+            {{ message.subject }}
           </li>
         </ul>
       </div>
@@ -23,19 +23,42 @@
     },
     data() {
       return {
-        messages: {}
+        messages: [],
+        inmessages: [],
+        outmessages: [],
       }
     },
     created: function () {
-      this.$http.get('https://jsonplaceholder.typicode.com/posts')
-        .then(function(response) {
-          // console.log(response)
-          this.messages = response.data;
-        })
-        .catch(function(error) {
-          console.log('Error', error);
-        })
-    }
+      this.$http.get('https://rocky-retreat-50096.herokuapp.com/api/inmessage', // запрос на чтение маркеров
+        {headers: {'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+        .then(function(response){
+          console.log(response);
+          this.inmessages = response.body;
+        }, function (error) {
+          this.inmessages = [];
+          console.log(error);
+        });
+      this.$http.get('https://rocky-retreat-50096.herokuapp.com/api/outmessage', // запрос на чтение маркеров
+        {headers: {'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')}})
+        .then(function(response){
+          console.log(response);
+          this.outmessages = response.body;
+        }, function (error) {
+          this.outmessages = [];
+          console.log(error);
+        });
+    },
+    computed: {    //вычисляемая переменная поиск каждой введенной буквы
+      messages: function () {
+        let self = this;
+        let all_messages = this.inmessages.concat(this.outmessages);
+        return all_messages.sort(function (element) {
+          return element.datetime;
+        });
+      },
+    },
   }
 </script>
 

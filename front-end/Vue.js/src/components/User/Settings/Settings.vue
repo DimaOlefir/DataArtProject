@@ -319,7 +319,10 @@
         } else if (tpassword.length < 6) { //test password for illegal characters
           this.addError(".psw", ".password-error", "Please enter more then 6 symbols.");
           error = "3";
-        } else {
+        }else if (tpassword.length > 30) { //test password for illegal characters
+          this.addError(".psw", ".password-error", "Please enter less then 30 symbols.");
+          error = "3";
+        }else {
           $(".psw").removeClass('error-color');
           $(".password-error").html("");
         }
