@@ -1,6 +1,6 @@
 package com.dataart.service;
 
-import com.dataart.model.Message;
+import com.dataart.entity.Message;
 
 /**
  * Created by Роман on 23.11.2017.

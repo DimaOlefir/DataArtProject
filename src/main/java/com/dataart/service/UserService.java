@@ -1,7 +1,6 @@
 package com.dataart.service;
 
-import com.dataart.model.Header;
-import com.dataart.model.User;
+import com.dataart.entity.User;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.dataart.converter;
 
 import com.dataart.dto.UserDTO;
-import com.dataart.model.User;
+import com.dataart.entity.User;
 
 /**
  * Created by Роман on 09.12.2017.

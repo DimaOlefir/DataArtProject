@@ -1,6 +1,6 @@
 package com.dataart.security;
 
-import com.dataart.model.User;
+import com.dataart.entity.User;
 import com.dataart.security.domain.AuthenticationUser;
 import com.dataart.security.exception.JwtTokenMalformedException;
 import com.dataart.security.util.JwtUtil;

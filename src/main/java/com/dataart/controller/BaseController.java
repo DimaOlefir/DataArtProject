@@ -1,6 +1,6 @@
 package com.dataart.controller;
 
-import com.dataart.model.User;
+import com.dataart.entity.User;
 import com.dataart.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

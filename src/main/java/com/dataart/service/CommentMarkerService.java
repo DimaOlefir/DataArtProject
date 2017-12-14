@@ -1,6 +1,6 @@
 package com.dataart.service;
 
-import com.dataart.model.CommentMarker;
+import com.dataart.entity.CommentMarker;
 
 import java.util.List;
 

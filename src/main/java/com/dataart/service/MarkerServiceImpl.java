@@ -1,7 +1,7 @@
 package com.dataart.service;
 
-import com.dataart.model.Marker;
-import com.dataart.model.enums.AccessMarker;
+import com.dataart.entity.Marker;
+import com.dataart.entity.enums.AccessMarker;
 import com.dataart.repository.MarkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

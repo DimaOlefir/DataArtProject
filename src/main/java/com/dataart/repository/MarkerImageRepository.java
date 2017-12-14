@@ -1,6 +1,6 @@
 package com.dataart.repository;
 
-import com.dataart.model.MarkerImage;
+import com.dataart.entity.MarkerImage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -11,6 +11,6 @@ import java.util.List;
  */
 public interface MarkerImageRepository extends JpaRepository<MarkerImage, Long> {
 
-    @Query("SELECT m FROM com.dataart.model.MarkerImage m WHERE markerId = ?1")
+    @Query("SELECT m FROM com.dataart.entity.MarkerImage m WHERE markerId = ?1")
     List<MarkerImage> getMarkerImagesBuMarkerId(long id);
 }

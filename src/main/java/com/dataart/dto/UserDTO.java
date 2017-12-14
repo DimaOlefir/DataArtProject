@@ -1,6 +1,6 @@
 package com.dataart.dto;
 
-import com.dataart.model.enums.Sex;
+import com.dataart.entity.enums.Sex;
 
 import java.io.Serializable;
 import java.util.Date;

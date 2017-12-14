@@ -1,29 +1,21 @@
 package com.dataart.controller;
 
 import com.dataart.dto.MessageDTO;
-import com.dataart.model.Header;
-import com.dataart.model.Message;
-import com.dataart.model.User;
-import com.dataart.model.enums.Status;
+import com.dataart.entity.Header;
+import com.dataart.entity.Message;
+import com.dataart.entity.User;
+import com.dataart.entity.enums.Status;
 import com.dataart.service.HeaderService;
 import com.dataart.service.MessageService;
 import com.dataart.service.UserService;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.SystemEnvironmentPropertySource;
-import org.springframework.data.jpa.repository.Temporal;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.TemporalType;
 import java.util.Date;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

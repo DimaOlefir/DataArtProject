@@ -1,7 +1,7 @@
 package com.dataart.service;
 
-import com.dataart.model.Header;
-import com.dataart.model.Message;
+import com.dataart.entity.Header;
+import com.dataart.entity.Message;
 import com.dataart.repository.HeaderRepository;
 import com.dataart.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;

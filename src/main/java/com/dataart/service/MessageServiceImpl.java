@@ -1,6 +1,6 @@
 package com.dataart.service;
 
-import com.dataart.model.Message;
+import com.dataart.entity.Message;
 import com.dataart.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

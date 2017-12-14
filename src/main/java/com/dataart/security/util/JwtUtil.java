@@ -1,7 +1,7 @@
 package com.dataart.security.util;
 
-import com.dataart.model.User;
-import com.dataart.model.enums.Role;
+import com.dataart.entity.User;
+import com.dataart.entity.enums.Role;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;

@@ -1,18 +1,15 @@
 package com.dataart.service;
 
-import com.dataart.model.Header;
 import com.dataart.repository.HeaderRepository;
 import com.dataart.repository.UserRepository;
-import com.dataart.model.User;
-import com.dataart.model.enums.Role;
+import com.dataart.entity.User;
+import com.dataart.entity.enums.Role;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
 /**

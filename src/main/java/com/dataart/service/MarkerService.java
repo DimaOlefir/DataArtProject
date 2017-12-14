@@ -1,6 +1,6 @@
 package com.dataart.service;
 
-import com.dataart.model.Marker;
+import com.dataart.entity.Marker;
 
 import java.util.List;
 

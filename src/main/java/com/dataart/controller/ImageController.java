@@ -1,7 +1,7 @@
 package com.dataart.controller;
 
-import com.dataart.model.Marker;
-import com.dataart.model.MarkerImage;
+import com.dataart.entity.Marker;
+import com.dataart.entity.MarkerImage;
 import com.dataart.service.MarkerImageService;
 import com.dataart.service.MarkerService;
 import com.dataart.service.S3Service;
@@ -18,10 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 /**
  * Created by Роман on 13.12.2017.
@@ -41,30 +37,38 @@ public class ImageController extends BaseController{
 
     @Autowired
     MarkerImageService markerImageService;
-    // TODO check the user token and also check credentials for uploading new image to current marker
     @RequestMapping(value = "/doUpload", method = RequestMethod.POST)
     public ResponseEntity<String> upload(@RequestParam MultipartFile multipartFile, String markerId) throws IOException {
+
+        Marker marker = markerService.findById(Long.parseLong(markerId));
+        if(marker==null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        /*if(marker.getUser().getId()!=getUserId()){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }*/
+
         File file = null;
         try {
-            System.out.println("tre convert the multipartfile to file");
+//            System.out.println("tre convert the multipartfile to file");
             file = convert(multipartFile);
         }
         catch (IOException e){
             e.toString();
         }
         if (file!=null) {
-            System.out.println("create the path " + markerId);
+//            System.out.println("create the path " + markerId);
 
             String path = markerId + "marker" + file.getName().toString();
             s3Service.saveMarkerImageByMarkerId(file,path);
 
-            System.out.println("saved file to amazon");
+//            System.out.println("saved file to amazon");
 
-            Marker marker = markerService.findById(Long.getLong(markerId));
             MarkerImage markerImage = new MarkerImage(path,true, marker);
             markerImageService.saveImage(markerImage);
 
-            System.out.println("saved markerImage to database");
+//            System.out.println("saved markerImage to database");
 
             /*String fileName = file.getOriginalFilename();
             InputStream is = file.getInputStream();*/
@@ -75,7 +79,6 @@ public class ImageController extends BaseController{
             return new ResponseEntity<>(HttpStatus.OK);
 
         } else {
-
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }

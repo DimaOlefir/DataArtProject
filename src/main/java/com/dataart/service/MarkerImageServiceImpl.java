@@ -1,6 +1,6 @@
 package com.dataart.service;
 
-import com.dataart.model.MarkerImage;
+import com.dataart.entity.MarkerImage;
 import com.dataart.repository.MarkerImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

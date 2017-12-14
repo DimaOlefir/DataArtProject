@@ -3,7 +3,7 @@ package com.dataart.controller;
 import com.dataart.converter.Converter;
 import com.dataart.dto.PasswordDTO;
 import com.dataart.dto.UserDTO;
-import com.dataart.model.User;
+import com.dataart.entity.User;
 import com.dataart.security.UserAuthentication;
 import com.dataart.service.UserService;
 import org.slf4j.Logger;
