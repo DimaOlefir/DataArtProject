@@ -25,16 +25,16 @@
             </li>
           </ul>
         </div>
-        <!--<form class="form-inline search">-->
-        <!--<div class="form-group">-->
-        <!--<label for="searchMessage">Search</label>-->
-        <!--<input type="text" class="form-control" id="searchMessage" placeholder="Search Messages" size="70">-->
-        <!--</div>-->
-        <!--<button type="submit" class="btn btn-primary">-->
-        <!--<span class="glyphicon glyphicon-search"></span>-->
-        <!--</button>-->
-        <!--</form>-->
-        <!--<UserInfo></UserInfo>-->
+        <!--&lt;!&ndash;<form class="form-inline search">&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+        <!--&lt;!&ndash;<label for="searchMessage">Search</label>&ndash;&gt;-->
+        <!--&lt;!&ndash;<input type="text" class="form-control" id="searchMessage" placeholder="Search Messages" size="70">&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<button type="submit" class="btn btn-primary">&ndash;&gt;-->
+        <!--&lt;!&ndash;<span class="glyphicon glyphicon-search"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</button>&ndash;&gt;-->
+        <!--&lt;!&ndash;</form>&ndash;&gt;-->
+        <!--&lt;!&ndash;<UserInfo></UserInfo>&ndash;&gt;-->
 
         <!-- <section class="list">
                 <ul class="list-item">
@@ -45,10 +45,10 @@
                 </ul>
               </section>
 
-        <section class="panel">
-          <input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">
-          <button @click="clearList">Clear List</button>
-        </section> -->
+        <!--<section class="panel">-->
+          <!--<input v-model="newMessage" @keyup.enter="addMessage" placeholder="Add Message" autofocus class="text-input">-->
+          <!--<button @click="clearList">Clear List</button>-->
+        <!--</section> &ndash;&gt;-->
       </div>
       <!-- <span class="glyphicon glyphicon-search"></span>
             </button>
