@@ -7,7 +7,10 @@ import com.dataart.service.MarkerService;
 import com.dataart.service.S3Service;
 import com.dataart.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,9 +48,9 @@ public class ImageController extends BaseController{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        /*if(marker.getUser().getId()!=getUserId()){
+        if(marker.getUser().getId()!=getUserId()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }*/
+        }
 
         File file = null;
         try {
@@ -81,6 +84,18 @@ public class ImageController extends BaseController{
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @RequestMapping(value = "/sid", method = RequestMethod.GET,
+            produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<InputStreamResource> getImage() throws IOException {
+
+        ClassPathResource imgFile = new ClassPathResource("image/sid.jpg");
+
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(new InputStreamResource(imgFile.getInputStream()));
     }
 
     private File convert(MultipartFile file) throws IOException {
